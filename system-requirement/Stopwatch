@@ -1,0 +1,11 @@
+2. Stopwatch
+
+We can go to the stopwatch mode by pressing the stopwatch button on top of the screen. The stopwatch provides user a mean to record how much time has passed. Accurate to 0.1 second.
+
+2.1 On the stopwatch page, user can see the time that has passed, which initially set as 00 (minutes):00 .0(seconds).
+
+2.2 User can start the stopwatch by pressing the start button. The app updates the time has passed and shows it on the screen every 0.1 second. 
+
+2.3 After starting the stopwatch, the user has two options. He can press the stop button to stop the stopwatch. Or he can press the Lap button to keep track of multiple stop points until he press the stop button. On the screen, the stop points will be shown.
+
+2.4 After stopping the stopwatch, user can press the reset button to go back to the initial page. After pressing the reset button, all records of the previous stopwatch will be deleted. 
