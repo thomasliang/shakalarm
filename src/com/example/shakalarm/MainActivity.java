@@ -5,6 +5,23 @@ import android.app.Activity;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
+//useless
+//this is the most stupid app in the world
+//android emulator is so slow!!!
+//I cannot stand it anymore.
+//how can android be so slow.
+	//drive me crazay!!!!!!!!!!!!
+//=======
+//fiona
+//Wing
+//>>>>>>> refs/remotes/origin/master
+//fiona
+//fiona writing this code
+	//fiona writing this code
+	//fiona writing this code
+	//fiona writing this code
+//Wing
+//github.com/thomasleung/shakalarm.git
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
