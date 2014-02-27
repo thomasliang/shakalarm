@@ -11,6 +11,10 @@ public class MainActivity extends Activity {
 //I cannot stand it anymore.
 //how can android be so slow.
 	//drive me crazay!!!!!!!!!!!!
+//=======
+//fiona
+//Wing
+//>>>>>>> refs/remotes/origin/master
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
