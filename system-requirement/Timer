@@ -1,0 +1,10 @@
+2.Timer
+
+2.1 Timer setting
+2.1.1 When you press the Timer button on the main page, the device will display a delicate but clear timer interface. Then directly, you need to select your preferred hour/minues/second by scrolling the three scroll boxes.
+2.1.2 After setting the time, it is optional for you to choose the ringtone. You can simply press a button following the preset time, then a series of classical ringtones will be displayed for you to select. If users forget to choose the ring tong, our device will use the default ringtone.
+
+2.2 Timer functioning
+2.2.1 When both the time and ringtone are set, for our application, it is quite convenient and interesting for you to shake the phone to start time counting down. You can also simply press the “start” button to allow the timer to act. The timer will display the time variation dynamically from XX:XX:XX to 00:00:00.
+2.2.2 When you finish the task in advance, you can response to the phone by shaking again or pressing the “end” button. You can see how much time you spend and is left. Or if you finish the task overtime, the preset ringtone will ring to remind you. At this moment, slide the band on the device to stop ringing.
+2.2.3 You can press “stop” button if some disturbance happens, the timer will stop at the current time; If you press “start” again, the timer will continuing counting down.
