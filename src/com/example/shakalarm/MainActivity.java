@@ -15,6 +15,8 @@ public class MainActivity extends Activity {
 //fiona
 //Wing
 //>>>>>>> refs/remotes/origin/master
+//fiona
+//Wing
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
