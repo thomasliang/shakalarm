@@ -1,6 +1,7 @@
 SHAKALARM SYSTEM REQUIREMENT
 
 1. ALARM
+
 We can set a new alarm by setting the time, ringtone, and mode. The user can add an alarm by pressing a button.
 1.1 Setting up an alarm
 1.1.1 Firstly, the user sets the time. The user selects the hour and min by scrolling two scroll boxes. The default time is blank.
@@ -14,11 +15,17 @@ We can set a new alarm by setting the time, ringtone, and mode. The user can add
 1.2.3 Normal Mode: There will be an animation displayed (e.g. user’s gallery) and preset ringtone will play. The user needs to slide the bar displayed on the screen to stop the alarm. 
 
 2. STOPWATCH
+
 We can go to the stopwatch mode by pressing the stopwatch button on top of the screen. The stopwatch enables the user to record time duration within an error of 0.05 second. Below system requirement is presented in a sequential order.
 2.1 On the stopwatch page, user can see the time that has passed, which initially set as 00 (minutes): 00.0(seconds).
 2.2 User can start the stopwatch by pressing the start button. The app updates the time passed and shows it on the screen every 0.1 second. 
 2.3 While the stopwatch operates, the user can stop the stopwatch or record multiple lap times by pressing the corresponding button to each of two operations. In former operation, the stop button will change to reset button, and the lap button will change to continue button for the next operation.
 2.4 After stopping the stopwatch, user can press the reset button to go back to the initial page. After pressing the reset button, all records of the previous stopwatch will be deleted, and the displayed time will show initial value.
+
+2.5 Additional option
+There will be a small check box on the right bottom corner which allows the activation of the shaking mode
+2.5.1 When Shaking Mode is disabled, you only can click the button on screen to start or stop the "STOPWATCH".  
+2.5.2 When Shaking Mode is enabled, you can start or stop the “ STOPWATCH “ by just simply shaking your phone.
 
 3.TIMER
 
@@ -31,7 +38,13 @@ We can go to the stopwatch mode by pressing the stopwatch button on top of the s
 3.2.2 If the user finishes measuring time before the time becomes zero, user may shake the phone or press “end” button. The time you spent and remaining will be displayed. Otherwise, preset ringtone will remind the user at time zero. The time passed will be displayed, and the user may shake or press the button to respond.
 3.2.3 You can press “stop” button to stop the timer at the current time. If you press “start” button, the timer will continue counting down.
 
+3.3 Additional option
+There will be a small check box on the right bottom corner which allows the activation of the shaking mode
+3.3.1 When Shaking Mode is disabled, you only can click the button on screen to start or stop the “ TIMER ".  
+3.3.2 When Shaking Mode is enabled, you can start or stop the “ TIMER “ by just simply shaking your phone.
+
 4. SETTING
+
 Shakalarm enables user to customize background image, language, alarm mode, and SNS connection.
 4.1	Background Image
 4.1.1 The user can change the background from our default images or image files from the phone.
@@ -40,8 +53,6 @@ Shakalarm enables user to customize background image, language, alarm mode, and 
 4.2.2 English, Simplified Chinese, Traditional Chinese, Korean and Japanese are supported.
 4.3 Shaking Mode
 4.3.1 A switch is displayed in the Setting menu to enable or disable the Shaking Mode.
-4.3.2 When Shaking Mode is disabled, you only can click the button on screen to change the time zone in “ Clock ”, start or stop the “ Timer “ and also start or stop the “ Counter”.  
-4.3.3 When Shaking Mode is enabled, you can change the time zone in “Clock”, start or stop the “ Timer “ and “ Counter” by just simply shaking your phone.
 4.4 SNS connection
 4.4.1 The user can connect Shakalarm to SNS service for networking functions. The user can log in their SNS in the authorization page which can be implemented by using the API provided.
 4.4.2 Supports Facebook, Twitter, Weibo.
@@ -51,6 +62,7 @@ Shakalarm enables user to customize background image, language, alarm mode, and 
 4.4.6 The words of status or tweet can be set by the user. 
 
 5. CLOCK
+
 5.1 There will be a list of different time zones items displayed (Initially only displaying the time zone of the setting of the device). In each time zone item there will be a few major cities of that time zone displayed, and the corresponding time of that time zone will also be displayed. 
 5.2 There will be a button on the bottom of the screen showing “add time zone display”. When clicked, a list of all the time zone items will be displayed in another page. A user can add a time zone item to the “Clock” screen by pressing an item.
 5.3 The user can select a particular time zone from the list on the “Clock” screen by pressing it and a menu will pop up. Showing options: 1) Change to selected time zone 2) delete item 3) cancel
