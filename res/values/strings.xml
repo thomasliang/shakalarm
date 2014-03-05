@@ -4,5 +4,7 @@
     <string name="app_name">Shakalarm</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="left">left is clicked</string>
+    <string name="right">right is clicked</string>
 
 </resources>
