@@ -4,19 +4,27 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_marginTop="6dip"
-    android:orientation="vertical"> 
-    
-    <AnalogClock 
+    android:orientation="vertical" >
+
+    <AnalogClock
         android:id="@+id/analog_clock"
-	    android:dial="@drawable/clock_dial"
-	    android:hand_hour="@drawable/clock_hour"
-	    android:hand_minute="@drawable/clock_minute"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content" />
-    
-    <Button 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:dial="@drawable/clock_dial"
+        android:hand_hour="@drawable/clock_hour"
+        android:hand_minute="@drawable/clock_minute" />
+
+    <Button
         android:id="@+id/setting_alarm_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/set_alarm" />
+
+    <Button
+        android:id="@+id/btOneTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/btOneTime" />
+
 </LinearLayout>
