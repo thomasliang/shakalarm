@@ -9,6 +9,9 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.widget.Toast;
@@ -35,9 +38,12 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 		}
 		Format formatter = new SimpleDateFormat("hh:mm:ss a");
 		msgStr.append(formatter.format(new Date()));
-
+		
+		//Play alarm sound "Ding"~
 		Toast.makeText(context, msgStr, Toast.LENGTH_LONG).show();
-
+		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+		Ringtone r = RingtoneManager.getRingtone(context, notification);
+		r.play();
 		// Release the lock
 		wl.release();
 	}
@@ -49,6 +55,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 		Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
 		intent.putExtra(ONE_TIME, Boolean.TRUE);
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
-		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pi);
+		//ring after 5 second
+		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+5000, pi);
 	}
 }
