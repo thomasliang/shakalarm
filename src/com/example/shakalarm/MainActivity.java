@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
 		super.onStart();
 	}
 
+	
 	public void setBasicAlarm(View view) {
 		Context context = this.getApplicationContext();
 		Date date = new Date(114, 2, 14, 21, 30, 0); //Thomas please help here 

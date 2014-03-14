@@ -24,10 +24,15 @@ public class BasicAlarm {
 			this.repetition = repetition;
 		}
 		this.enabled = enabled;
-		// this.time = time;
 		this.date = date;
 	}
 
+	/**
+	 * set a one time alarm, date.getTime() return the time set, minus the current time
+	 * @param context
+	 * @author Wing
+	 * last modified: 3/14
+	 */
 	public void setOnetimeAlarm(Context context) {
 		Toast.makeText(context, "ready to set alarm", Toast.LENGTH_SHORT)
 				.show();
@@ -39,9 +44,15 @@ public class BasicAlarm {
 
 		// difference of time between the time set and the current time
 		am.set(AlarmManager.RTC_WAKEUP,
-				date.getTime() - System.currentTimeMillis(), pi);
+				date.getTime() - System.currentTimeMillis(), pi); //time difference in milliseconds
 	}
 
+	/**
+	 * set a repeating a alarm, currently ring every 5 seconds
+	 * @param context
+	 * @author Wing
+	 * last modified: 3/14
+	 */
 	public void SetRepeatingAlarm(Context context) {
 		AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
