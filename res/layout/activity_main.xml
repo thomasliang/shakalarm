@@ -15,16 +15,10 @@
         android:hand_minute="@drawable/clock_minute" />
 
     <Button
-        android:id="@+id/setting_alarm_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/set_alarm" />
-
-    <Button
-        android:id="@+id/btOneTime"
+        android:id="@+id/buttontBasicAlarm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_medium"
-        android:text="@string/btOneTime" />
+        android:text="@string/basicAlarm" />
 
 </LinearLayout>

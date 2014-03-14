@@ -2,13 +2,31 @@ package com.example.shakalarm;
 
 import java.io.File;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.text.format.Time;
+import android.widget.Toast;
 
 public class BasicAlarm {
 	boolean enabled,repetitive;
     boolean[] reptition = new boolean[7];
     Time time = new Time();
     File ringTone;
+    
+    final public static String BASIC_ALARM = "basicAlarm";
+
+    public void setOnetimeTimer(Context context) {
+		Toast.makeText(context, "ready to set alarm", Toast.LENGTH_SHORT).show();
+		AlarmManager am = (AlarmManager) context
+				.getSystemService(Context.ALARM_SERVICE);
+		Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
+		intent.putExtra(BASIC_ALARM, Boolean.TRUE);
+		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+		//ring after 5 second
+		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+5000, pi);
+	}
     
 	public File getRingTone() {
 		return ringTone;

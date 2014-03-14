@@ -17,7 +17,7 @@ import android.os.PowerManager;
 import android.widget.Toast;
 
 public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
-	final public static String ONE_TIME = "onetime";
+	final public static String BASIC_ALARM = "basicAlarm";
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -32,7 +32,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 		Bundle extras = intent.getExtras();
 		StringBuilder msgStr = new StringBuilder();
 
-		if (extras != null && extras.getBoolean(ONE_TIME, Boolean.FALSE)) {
+		if (extras != null && extras.getBoolean(BASIC_ALARM, Boolean.FALSE)) {
 			// Make sure this intent has been sent by the one-time timer button.
 			msgStr.append("One time Timer : ");
 		}
@@ -46,16 +46,5 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 		r.play();
 		// Release the lock
 		wl.release();
-	}
-
-	public void setOnetimeTimer(Context context) {
-		Toast.makeText(context, "ready to set alarm", Toast.LENGTH_SHORT).show();
-		AlarmManager am = (AlarmManager) context
-				.getSystemService(Context.ALARM_SERVICE);
-		Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
-		intent.putExtra(ONE_TIME, Boolean.TRUE);
-		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
-		//ring after 5 second
-		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+5000, pi);
 	}
 }

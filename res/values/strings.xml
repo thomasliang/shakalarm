@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>-->
     
     <string name="app_name">Alarm_Test</string>
-    <string name="btOneTime">One time alarm</string> 
+    <string name="basicAlarm">Set Basic Alarm</string> 
     <string name="action_settings">Settings</string>
     <string name="set_alarm">Set the Alarm</string>
     <string name="hello_world">Hello world!</string>
