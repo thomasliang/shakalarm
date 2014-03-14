@@ -1,6 +1,6 @@
 package com.example.shakalarm;
 
-public class blowAlarm extends basicAlarm
+public class BlowAlarm extends BasicAlarm
 {
     int blowingLevel;
     public void activate(){};

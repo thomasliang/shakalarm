@@ -4,7 +4,7 @@ import java.io.File;
 
 import android.text.format.Time;
 
-public class basicAlarm {
+public class BasicAlarm {
 	boolean enabled,repetitive;
     boolean[] reptition = new boolean[7];
     Time time = new Time();
