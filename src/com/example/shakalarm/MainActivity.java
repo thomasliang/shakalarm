@@ -3,6 +3,7 @@ package com.example.shakalarm;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,11 +18,15 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		final Button BasicAlarmButton = (Button) findViewById(R.id.buttontBasicAlarm);
+		
+		final Intent intent = new Intent(this, BasicAlarmSetting.class);
+		
 		BasicAlarmButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				setBasicAlarm(v);
+				startActivity(intent);
+				//setBasicAlarm(v);
 			}
 		});
 		
