@@ -22,12 +22,15 @@ public class MainActivity extends Activity {
 		final Button BasicAlarmButton = (Button) findViewById(R.id.buttontBasicAlarm);
 		
 		final Intent intent = new Intent(this, BasicAlarmSetting.class);
-		
+	
 		BasicAlarmButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				//startActivity(intent);
+				//for testing the switching screen
+				//startActivity(intent); 
+				
+				
 				setBasicAlarm(v);
 			}
 		});
@@ -46,8 +49,16 @@ public class MainActivity extends Activity {
 		super.onStart();
 	}
 
-	
+   /**
+    * repetiton - all set false means no repetition in a week
+    * date - the time that we set for the alarm to ring
+    * @param view
+    * @author thomas
+    * last modified: March 14th 
+    */
+
 	public void setBasicAlarm(View view) {
+		
 		Context context = this.getApplicationContext();
 		Date date = new Date(114, 2, 14, 21, 30, 0); //Thomas please help here 
 		boolean[] repetition = { false, false, false, false, false, false, false };
