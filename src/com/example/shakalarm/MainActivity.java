@@ -1,9 +1,6 @@
 package com.example.shakalarm;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-import com.example.shakalarm.Alarm.Day;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.shakalarm.Alarm.Day;
+
 public class MainActivity extends Activity {
 
 	@Override
@@ -22,7 +21,8 @@ public class MainActivity extends Activity {
 		// Get the AlarmManager Service
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		final Intent intent = new Intent(this, AlarmSetting.class);
+		
+		new Intent(this, AlarmSetting.class);
 		final Context context = this.getApplicationContext();
 		final Button BasicAlarmButton = (Button) findViewById(R.id.buttontBasicAlarm);
 
@@ -64,6 +64,7 @@ public class MainActivity extends Activity {
 	 * @param view
 	 * @author thomasleung last modified: March 14th
 	 */
+	@SuppressWarnings("deprecation")
 	public void setBasicAlarm(View view) {
 
 		Context context = this.getApplicationContext();

@@ -26,6 +26,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 	/*
 	 * TODO deal with the deprecated wake lock in lockOn()
 	 */
+	@SuppressWarnings("deprecation")
 	public static void lockOn(Context context) {
 		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 		//Object flags;
