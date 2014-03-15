@@ -257,7 +257,7 @@ public class Alarm implements Serializable {
 
 	/**
 	 * the same function as the "setOnetimeAlarm", but this one is generalized
-	 * 
+	 * @deprecated unfinished, now it only supports a day of week, not more than one
 	 * @param context
 	 */
 	public void oneTimeSchedule(Context context) {
@@ -272,12 +272,11 @@ public class Alarm implements Serializable {
 
 		//calculation of the exact time, rings on next specified days of week
 		Calendar now = Calendar.getInstance();
-		int day_of_week_now = now.get(Calendar.DAY_OF_WEEK);
+		int day_of_week_now = now.get(Calendar.DAY_OF_WEEK) - 1;
 		long AlarmTime = now.getTimeInMillis(); //for debug use
 		if (getDays().length != 0) {
-			//TODO return the day of week in the list and set the alarm to that day
+			
 			Day[] d = getDays();
-			Toast.makeText(context, "day of week = " + d[0] + "; " + day_of_week_now, Toast.LENGTH_LONG).show();
 			if (d[0].ordinal() < day_of_week_now) { //compare day
 				AlarmTime += 86400000 * (day_of_week_now - d[0].ordinal() + 7); //set the alarm to next week
 			} else if (d[0].ordinal() == day_of_week_now) { // if day of week is equal, compare time
@@ -288,9 +287,9 @@ public class Alarm implements Serializable {
 				AlarmTime += 86400000 * (day_of_week_now - d[0].ordinal());
 			}
 		}
-		alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent); //hard coded 5 seconds later
-		String stringToDisplay = "One Time Alarm Set: ";
-		Toast.makeText(context, stringToDisplay + (AlarmTime - System.currentTimeMillis()), Toast.LENGTH_LONG).show();
+		alarmManager.set(AlarmManager.RTC_WAKEUP, this.getAlarmTime().getTimeInMillis(), pendingIntent); 
+		String stringToDisplay = "One Time Alarm Set: ring after " + (this.getAlarmTime().getTimeInMillis() - System.currentTimeMillis()) + "ms";
+		Toast.makeText(context, stringToDisplay, Toast.LENGTH_LONG).show();
 	}
 
 	public void dailySchedule(Context context) {

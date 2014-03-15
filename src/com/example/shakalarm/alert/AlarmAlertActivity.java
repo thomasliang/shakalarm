@@ -56,11 +56,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		//		}
 		
 				startAlarm();
-				Thread thread = new Thread() {
-					
-				}
-				this.finish();				
-
+				this.finish();
 	}
 
 	private void startAlarm() {
