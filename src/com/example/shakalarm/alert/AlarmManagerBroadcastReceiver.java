@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.widget.Toast;
 
 import com.example.shakalarm.Alarm;
 
@@ -52,9 +53,10 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 	 */
 	@Override
 	public void onReceive(Context context, Intent intent) {
+		Toast.makeText(context, "ringing", Toast.LENGTH_SHORT).show();
 
 		lockOn(context);
-
+		
 		try {
 			Bundle bundle = intent.getExtras();
 			final Alarm alarm = (Alarm) bundle.getSerializable("alarm");
@@ -69,6 +71,8 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 
 			context.startActivity(AlarmAlertActivityIntent);
 		} catch (Exception e) {
+			Toast.makeText(context, "exception detected", Toast.LENGTH_SHORT).show();
+
 			e.printStackTrace();
 		} finally {
 			lockOff(context);
