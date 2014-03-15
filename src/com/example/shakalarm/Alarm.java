@@ -283,7 +283,7 @@ public class Alarm implements Serializable {
 		if (getDays().length != 0) {
 			//TODO return the day of week in the list and set the alarm to that day
 		}
-		alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent); //hard coded 5 seconds later
 		long timeDifference = getAlarmTime().getTimeInMillis(); //for debug use
 		String stringToDisplay = "One Time Alarm Set: ";
 		Toast.makeText(context, stringToDisplay + day_of_week_now, Toast.LENGTH_SHORT).show();
