@@ -95,11 +95,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		//		}
 		
 				startAlarm();
-				Thread thread = new Thread() {
-					
-				}
-				this.finish();				
-
+				this.finish();
 	}
 >>>>>>> FETCH_HEAD
 
