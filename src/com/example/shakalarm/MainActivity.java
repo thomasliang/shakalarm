@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 	 * that we set for the alarm to ring
 	 * 
 	 * @param view
-	 * @author thomas 
+	 * @author thomasleung 
 	 * last modified: March 14th
 	 */
 
@@ -87,8 +87,9 @@ public class MainActivity extends Activity {
 			 * @author thomasleung
 			 * last modified 15/3/2014
 			 */
-			
-			test.setAlarmTime("18:30:00");
+			Calendar time = Calendar.getInstance();
+			time.add((Calendar.MINUTE),1);
+			test.setAlarmTime(time);
 			test.oneTimeSchedule(context);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
