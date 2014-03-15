@@ -11,17 +11,15 @@ import android.content.Intent;
 import android.widget.Toast;
 
 public class BasicAlarm implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 847097409445317427L;
-
+	
+	private static final long serialVersionUID = 847097409445317427L; //Class serialization ID
 	final public static String BASIC_ALARM = "basicAlarm";
+	final public static String PACKAGE_PREFIX = "com.example.shakalarm.";
 
-	boolean repetitive = false;
-	boolean[] repetition = { false, false, false, false, false, false, false };
-	Calendar calendar = new GregorianCalendar();
-
+	private boolean repetitive = false;
+	private boolean[] repetition = { false, false, false, false, false, false, false };
+	private Calendar calendar = new GregorianCalendar();
+	
 	public BasicAlarm(Calendar calendar, boolean[] repetition) throws IllegalArgumentException {
 		if (repetition.length != 7) {
 			throw new IllegalArgumentException("repetition array size not 7");
