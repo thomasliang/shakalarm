@@ -1,5 +1,7 @@
 package com.example.shakalarm.alert;
 
+import com.example.shakalarm.*;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.shakalarm.R;
 
@@ -29,7 +32,19 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 		//TODO alarm_alert layout 
 		setContentView(R.layout.alarm_alert);	
-		
+		Bundle bundle = this.getIntent().getExtras();
+		Alarm alarm = (Alarm) bundle.getSerializable("alarm");
+
+		this.setTitle(alarm.getAlarmName());
+
+		switch (alarm.getMode()) {
+		case NORMAL:
+			Toast.makeText(this.getApplicationContext(), "NORMAL mode", Toast.LENGTH_SHORT).show();
+			break;
+		default:
+			break;
+
+		}
 		final Button testButton = (Button) findViewById(R.id.buttonTest3);
 	
 	    testButton.setOnClickListener(new OnClickListener() {

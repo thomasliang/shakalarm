@@ -23,6 +23,9 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 	 * 
 	 * @author thomasleung
 	 */
+	/*
+	 * TODO deal with the deprecated wake lock in lockOn()
+	 */
 	public static void lockOn(Context context) {
 		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 		//Object flags;
@@ -31,9 +34,6 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 		wl.acquire();
 	}
 
-	/*
-	 * TODO deal with the deprecated wake lock in lockOn()
-	 */
 	public static void lockOff(Context context) {
 		//		PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 		try {
@@ -60,16 +60,29 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 		try {
 			Bundle bundle = intent.getExtras();
 			final Alarm alarm = (Alarm) bundle.getSerializable("alarm");
+<<<<<<< HEAD
 
+			if(alarm == null)
+				Toast.makeText(context, "nullpoint", Toast.LENGTH_LONG).show();
+			else Toast.makeText(context, "no nullpoint", Toast.LENGTH_LONG).show();
+
+=======
+>>>>>>> FETCH_HEAD
+			
 			Intent AlarmAlertActivityIntent;
 
 			AlarmAlertActivityIntent = new Intent(context, AlarmAlertActivity.class);
 
-			AlarmAlertActivityIntent.putExtra("alarm_alert", alarm);
+<<<<<<< HEAD
+			AlarmAlertActivityIntent.putExtra("alarm", alarm);//pass the alarm object
+
+=======
+			AlarmAlertActivityIntent.putExtra("alarm_alert", alarm); //pass the alarm object
+>>>>>>> FETCH_HEAD
 
 			AlarmAlertActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-			context.startActivity(AlarmAlertActivityIntent);
+			context.startActivity(AlarmAlertActivityIntent); //start the AlarmAlertActivity
 		} catch (Exception e) {
 			Toast.makeText(context, "exception detected: " + e.toString(), Toast.LENGTH_LONG).show();
 
