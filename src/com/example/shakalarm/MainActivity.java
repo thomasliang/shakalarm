@@ -3,6 +3,8 @@ package com.example.shakalarm;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.example.shakalarm.Alarm.Day;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -61,11 +63,8 @@ public class MainActivity extends Activity {
 	/**
 	 * 
 	 * @param view
-<<<<<<< HEAD
 	 * @author thomasleung 
 	 * last modified: March 14th
-=======
->>>>>>> FETCH_HEAD
 	 */
 	public void setBasicAlarm(View view) {
 
@@ -87,9 +86,12 @@ public class MainActivity extends Activity {
 			 * @author thomasleung
 			 * last modified 15/3/2014
 			 */
+			
 			Calendar time = Calendar.getInstance();
 			time.add((Calendar.MINUTE),1);
 			test.setAlarmTime(time);
+			Day[] days= {Alarm.Day.SATURDAY};
+			test.setDays(days);
 			test.oneTimeSchedule(context);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
