@@ -59,14 +59,14 @@ public class MainActivity extends Activity {
 	}
 
 	/**
-	 * repetiton - all set false means no repetition in a week date - the time
-	 * that we set for the alarm to ring
 	 * 
 	 * @param view
+<<<<<<< HEAD
 	 * @author thomasleung 
 	 * last modified: March 14th
+=======
+>>>>>>> FETCH_HEAD
 	 */
-
 	public void setBasicAlarm(View view) {
 
 		Context context = this.getApplicationContext();		
