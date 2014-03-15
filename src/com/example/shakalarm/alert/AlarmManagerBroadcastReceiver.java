@@ -61,11 +61,15 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 			Bundle bundle = intent.getExtras();
 			final Alarm alarm = (Alarm) bundle.getSerializable("alarm");
 			
+			if(alarm == null)
+				Toast.makeText(context, "nullpoint", Toast.LENGTH_LONG).show();
+			else Toast.makeText(context, "no nullpoint", Toast.LENGTH_LONG).show();
+			
 			Intent AlarmAlertActivityIntent;
 
 			AlarmAlertActivityIntent = new Intent(context, AlarmAlertActivity.class);
 
-			AlarmAlertActivityIntent.putExtra("alarm_alert", alarm); //pass the alarm object
+			AlarmAlertActivityIntent.putExtra("alarm", alarm); //pass the alarm object
 
 			AlarmAlertActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
