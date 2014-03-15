@@ -12,7 +12,7 @@ import android.widget.Button;
  * @author Wing
  * last modified: 3/14
  */
-public class BasicAlarmSetting extends Activity {
+public class AlarmSetting extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

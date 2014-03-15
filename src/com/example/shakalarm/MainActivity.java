@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 		// Get the AlarmManager Service
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		final Intent intent = new Intent(this, BasicAlarmSetting.class);
+		final Intent intent = new Intent(this, AlarmSetting.class);
 		final Context context = this.getApplicationContext();
 		final Button BasicAlarmButton = (Button) findViewById(R.id.buttontBasicAlarm);
 		
@@ -28,9 +28,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				//for testing the switching screen
-				//startActivity(intent); 
-
+				
 				setBasicAlarm(v);
 			}
 		});
@@ -40,7 +38,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(context, "" + BasicAlarm.id_count, Toast.LENGTH_SHORT).show();
+				Toast.makeText(context, "" + Alarm.id_count, Toast.LENGTH_SHORT).show();
 				
 			}
 		});
@@ -65,24 +63,36 @@ public class MainActivity extends Activity {
 	 * that we set for the alarm to ring
 	 * 
 	 * @param view
-	 * @author thomas last modified: March 14th
+	 * @author thomas 
+	 * last modified: March 14th
 	 */
 
 	public void setBasicAlarm(View view) {
 
-		Context context = this.getApplicationContext();
-		Calendar calendar = new GregorianCalendar();
-		//calendar.set(2014, 2, 15, 12, 20, 30);
-		calendar.setTimeInMillis(System.currentTimeMillis() + 5000); //currently ring after 5 seconds
-		boolean[] repetition = { false, false, false, false, false, false, false };
-		
+		Context context = this.getApplicationContext();		
 		try {
-			BasicAlarm ba = new BasicAlarm(calendar, repetition);
-			ba.setOnetimeAlarm(context);
+			Alarm test = new Alarm();
+			
+			/*
+			 * Can input any time string here for testing,
+			 * since I've overloaded the setAlarmTime function
+			 * (not tested, sorry, please try it)
+			 * 
+			 * TODO User interface for inputing alarm time
+			 * TODO Maintain a list of Alarms
+			 * 
+			 * Due to XML file not consistent,
+			 * cannot implement TODO functions above.
+			 * 
+			 * @author thomasleung
+			 * last modified 15/3/2014
+			 */
+			
+			test.setAlarmTime("18:30:00");
+			test.oneTimeSchedule(context);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
-		//ba.SetRepeatingAlarm(context);
 	}
 
 }
