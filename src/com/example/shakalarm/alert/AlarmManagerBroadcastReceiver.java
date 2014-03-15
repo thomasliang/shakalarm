@@ -71,7 +71,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 
 			context.startActivity(AlarmAlertActivityIntent);
 		} catch (Exception e) {
-			Toast.makeText(context, "exception detected", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "exception detected: " + e.toString(), Toast.LENGTH_LONG).show();
 
 			e.printStackTrace();
 		} finally {
