@@ -12,7 +12,7 @@
     <string name="left">left is clicked</string>
     <string name="right">right is clicked</string>
     <string name="testString">Test String</string>
-    <string name="alarm_alert">This is the page shown when an alarm activates</string>
+    <string name="alarm_alert">Click to quit</string>
     <string name="alarm_setting">This is the alarm setting page</string>
     
 
