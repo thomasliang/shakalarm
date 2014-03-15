@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -19,11 +20,10 @@ public class MainActivity extends Activity {
 		// Get the AlarmManager Service
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		final Button BasicAlarmButton = (Button) findViewById(R.id.buttontBasicAlarm);
-
 		final Intent intent = new Intent(this, BasicAlarmSetting.class);
-
+		final Context context = this.getApplicationContext();
+		final Button BasicAlarmButton = (Button) findViewById(R.id.buttontBasicAlarm);
+		
 		BasicAlarmButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -34,7 +34,18 @@ public class MainActivity extends Activity {
 				setBasicAlarm(v);
 			}
 		});
+		
+		final Button testButton = (Button) findViewById(R.id.buttonTest2);
+		testButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(context, "" + BasicAlarm.id_count, Toast.LENGTH_SHORT).show();
+				
+			}
+		});
 
+		
 	}
 
 	@Override
@@ -64,9 +75,13 @@ public class MainActivity extends Activity {
 		//calendar.set(2014, 2, 15, 12, 20, 30);
 		calendar.setTimeInMillis(System.currentTimeMillis() + 5000); //currently ring after 5 seconds
 		boolean[] repetition = { false, false, false, false, false, false, false };
-
-		BasicAlarm ba = new BasicAlarm(calendar, repetition);
-		ba.setOnetimeAlarm(context);
+		
+		try {
+			BasicAlarm ba = new BasicAlarm(calendar, repetition);
+			ba.setOnetimeAlarm(context);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
 		//ba.SetRepeatingAlarm(context);
 	}
 

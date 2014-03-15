@@ -11,21 +11,26 @@ import android.content.Intent;
 import android.widget.Toast;
 
 public class BasicAlarm implements Serializable {
-	
+
 	private static final long serialVersionUID = 847097409445317427L; //Class serialization ID
-	final public static String BASIC_ALARM = "basicAlarm";
-	final public static String PACKAGE_PREFIX = "com.example.shakalarm.";
+	public static int id_count = 0;
+	public final static String BASIC_ALARM = "basicAlarm";
+	public final static String PACKAGE_PREFIX = "com.example.shakalarm.";
 
 	private boolean repetitive = false;
 	private boolean[] repetition = { false, false, false, false, false, false, false };
 	private Calendar calendar = new GregorianCalendar();
-	
+	private int id;
+
 	public BasicAlarm(Calendar calendar, boolean[] repetition) throws IllegalArgumentException {
 		if (repetition.length != 7) {
 			throw new IllegalArgumentException("repetition array size not 7");
+		} else {
+			this.repetition = repetition;
 		}
-		this.repetition = repetition;
 		this.calendar = calendar;
+		++id_count;
+		id = id_count;
 	}
 
 	public BasicAlarm() { //debug only, will be deleted
@@ -42,8 +47,8 @@ public class BasicAlarm implements Serializable {
 	public void setOnetimeAlarm(Context context) {
 		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
-		intent.putExtra(BASIC_ALARM, Boolean.TRUE);
-		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+		intent.putExtra(PACKAGE_PREFIX + BASIC_ALARM, this);
+		PendingIntent pi = PendingIntent.getBroadcast(context, this.getId(), intent, 0);
 
 		// difference of time between the time set and the current time
 		long timeDifference = calendar.getTimeInMillis() - System.currentTimeMillis();
@@ -66,5 +71,9 @@ public class BasicAlarm implements Serializable {
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 		// After after every 5 seconds
 		am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 5, pi);
+	}
+
+	public int getId() {
+		return id;
 	}
 }

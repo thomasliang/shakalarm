@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 	final public static String BASIC_ALARM = "basicAlarm";
+	final public static String PACKAGE_PREFIX = "com.example.shakalarm.";
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -29,10 +30,17 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 			// You can do the processing here.
 			Bundle extras = intent.getExtras();
 			StringBuilder msgStr = new StringBuilder();
+			msgStr.append("Basic Alarm: One time Timer : ");
 
-			if (extras != null && extras.getBoolean(BASIC_ALARM, Boolean.FALSE)) {
-				// Make sure this intent has been sent by the one-time timer button.
-				msgStr.append("One time Timer : ");
+			if (extras != null) {
+				if (intent.getSerializableExtra(PACKAGE_PREFIX + BASIC_ALARM) != null) {
+					BasicAlarm ba= (BasicAlarm) (intent.getSerializableExtra(PACKAGE_PREFIX + BASIC_ALARM));
+					msgStr.append("true: ");
+					msgStr.append("ID: " + ba.getId() + ": ");
+				} else {
+					msgStr.append("false: ");
+				}
+				intent.removeExtra(PACKAGE_PREFIX + BASIC_ALARM);
 			}
 			Format formatter = new SimpleDateFormat("hh:mm:ss a", Locale.getDefault());
 			msgStr.append(formatter.format(new Date()));

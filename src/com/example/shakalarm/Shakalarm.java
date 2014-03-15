@@ -1,9 +1,9 @@
 package com.example.shakalarm;
 
-import java.util.Date;
 
 public class Shakalarm extends BasicAlarm
 {
+	private static final long serialVersionUID = -1373140565097475017L;
 	int shakingLevel;
     public void activate(){};
 }
