@@ -20,7 +20,7 @@ public class AlarmSetting extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.basic_alarm_setting_layout);
 
-		final Button testButton = (Button) findViewById(R.id.buttonTest);
+		final Button testButton = (Button) findViewById(R.id.alarmSetting);
 		testButton.setOnClickListener(new OnClickListener() {
 
 			@Override
