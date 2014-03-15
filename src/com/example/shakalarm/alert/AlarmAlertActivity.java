@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.shakalarm.Alarm;
 import com.example.shakalarm.R;
@@ -55,7 +56,11 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		//		}
 		
 				startAlarm();
-				onDestroy();
+				Thread thread = new Thread() {
+					
+				}
+				this.finish();				
+
 	}
 
 	private void startAlarm() {
@@ -150,16 +155,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		//		} catch (Exception e) {
 		//
 		//		}
-		Thread timer = new Thread() {
-			public void run() {
-				try {
-					sleep(5000);
-				} catch (InterruptedException e) {
 
-				}
-			}
-		};
-		timer.start();
 		super.onDestroy();
 	}
 
@@ -184,13 +180,13 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case android.R.id.home:
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }

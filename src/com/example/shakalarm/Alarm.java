@@ -36,36 +36,30 @@ public class Alarm implements Serializable {
 		}
 	}
 
-	public enum Day{
-		SUNDAY,
-		MONDAY,
-		TUESDAY,
-		WEDNESDAY,
-		THURSDAY,
-		FRIDAY,
-		SATURDAY;
+	public enum Day {
+		SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
 
 		@Override
 		public String toString() {
-			switch(this.ordinal()){
-				case 0:
-					return "Sunday";
-				case 1:
-					return "Monday";
-				case 2:
-					return "Tuesday";
-				case 3:
-					return "Wednesday";
-				case 4:
-					return "Thursday";
-				case 5:
-					return "Friay";
-				case 6:
-					return "Saturday";
+			switch (this.ordinal()) {
+			case 0:
+				return "Sunday";
+			case 1:
+				return "Monday";
+			case 2:
+				return "Tuesday";
+			case 3:
+				return "Wednesday";
+			case 4:
+				return "Thursday";
+			case 5:
+				return "Friay";
+			case 6:
+				return "Saturday";
 			}
 			return super.toString();
 		}
-		
+
 	}
 
 	private static final long serialVersionUID = 847097409445317427L; //Class serialization ID
@@ -78,7 +72,7 @@ public class Alarm implements Serializable {
 
 	private Boolean alarmActive = true;
 	private Calendar alarmTime = Calendar.getInstance();
-	private Day[] days = {Day.MONDAY,Day.TUESDAY,Day.WEDNESDAY,Day.THURSDAY,Day.FRIDAY,Day.SATURDAY,Day.SUNDAY};
+	private Day[] days = {Day.SUNDAY, Day.MONDAY, Day.TUESDAY, Day.WEDNESDAY, Day.THURSDAY, Day.FRIDAY, Day.SATURDAY };
 	private String alarmTonePath = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString();
 	private Boolean vibrate = true;
 	private String alarmName = "Alarm Clock";
@@ -207,30 +201,29 @@ public class Alarm implements Serializable {
 		this.days = days;
 	}
 
-	public void addDay(Day day){
+	public void addDay(Day day) {
 		boolean contains = false;
-		for(Day d : getDays())
-			if(d.equals(day))
+		for (Day d : getDays())
+			if (d.equals(day))
 				contains = true;
-		if(!contains){
+		if (!contains) {
 			List<Day> result = new LinkedList<Day>();
-			for(Day d : getDays())
+			for (Day d : getDays())
 				result.add(d);
 			result.add(day);
 			setDays(result.toArray(new Day[result.size()]));
 		}
 	}
-	
+
 	public void removeDay(Day day) {
-	    
+
 		List<Day> result = new LinkedList<Day>();
-	    for(Day d : getDays())
-	        if(!d.equals(day))
-	            result.add(d);
-	    setDays(result.toArray(new Day[result.size()]));
+		for (Day d : getDays())
+			if (!d.equals(day))
+				result.add(d);
+		setDays(result.toArray(new Day[result.size()]));
 	}
 
-	
 	/**
 	 * @return the mode
 	 */
@@ -280,13 +273,24 @@ public class Alarm implements Serializable {
 		//calculation of the exact time, rings on next specified days of week
 		Calendar now = Calendar.getInstance();
 		int day_of_week_now = now.get(Calendar.DAY_OF_WEEK);
+		long AlarmTime = now.getTimeInMillis(); //for debug use
 		if (getDays().length != 0) {
 			//TODO return the day of week in the list and set the alarm to that day
+			Day[] d = getDays();
+			Toast.makeText(context, "day of week = " + d[0] + "; " + day_of_week_now, Toast.LENGTH_LONG).show();
+			if (d[0].ordinal() < day_of_week_now) { //compare day
+				AlarmTime += 86400000 * (day_of_week_now - d[0].ordinal() + 7); //set the alarm to next week
+			} else if (d[0].ordinal() == day_of_week_now) { // if day of week is equal, compare time
+				if (AlarmTime % 86400000 > (this.getAlarmTime().getTimeInMillis()) % 86400000) {
+					AlarmTime += 86400000 * 7; //set the alarm to next week
+				}
+			} else {
+				AlarmTime += 86400000 * (day_of_week_now - d[0].ordinal());
+			}
 		}
 		alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent); //hard coded 5 seconds later
-		long timeDifference = getAlarmTime().getTimeInMillis(); //for debug use
 		String stringToDisplay = "One Time Alarm Set: ";
-		Toast.makeText(context, stringToDisplay + day_of_week_now, Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, stringToDisplay + (AlarmTime - System.currentTimeMillis()), Toast.LENGTH_LONG).show();
 	}
 
 	public void dailySchedule(Context context) {
