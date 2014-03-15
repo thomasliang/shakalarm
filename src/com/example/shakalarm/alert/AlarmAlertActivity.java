@@ -20,7 +20,6 @@ import com.example.shakalarm.R;
 @SuppressLint("NewApi")
 public class AlarmAlertActivity extends Activity implements OnClickListener {
 
-
 	private boolean alarmActive;
 
 	@Override
@@ -28,18 +27,18 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		//TODO alarm_alert layout 
-		setContentView(R.layout.alarm_alert);	
-		
-		final Button testButton = (Button) findViewById(R.id.buttonTest3);
-	
-	    testButton.setOnClickListener(new OnClickListener() {
+		setContentView(R.layout.alarm_alert);
 
-		@Override
-		public void onClick(View v) {
-               kill();
-		}
-	    });
-	    
+		final Button testButton = (Button) findViewById(R.id.buttonTest3);
+
+		testButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				kill();
+			}
+		});
+
 		try {
 			startAlarm();
 		} catch (InterruptedException e) {
@@ -48,22 +47,15 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		}
 
 	}
-	
-	private void kill()
-	{
+
+	private void kill() {
 		this.finish();
 	}
 
-	
-	   private void startAlarm() throws InterruptedException {
-
+	private void startAlarm() throws InterruptedException {
 		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 		Ringtone r = RingtoneManager.getRingtone(getBaseContext(), notification);
 		r.play();
-
-		//w1.release() here, please test it @Wing
-		AlarmManagerBroadcastReceiver.lockOff(getBaseContext());
-
 	}
 
 	/*
@@ -73,36 +65,31 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 	 * @author thomasleung last modified 15/3/2014
 	 */
 
-	
-  
-//       private void startAlarm() {
-//
-//		if (alarm.getAlarmTonePath() != "") {
-//			mediaPlayer = new MediaPlayer();
-//			if (alarm.getVibrate()) {
-//				vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-//				long[] pattern = { 1000, 200, 200, 200 };
-//				vibrator.vibrate(pattern, 0);
-//			}
-//			try {
-//				mediaPlayer.setVolume(1.0f, 1.0f);
-//				mediaPlayer.setDataSource(this,
-//						Uri.parse(alarm.getAlarmTonePath()));
-//				mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
-//				mediaPlayer.setLooping(true);
-//				mediaPlayer.prepare();
-//				mediaPlayer.start();
-//
-//			} catch (Exception e) {
-//				mediaPlayer.release();
-//				alarmActive = false;
-//			}
-//		}	
-//
-//	}
-
-
-
+	//       private void startAlarm() {
+	//
+	//		if (alarm.getAlarmTonePath() != "") {
+	//			mediaPlayer = new MediaPlayer();
+	//			if (alarm.getVibrate()) {
+	//				vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+	//				long[] pattern = { 1000, 200, 200, 200 };
+	//				vibrator.vibrate(pattern, 0);
+	//			}
+	//			try {
+	//				mediaPlayer.setVolume(1.0f, 1.0f);
+	//				mediaPlayer.setDataSource(this,
+	//						Uri.parse(alarm.getAlarmTonePath()));
+	//				mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+	//				mediaPlayer.setLooping(true);
+	//				mediaPlayer.prepare();
+	//				mediaPlayer.start();
+	//
+	//			} catch (Exception e) {
+	//				mediaPlayer.release();
+	//				alarmActive = false;
+	//			}
+	//		}	
+	//
+	//	}
 
 	/*
 	 * (non-Javadoc)
@@ -142,31 +129,6 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 	 * 
 	 * @see android.app.Activity#onDestroy()
 	 */
-
-
-//	@Override
-//	protected void onDestroy() {
-//		try {
-//			if (vibrator != null)
-//				vibrator.cancel();
-//		} catch (Exception e) {
-//
-//		}
-//		try {
-//			mediaPlayer.stop();
-//		} catch (Exception e) {
-//
-//		}
-//		try {
-//			mediaPlayer.release();
-//		} catch (Exception e) {
-//
-//		}
-//		super.onDestroy();
-//	}
- 
-	
-
 	@Override
 	protected void onDestroy() {
 		//		try {
@@ -188,7 +150,6 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 		super.onDestroy();
 	}
-
 
 	/*
 	 * Functions for detecting shaking & blowing

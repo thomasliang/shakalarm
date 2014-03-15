@@ -292,6 +292,10 @@ public class Alarm implements Serializable {
 		Toast.makeText(context, stringToDisplay, Toast.LENGTH_LONG).show();
 	}
 
+	/**
+	 * @deprecated unfinished
+	 * @param context
+	 */
 	public void dailySchedule(Context context) {
 		setAlarmActive(true);
 
@@ -308,6 +312,10 @@ public class Alarm implements Serializable {
 		Toast.makeText(context, stringToDisplay, Toast.LENGTH_SHORT).show();
 	}
 
+	/**
+	 * @deprecated unfinished
+	 * @param context
+	 */
 	public void weeklySchedule(Context context) {
 		setAlarmActive(true);
 
