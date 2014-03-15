@@ -61,6 +61,11 @@ public class MainActivity extends Activity {
 	/**
 	 * 
 	 * @param view
+<<<<<<< HEAD
+	 * @author thomasleung 
+	 * last modified: March 14th
+=======
+>>>>>>> FETCH_HEAD
 	 */
 	public void setBasicAlarm(View view) {
 
@@ -82,8 +87,9 @@ public class MainActivity extends Activity {
 			 * @author thomasleung
 			 * last modified 15/3/2014
 			 */
-			
-			test.setAlarmTime("18:30:00");
+			Calendar time = Calendar.getInstance();
+			time.add((Calendar.MINUTE),1);
+			test.setAlarmTime(time);
 			test.oneTimeSchedule(context);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
