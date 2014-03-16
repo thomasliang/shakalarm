@@ -13,6 +13,36 @@
         android:dial="@drawable/clock_dial"
         android:hand_hour="@drawable/clock_hour"
         android:hand_minute="@drawable/clock_minute" />
+    
+    <!-- for the three button that add a new alarm -->
+    <TableRow
+        android:id="@+id/Alarm_Mode_Selection"
+        android:layout_width ="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/basic_alarm_selection"
+            android:layout_height="wrap_content"
+            android:text="@string/basic_alarm"
+            android:layout_weight=".3" 
+            android:layout_width="match_parent" 
+            android:gravity="center_horizontal"/>
+        
+        <Button
+            android:id="@+id/shakalarm_selection"
+            android:layout_height="wrap_content"
+            android:text="@string/shakalarm"
+            android:layout_weight=".3" 
+            android:layout_width="match_parent" 
+            android:gravity="center_horizontal"/>
+        
+        <Button
+            android:id="@+id/blowalarm_selection"
+            android:layout_height="wrap_content"
+            android:text="@string/blowalarm"
+            android:layout_weight=".3" 
+            android:layout_width="match_parent" 
+            android:gravity="center_horizontal"/>       
+    </TableRow>
 
     <Button
         android:id="@+id/buttontBasicAlarm"

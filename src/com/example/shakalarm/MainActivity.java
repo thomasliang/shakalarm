@@ -12,6 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.shakalarm.BasicAlarmSettingActivity;
+import com.example.shakalarm.MainActivity;
+import com.example.shakalarm.R;
 import com.example.shakalarm.Alarm.Day;
 
 public class MainActivity extends Activity {
@@ -43,6 +46,19 @@ public class MainActivity extends Activity {
 				Toast.makeText(context, "" + Alarm.id_count, Toast.LENGTH_SHORT).show();
 
 			}
+		});
+		
+		//choose to set a basic alarm
+		final Button selectBasicAlarmButton = 
+				(Button) findViewById(R.id.basic_alarm_selection);
+		selectBasicAlarmButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentMain = new Intent(MainActivity.this, BasicAlarmSettingActivity.class);
+				MainActivity.this.startActivity(intentMain);
+	            //Log.i("Content "," Main layout ");
+			}
+			
 		});
 
 	}

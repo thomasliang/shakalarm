@@ -40,6 +40,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        <!-- Go to Basic Alarm Setting Page-->
+        <activity android:name="BasicAlarmSettingActivity" ></activity>
+        
         <receiver android:name="com.example.shakalarm.alert.AlarmManagerBroadcastReceiver">
         </receiver>
     </application>

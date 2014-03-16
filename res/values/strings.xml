@@ -15,5 +15,12 @@
     <string name="alarm_alert">Click to quit</string>
     <string name="alarm_setting">This is the alarm setting page</string>
     
+    <!-- Attribute for Alarm Setting Button-->
+    <string name="basic_alarm">Basic Alarm</string>
+    <string name="shakalarm">Shakalarm</string>
+    <string name="blowalarm">Blowalarm</string>
+    <string name="confirm">Confirm</string>
+    
+    
 
 </resources>
