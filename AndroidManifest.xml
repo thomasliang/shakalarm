@@ -41,8 +41,9 @@
             </intent-filter>
         </activity>
         
-        <!-- Go to Basic Alarm Setting Page-->
+        <!-- Go to different Alarm Setting Page-->
         <activity android:name="BasicAlarmSettingActivity" ></activity>
+        <activity android:name="ShakalarmSettingActivity"></activity>
         
         <receiver android:name="com.example.shakalarm.alert.AlarmManagerBroadcastReceiver">
         </receiver>

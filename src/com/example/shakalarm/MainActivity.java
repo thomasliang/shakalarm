@@ -57,10 +57,20 @@ public class MainActivity extends Activity {
 				Intent intentMain = new Intent(MainActivity.this, BasicAlarmSettingActivity.class);
 				MainActivity.this.startActivity(intentMain);
 	            //Log.i("Content "," Main layout ");
-			}
-			
+			}			
 		});
-
+		
+		//choose to set shakalarm
+		final Button selectShakalarmButton = 
+				(Button) findViewById(R.id.shakalarm_selection);
+		selectShakalarmButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentMain = new Intent(MainActivity.this, ShakalarmSettingActivity.class);
+				MainActivity.this.startActivity(intentMain);
+	            //Log.i("Content "," Main layout ");
+			}	
+		});
 	}
 
 	@Override
