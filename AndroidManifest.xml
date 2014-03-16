@@ -42,8 +42,20 @@
         </activity>
         
         <!-- Go to different Alarm Setting Page-->
-        <activity android:name="BasicAlarmSettingActivity" ></activity>
-        <activity android:name="ShakalarmSettingActivity"></activity>
+        <activity 
+            android:name="BasicAlarmSettingActivity"
+            android:label="@string/basic_alarm">
+        </activity>
+        
+        <activity 
+            android:name="ShakalarmSettingActivity"
+            android:label="@string/shakalarm">
+        </activity>
+        
+        <activity 
+            android:name="BlowalarmSettingActivity"
+            android:label="@string/blowalarm">
+        </activity>
         
         <receiver android:name="com.example.shakalarm.alert.AlarmManagerBroadcastReceiver">
         </receiver>

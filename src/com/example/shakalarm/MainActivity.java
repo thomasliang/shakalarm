@@ -71,6 +71,18 @@ public class MainActivity extends Activity {
 	            //Log.i("Content "," Main layout ");
 			}	
 		});
+		
+		//choose to set shakalarm
+		final Button selectBlowalarmButton = 
+				(Button) findViewById(R.id.blowalarm_selection);
+		selectBlowalarmButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentMain = new Intent(MainActivity.this, BlowalarmSettingActivity.class);
+				MainActivity.this.startActivity(intentMain);
+	            //Log.i("Content "," Main layout ");
+			}	
+		});
 	}
 
 	@Override
