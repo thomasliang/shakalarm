@@ -21,14 +21,17 @@ public class BasicAlarmSettingActivity extends Activity {
 		
 		//AnalogClock analogClock = (AnalogClock) findViewById(R.id.analog_clock);
 		
-		//setting alarm button
-		final Button settingButton = (Button) findViewById(R.id.confirm_button);
-		settingButton.setOnClickListener(new OnClickListener() {
+		//press confirm button and go back to main activity
+		final Button confirm_button = 
+				(Button) findViewById(R.id.confirm_button);
+		confirm_button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "Single Alarm Set",
-						Toast.LENGTH_LONG).show();
+				Intent intentMain = new Intent(BasicAlarmSettingActivity.this, MainActivity.class);
+				BasicAlarmSettingActivity.this.startActivity(intentMain);
+	            //Log.i("Content "," Main layout ");
 			}
+			
 		});
 	}
 
