@@ -22,4 +22,7 @@
     <string name="blowalarm">Blowalarm</string>
     <string name="confirm">Confirm</string>
     
+    <!--  Store Color Attribute -->
+    <color name="yellow">#FFFF11</color>
+    
 </resources>
