@@ -17,12 +17,12 @@ public class BasicAlarmSettingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// Get the AlarmManager Service
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.basic_alarm_setting);
+		setContentView(R.layout.alarm_settings);
 		
 		//AnalogClock analogClock = (AnalogClock) findViewById(R.id.analog_clock);
 		
 		//press confirm button and go back to main activity
-		final Button confirm_button = 
+		/*final Button confirm_button = 
 				(Button) findViewById(R.id.confirm_button);
 		confirm_button.setOnClickListener(new OnClickListener() {
 			@Override
@@ -32,7 +32,7 @@ public class BasicAlarmSettingActivity extends Activity {
 	            //Log.i("Content "," Main layout ");
 			}
 			
-		});
+		});*/
 	}
 
 	@Override

@@ -24,5 +24,12 @@
     
     <!--  Store Color Attribute -->
     <color name="yellow">#FFFF11</color>
+    <color name="holo_blue_light">#ff33b5e5</color>
+    
+    <!-- Alarm Settings Attribute -->
+    <string name="button_delete">Delete</string>
+    <string name="no_alarms">No alarms have been set</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
     
 </resources>
