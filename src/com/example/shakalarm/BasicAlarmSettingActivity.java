@@ -1,5 +1,6 @@
 package com.example.shakalarm;
 
+import java.util.Calendar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.TimePickerDialog;
@@ -95,6 +96,7 @@ public class BasicAlarmSettingActivity extends ListActivity {
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					finish();
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
 					okButton.setBackgroundColor(getResources().getColor(android.R.color.transparent));
@@ -115,6 +117,7 @@ public class BasicAlarmSettingActivity extends ListActivity {
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					//go back to main activity
 					finish();
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
@@ -124,6 +127,91 @@ public class BasicAlarmSettingActivity extends ListActivity {
 				return true;
 			}
 		});
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		super.onListItemClick(l, v, position, id);
+
+		AlertDialog.Builder alert;
+		v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+		
+		//temparary use
+		int iamuseless = 0;
+		switch (iamuseless) {
+		case 0:
+			CheckedTextView checkedTextView = (CheckedTextView) v;
+			boolean checked = !checkedTextView.isChecked();
+			((CheckedTextView) v).setChecked(checked);
+			break;
+		case 1:
+
+			alert = new AlertDialog.Builder(this);
+
+			alert.setTitle("Hello I'm Useless");
+			// alert.setMessage(message);
+
+			// Set an EditText view to get user input
+			final EditText input = new EditText(this);
+
+			//input.setText(alarmPreference.getValue().toString());
+
+			alert.setView(input);
+			alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+				}
+			});
+			alert.show();
+			break;
+		case 2:
+			alert = new AlertDialog.Builder(this);
+
+			alert.setTitle("I'm 2");
+			// alert.setMessage(message);
+			alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+				}
+			});
+			alert.show();
+			break;
+		case 3:
+			alert = new AlertDialog.Builder(this);
+			// alert.setMessage(message);
+
+			CharSequence[] multiListItems = new CharSequence[3];
+
+			boolean[] checkedItems = new boolean[multiListItems.length];
+			
+			alert.setMultiChoiceItems(multiListItems, checkedItems, new OnMultiChoiceClickListener() {
+
+				@Override
+				public void onClick(final DialogInterface dialog, int which, boolean isChecked) {
+
+				}
+			});
+			alert.setOnCancelListener(new OnCancelListener() {
+				@Override
+				public void onCancel(DialogInterface dialog) {
+
+				}
+			});
+			alert.show();
+			break;
+		case 4:
+			TimePickerDialog timePickerDialog = new TimePickerDialog(this, new OnTimeSetListener() {
+
+				@Override
+				public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
+					Calendar newAlarmTime = Calendar.getInstance();
+					newAlarmTime.set(Calendar.HOUR_OF_DAY, hours);
+					newAlarmTime.set(Calendar.MINUTE, minutes);
+					newAlarmTime.set(Calendar.SECOND, 0);
+				}
+			}, Calendar.HOUR_OF_DAY, Calendar.MINUTE, true);
+			timePickerDialog.show();
+		default:
+			break;
+		}
 	}
 
 	@Override
