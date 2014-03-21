@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- <string name="app_name">Alarm_Test</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>-->
-    
-    <string name="app_name">Shakalarm</string>
-    <string name="basicAlarm">Set Basic Alarm</string> 
-    <string name="action_settings">Settings</string>
-    <string name="action_new">haha</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="left">left is clicked</string>
-    <string name="right">right is clicked</string>
-    <string name="testString">Test String</string>
-    <string name="alarm_alert">Click to quit</string>
-    <string name="alarm_setting">This is the alarm setting page</string>
-    
-    <!-- Attribute for Alarm Setting Button-->
-    <string name="basic_alarm">Basic Alarm</string>
-    <string name="shakalarm">Shakalarm</string>
-    <string name="blowalarm">Blowalarm</string>
-    <string name="confirm">Confirm</string>
-    
-    <!--  Store Color Attribute -->
-    <color name="yellow">#FFFF11</color>
-    <color name="holo_blue_light">#ff33b5e5</color>
-    
-    <!-- Alarm Settings Attribute -->
-    <string name="button_delete">Delete</string>
+	<!-- Application -->
+	<color name="holo_blue_light">#ff33b5e5</color>
+	
+    <!-- Math Alarm Activity -->
+    <string name="app_name">Alarm Clock</string>
+    <string name="title_activity_set_alarms">Set Alarm</string>
     <string name="no_alarms">No alarms have been set</string>
-    <string name="cancel">Cancel</string>
-    <string name="ok">OK</string>
+    
+    <string name="button_new">New</string>
+    
+    <!-- Menu -->
+    <string name="menu_item_rate">Rate on Goolge Play</string>
+    <string name="menu_item_website">Website</string>
+    <string name="menu_item_report">Report a Bug</string>
+    
+    <!-- Alert -->
+	<string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="decimal_button_text">,</string>
+	<string name="clear_button_text">Clear</string>
+	<string name="minus_button_text">-</string>
+	
+	
+	<color name="title_background_color">#000000</color>
+		
+	<string name="button_delete">Delete</string>
+	<string name="ok">OK</string>
+	<string name="cancel">Cancel</string>
 
 </resources>
