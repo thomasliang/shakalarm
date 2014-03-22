@@ -64,7 +64,7 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 //			
 //		}).run();
 //		
-	    setMathAlarm(alarm);		
+	    setAlarm(alarm);		
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 		return convertView;
 	}
 
-	public Alarm getMathAlarm() {		
+	public Alarm getAlarm() {		
 		for(AlarmPreference preference : preferences){
 			switch(preference.getKey()){
 				case ALARM_ACTIVE:
@@ -146,7 +146,7 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 		return alarm;
 	}
 
-	public void setMathAlarm(Alarm alarm) {
+	public void setAlarm(Alarm alarm) {
 		this.alarm = alarm;
 		preferences.clear();
 		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_ACTIVE,"Active", null, null, alarm.getAlarmActive(),Type.BOOLEAN));

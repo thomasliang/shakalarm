@@ -219,7 +219,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 						alarm.setAlarmName(alarmPreference.getValue().toString());
 					}
 
-					alarmPreferenceListAdapter.setMathAlarm(getMathAlarm());
+					alarmPreferenceListAdapter.setAlarm(getMathAlarm());
 					alarmPreferenceListAdapter.notifyDataSetChanged();
 				}
 			});
