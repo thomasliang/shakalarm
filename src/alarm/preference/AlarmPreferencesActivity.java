@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import alarm.Alarm;
 import alarm.AlarmActivity;
-import alarm.R;
+import shakalarm.alarm.R;
 import alarm.database.Database;
 import alarm.preference.AlarmPreference.Key;
 import alarm.service.AlarmServiceBroadcastReciever;

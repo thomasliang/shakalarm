@@ -1,7 +1,7 @@
 package accelerometer;
 
 import alarm.Alarm;
-import alarm.R;
+import shakalarm.alarm.R;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;

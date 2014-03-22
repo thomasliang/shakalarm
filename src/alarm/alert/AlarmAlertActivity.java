@@ -1,7 +1,7 @@
 package alarm.alert;
 
 import alarm.Alarm;
-import alarm.R;
+import shakalarm.alarm.R;
 import android.app.Activity;
 import android.content.Context;
 //import android.graphics.Color;
