@@ -3,20 +3,22 @@
     	xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp" >
+        android:paddingLeft="5dp" 
+        android:background="@color/white">
  
         <CheckBox
             android:id="@+id/checkBox_alarm_active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:focusable="false" />
+            android:focusable="false" 
+            android:background="@color/white"/>
         <View
             android:id="@+id/view1"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            android:background="#333333"
+            android:background="@color/white"
             android:paddingRight="10dp" />
 
         <LinearLayout
@@ -24,19 +26,22 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
         	android:paddingBottom="5dp"
-            android:orientation="vertical" >
+            android:orientation="vertical" 
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView_alarm_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:background="@color/white" />
 
             <TextView
                 android:id="@+id/textView_alarm_days"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall" 
+                android:background="@color/white"/>
 
         </LinearLayout>
 
