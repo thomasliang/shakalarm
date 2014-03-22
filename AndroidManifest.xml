@@ -34,7 +34,7 @@
         </activity>        
         
         <service
-            android:process="za.co.neilson.alarm.serviceProcess"
+            android:process="alarm.serviceProcess"
             android:name="alarm.service.AlarmService"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
