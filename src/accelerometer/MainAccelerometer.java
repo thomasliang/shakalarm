@@ -20,9 +20,38 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		acc_y = (TextView) findViewById(R.id.acceleration_y);
 		acc_z = (TextView) findViewById(R.id.acceleration_z);
 		
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //This function disable the action bar Home
+
+        startAlarm();
 		// Check onResume Method to start accelerometer listener
 	}
    
+    private void startAlarm() {
+        
+		if (alarm.getAlarmTonePath() != "") {
+			mediaPlayer = new MediaPlayer();
+			if (alarm.getVibrate()) {
+				vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+				long[] pattern = { 1000, 200, 200, 200 };
+				vibrator.vibrate(pattern, 0);
+			}
+			try {
+				mediaPlayer.setVolume(1.0f, 1.0f);
+				mediaPlayer.setDataSource(this,
+                                          Uri.parse(alarm.getAlarmTonePath()));
+				mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+				mediaPlayer.setLooping(true);
+				mediaPlayer.prepare();
+				mediaPlayer.start();
+                
+			} catch (Exception e) {
+				mediaPlayer.release();
+			}
+		}
+        
+	}
+    
 	public void onAccelerationChanged(float x, float y, float z) {
 		// TODO Auto-generated method stub
 		acc_x.setText("Acceleration x: " + x + " m/s^2");
@@ -37,7 +66,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		// Called when Motion Detected
 		Toast.makeText(getBaseContext(), "Motion detected", 
 				Toast.LENGTH_LONG).show();
-		
+		this.finish();
 	}
 
 	@Override
