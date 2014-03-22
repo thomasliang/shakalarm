@@ -51,6 +51,13 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
+		
+		<activity
+            android:name = "accelerometer.MainAccelerometer"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+		
 		<receiver android:name="za.co.neilson.alarm.alert.AlarmAlertBroadcastReciever" >
         </receiver>
         <receiver android:name = "za.co.neilson.alarm.telephony.PhoneStateChangedBroadcastReciever">

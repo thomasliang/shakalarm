@@ -2,6 +2,7 @@ package za.co.neilson.alarm.alert;
 
 import za.co.neilson.alarm.Alarm;
 import za.co.neilson.alarm.service.AlarmServiceBroadcastReciever;
+import accelerometer.MainAccelerometer;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +23,7 @@ public class AlarmAlertBroadcastReciever extends BroadcastReceiver {
 
 		Intent mathAlarmAlertActivityIntent;
 
-		mathAlarmAlertActivityIntent = new Intent(context, AlarmAlertActivity.class);
+		mathAlarmAlertActivityIntent = new Intent(context, MainAccelerometer.class);
 
 		mathAlarmAlertActivityIntent.putExtra("alarm", alarm);
 
