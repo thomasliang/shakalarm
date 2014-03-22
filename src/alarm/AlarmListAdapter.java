@@ -67,11 +67,11 @@ public class AlarmListAdapter extends BaseAdapter {
 		return view;
 	}
 
-	public List<Alarm> getMathAlarms() {
+	public List<Alarm> getAlarms() {
 		return alarms;
 	}
 
-	public void setMathAlarms(List<Alarm> alarms) {
+	public void setAlarms(List<Alarm> alarms) {
 		this.alarms = alarms;
 	}
 
