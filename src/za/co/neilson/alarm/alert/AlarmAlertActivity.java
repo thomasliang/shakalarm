@@ -76,7 +76,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		answerView = (TextView) findViewById(R.id.textView2);
 		answerView.setText("= ?");
 
-		((Button) findViewById(R.id.Button0)).setOnClickListener(this);
+		/*((Button) findViewById(R.id.Button0)).setOnClickListener(this);
 		((Button) findViewById(R.id.Button1)).setOnClickListener(this);
 		((Button) findViewById(R.id.Button2)).setOnClickListener(this);
 		((Button) findViewById(R.id.Button3)).setOnClickListener(this);
@@ -88,7 +88,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		((Button) findViewById(R.id.Button9)).setOnClickListener(this);
 		((Button) findViewById(R.id.Button_clear)).setOnClickListener(this);
 		((Button) findViewById(R.id.Button_decimal)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button_minus)).setOnClickListener(this);
+		((Button) findViewById(R.id.Button_minus)).setOnClickListener(this);*/
 
 		TelephonyManager telephonyManager = (TelephonyManager) this
 				.getSystemService(Context.TELEPHONY_SERVICE);
