@@ -36,7 +36,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		this.setTitle(alarm.getAlarmName());
 
 		getActionBar().setDisplayHomeAsUpEnabled(false);
-        //This function disable the action bar Home
+        //This function disables returning to app's Home by clicking the app icon above.
 
         startAlarm();
 		// Check onResume Method to start accelerometer listener
