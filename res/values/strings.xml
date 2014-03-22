@@ -295,7 +295,7 @@
 	<color name="black">#000000</color>
 	<!-- 黑色  -->
     <!-- Math Alarm Activity -->
-    <string name="app_name">Alarm Clock</string>
+    <string name="app_name">Shakalarm</string>
     <string name="title_activity_set_alarms">Set Alarm</string>
     <string name="no_alarms">No alarms have been set</string>
     

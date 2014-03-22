@@ -19,16 +19,16 @@
             android:paddingLeft="5dp"
             android:text="@string/app_name"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/primary_text_dark" />
+            android:textColor="@android:color/primary_text_dark"
+            android:background="@color/darkorange" />
 
         <ImageButton
             android:id="@+id/button_new"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="@color/darkorange"
             android:contentDescription="@string/button_new"
-
             android:src="@android:drawable/ic_menu_add" />
 
     </LinearLayout>
@@ -36,15 +36,16 @@
     <View
         android:id="@+id/title_border_bottom"
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
+        android:layout_height="5dp"
         android:layout_margin="0dp"
         android:padding="0dp"
-        android:background="@color/holo_blue_light" />
+        android:background="@color/bisque" />
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:longClickable="true" >
     </ListView>
 
@@ -53,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="@string/no_alarms" />
+        android:text="@string/no_alarms"
+        android:background="@color/white" />
 
 </LinearLayout>

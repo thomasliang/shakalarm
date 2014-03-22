@@ -20,47 +20,51 @@
 	            android:paddingLeft="5dp"
 	            android:text="@string/app_name"
 	            android:textAppearance="?android:attr/textAppearanceLarge"
-	            android:textColor="@android:color/primary_text_dark" />
+	            android:textColor="@android:color/primary_text_dark"
+	            android:background="@color/darkorange" />
 	
 	        <ImageButton
-	            android:id="@+id/button_delete"
-	            android:layout_width="0dp"
-	            android:layout_height="50dp"
-	            android:layout_weight="1"
-	            android:background="@android:color/black"
-	            android:contentDescription="@string/button_delete"
-	
-	            android:src="@android:drawable/ic_menu_delete" />
+            android:id="@+id/button_delete"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/button_delete"
+            android:src="@android:drawable/ic_menu_delete" />
 
     </LinearLayout>
 
 	<View
-	    android:id="@+id/title_border_bottom"
-	    android:layout_width="fill_parent"
-	    android:layout_height="2dp"
-	    android:layout_marginBottom="1dp"
-	    android:background="@color/holo_blue_light" />
+        android:id="@+id/title_border_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:background="@color/bisque" />
 
      <ListView
          android:id="@android:id/list"
          android:layout_width="match_parent"
          android:layout_height="0dp"
          android:layout_weight="1"
-         android:drawSelectorOnTop="false" />
+         android:drawSelectorOnTop="false"
+         android:background="@color/white" />
 
      <TextView
-         android:id="@android:id/empty"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginLeft="5dp"
-         android:text="@string/no_alarms" />
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/no_alarms"
+        android:background="@color/white" />
 	
 	<View
 	    android:id="@+id/okCancel_border_top"
 	    android:layout_width="fill_parent"
-	    android:layout_height="2dp"
-	    android:layout_marginTop="1dp"
-	    android:background="@color/holo_blue_light" />
+	    android:layout_height="5dp"
+	    android:layout_marginTop="0dp"
+	    android:padding="0dp"
+	    android:background="@color/bisque" />
 
 	<LinearLayout
 	    android:id="@+id/okCancel"
@@ -77,12 +81,13 @@
 		        android:gravity="center"
 		        android:text="@string/cancel"
 		        android:textAppearance="?android:attr/textAppearanceMedium"
-		        android:textColor="@android:color/primary_text_dark" />
+		        android:textColor="@android:color/primary_text_dark"
+		        android:background="@color/darkorange" />
 			<View
 	            android:id="@+id/view1"
 	            android:layout_width="1dp"
 	            android:layout_height="match_parent"
-	            android:background="#333333"/>
+	            android:background="@color/cornsilk"/>
 		    <TextView
 		        android:id="@+id/textView_OK"
 		        android:layout_width="0dp"
@@ -92,7 +97,8 @@
 		        android:gravity="center"
 		        android:text="@string/ok"
 		        android:textAppearance="?android:attr/textAppearanceMedium"
-		        android:textColor="@android:color/primary_text_dark" />
+		        android:textColor="@android:color/primary_text_dark"
+		        android:background="@color/darkorange" />
 		
 		</LinearLayout>
  </LinearLayout>
