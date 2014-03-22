@@ -1,6 +1,7 @@
 package accelerometer;
 
 import alarm.Alarm;
+import alarm.R;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -10,7 +11,6 @@ import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-import za.co.neilson.alarm.R;
 
 public class MainAccelerometer extends Activity implements AccelerometerListener {
 

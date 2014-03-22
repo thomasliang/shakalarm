@@ -1,6 +1,6 @@
 package alarm;
 
-import za.co.neilson.alarm.R;
+import alarm.R;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import alarm.service.AlarmServiceBroadcastReciever;
@@ -42,7 +42,7 @@ public class AlarmActivity extends ListActivity implements
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.alarm_activity);
 
-		newButton = (ImageButton) findViewById(za.co.neilson.alarm.R.id.button_new);
+		newButton = (ImageButton) findViewById(alarm.R.id.button_new);
 		newButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {

@@ -2,9 +2,9 @@ package alarm.preference;
 
 import java.util.Calendar;
 
-import za.co.neilson.alarm.R;
 import alarm.Alarm;
 import alarm.AlarmActivity;
+import alarm.R;
 import alarm.database.Database;
 import alarm.preference.AlarmPreference.Key;
 import alarm.service.AlarmServiceBroadcastReciever;
