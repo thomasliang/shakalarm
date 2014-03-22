@@ -1,13 +1,13 @@
-package za.co.neilson.alarm.preferences;
+package alarm.preference;
 
 import java.util.Calendar;
 
-import za.co.neilson.alarm.Alarm;
-import za.co.neilson.alarm.AlarmActivity;
-import za.co.neilson.alarm.database.Database;
-import za.co.neilson.alarm.preferences.AlarmPreference.Key;
-import za.co.neilson.alarm.service.AlarmServiceBroadcastReciever;
 import za.co.neilson.alarm.R;
+import alarm.Alarm;
+import alarm.AlarmActivity;
+import alarm.database.Database;
+import alarm.preference.AlarmPreference.Key;
+import alarm.service.AlarmServiceBroadcastReciever;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.TimePickerDialog;

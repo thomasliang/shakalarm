@@ -1,11 +1,11 @@
-package za.co.neilson.alarm.preferences;
+package alarm.preference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.neilson.alarm.Alarm;
-import za.co.neilson.alarm.preferences.AlarmPreference.Type;
 
+import alarm.Alarm;
+import alarm.preference.AlarmPreference.Type;
 import android.content.Context;
 import android.database.Cursor;
 import android.media.Ringtone;

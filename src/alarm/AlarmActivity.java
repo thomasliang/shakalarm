@@ -1,9 +1,9 @@
-package za.co.neilson.alarm;
+package alarm;
 
-import za.co.neilson.alarm.database.Database;
-import za.co.neilson.alarm.preferences.AlarmPreferencesActivity;
-import za.co.neilson.alarm.service.AlarmServiceBroadcastReciever;
 import za.co.neilson.alarm.R;
+import alarm.database.Database;
+import alarm.preference.AlarmPreferencesActivity;
+import alarm.service.AlarmServiceBroadcastReciever;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.AlertDialog;

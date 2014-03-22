@@ -1,4 +1,4 @@
-package za.co.neilson.alarm.preferences;
+package alarm.preference;
 
 public class AlarmPreference {
 	

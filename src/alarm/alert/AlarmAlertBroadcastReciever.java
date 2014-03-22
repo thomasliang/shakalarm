@@ -1,8 +1,8 @@
-package za.co.neilson.alarm.alert;
+package alarm.alert;
 
-import za.co.neilson.alarm.Alarm;
-import za.co.neilson.alarm.service.AlarmServiceBroadcastReciever;
 import accelerometer.MainAccelerometer;
+import alarm.Alarm;
+import alarm.service.AlarmServiceBroadcastReciever;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

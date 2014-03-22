@@ -1,4 +1,4 @@
-package za.co.neilson.alarm;
+package alarm;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -7,8 +7,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import za.co.neilson.alarm.alert.AlarmAlertBroadcastReciever;
 
+import alarm.alert.AlarmAlertBroadcastReciever;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;

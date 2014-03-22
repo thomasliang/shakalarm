@@ -1,4 +1,4 @@
-package za.co.neilson.alarm.service;
+package alarm.service;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

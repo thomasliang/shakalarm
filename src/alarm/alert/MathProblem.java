@@ -1,4 +1,4 @@
-package za.co.neilson.alarm.alert;
+package alarm.alert;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,10 +1,10 @@
-package za.co.neilson.alarm;
+package alarm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.neilson.alarm.database.Database;
 import za.co.neilson.alarm.R;
+import alarm.database.Database;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

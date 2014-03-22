@@ -1,4 +1,4 @@
-package za.co.neilson.alarm.alert;
+package alarm.alert;
 
 import android.content.Context;
 import android.os.PowerManager;

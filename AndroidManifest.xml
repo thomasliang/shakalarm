@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme" >
         
         <activity
-            android:name="za.co.neilson.alarm.AlarmActivity"
+            android:name="alarm.AlarmActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,25 +29,25 @@
         </activity>
         
         <activity
-            android:name="za.co.neilson.alarm.preferences.AlarmPreferencesActivity"
+            android:name="alarm.preference.AlarmPreferencesActivity"
             android:label="@string/app_name" >
         </activity>        
         
         <service
             android:process="za.co.neilson.alarm.serviceProcess"
-            android:name="za.co.neilson.alarm.service.AlarmService"
+            android:name="alarm.service.AlarmService"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
             >
         </service>
-		<receiver android:name="za.co.neilson.alarm.service.AlarmServiceBroadcastReciever" >
+		<receiver android:name="alarm.service.AlarmServiceBroadcastReciever" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         
         <activity
-            android:name = "za.co.neilson.alarm.alert.AlarmAlertActivity"
+            android:name = "alarm.alert.AlarmAlertActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
@@ -58,9 +58,9 @@
             android:screenOrientation="portrait" >
         </activity>
 		
-		<receiver android:name="za.co.neilson.alarm.alert.AlarmAlertBroadcastReciever" >
+		<receiver android:name="alarm.alert.AlarmAlertBroadcastReciever" >
         </receiver>
-        <receiver android:name = "za.co.neilson.alarm.telephony.PhoneStateChangedBroadcastReciever">
+        <receiver android:name = "alarm.telephony.PhoneStateChangedBroadcastReciever">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>

@@ -1,4 +1,4 @@
-package za.co.neilson.alarm.database;
+package alarm.database;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,8 +9,8 @@ import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.neilson.alarm.Alarm;
-import za.co.neilson.alarm.Alarm.Difficulty;
+import alarm.Alarm;
+import alarm.Alarm.Difficulty;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

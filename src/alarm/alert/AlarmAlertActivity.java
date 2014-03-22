@@ -1,7 +1,7 @@
-package za.co.neilson.alarm.alert;
+package alarm.alert;
 
-import za.co.neilson.alarm.Alarm;
 import za.co.neilson.alarm.R;
+import alarm.Alarm;
 import android.app.Activity;
 import android.content.Context;
 //import android.graphics.Color;
