@@ -28,7 +28,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 	private StringBuilder answerBuilder = new StringBuilder();
 
-	private MathProblem mathProblem;
+	//private MathProblem mathProblem;
 	private Vibrator vibrator;
 
 	private boolean alarmActive;
@@ -54,7 +54,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		this.setTitle(alarm.getAlarmName());
 
 		switch (alarm.getDifficulty()) {
-		case EASY:
+		/*case EASY:
 			mathProblem = new MathProblem(3);
 			break;
 		case MEDIUM:
@@ -62,16 +62,16 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 			break;
 		case HARD:
 			mathProblem = new MathProblem(5);
-			break;
+			break;*/
 		}
 
-		answerString = String.valueOf(mathProblem.getAnswer());
+		/*answerString = String.valueOf(mathProblem.getAnswer());
 		if (answerString.endsWith(".0")) {
 			answerString = answerString.substring(0, answerString.length() - 2);
-		}
+		}*/
 
 		problemView = (TextView) findViewById(R.id.textView1);
-		problemView.setText(mathProblem.toString());
+		//problemView.setText(mathProblem.toString());
 
 		answerView = (TextView) findViewById(R.id.textView2);
 		answerView.setText("= ?");
@@ -256,7 +256,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 	public boolean isAnswerCorrect() {
 		boolean correct = false;
-		try {
+		/*try {
 			correct = mathProblem.getAnswer() == Float.parseFloat(answerBuilder
 					.toString());
 		} catch (NumberFormatException e) {
@@ -264,7 +264,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
-		}
+		}*/
 		return correct;
 	}
 
