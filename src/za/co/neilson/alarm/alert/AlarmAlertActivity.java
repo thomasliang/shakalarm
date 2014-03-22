@@ -4,7 +4,7 @@ import za.co.neilson.alarm.Alarm;
 import za.co.neilson.alarm.R;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
+//import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,11 +15,11 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.HapticFeedbackConstants;
+//import android.view.HapticFeedbackConstants;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
+//import android.widget.Button;
+//import android.widget.TextView;
 
 public class AlarmAlertActivity extends Activity implements OnClickListener {
 
