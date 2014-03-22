@@ -185,7 +185,7 @@ public class AccelerometerManager {
                     force = Math.abs(x + y + z - lastX - lastY - lastZ);
                 	
                 	if (Float.compare(force, threshold) >0 ) {
-                    	Toast.makeText(aContext, (now-lastShake)+"  >= "+interval, 1000).show();
+                    	//Toast.makeText(aContext, (now-lastShake)+"  >= "+interval, 1000).show();
                         if (now - lastShake >= interval) { 
                         	
                             // trigger shake event
