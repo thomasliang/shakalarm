@@ -93,6 +93,13 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		TelephonyManager telephonyManager = (TelephonyManager) this
 				.getSystemService(Context.TELEPHONY_SERVICE);
 
+		/**
+		 * This Listener listens for the state of the phone 
+		 * (whether there are any phone calls during the ringing of the alarm)
+		 * if there are incoming calls during the ringing of the alarm,
+		 * it temporarily stops the media 
+		 * @author Wing
+		 */
 		PhoneStateListener phoneStateListener = new PhoneStateListener() {
 			@Override
 			public void onCallStateChanged(int state, String incomingNumber) {
