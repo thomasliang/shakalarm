@@ -297,7 +297,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 					default:
 						break;
 					}
-					alarmPreferenceListAdapter.setMathAlarm(getMathAlarm());
+					alarmPreferenceListAdapter.setAlarm(getAlarm());
 					alarmPreferenceListAdapter.notifyDataSetChanged();
 				}
 
