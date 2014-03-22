@@ -33,8 +33,8 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 	private boolean alarmActive;
 
-	private TextView problemView;
-	private TextView answerView;
+	//private TextView problemView;
+	//private TextView answerView;
 	private String answerString;
 	
 	@Override
@@ -46,15 +46,15 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
 				| WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
-		setContentView(R.layout.alarm_alert);
+		setContentView(R.layout.alarm_activity);
 
 		Bundle bundle = this.getIntent().getExtras();
 		alarm = (Alarm) bundle.getSerializable("alarm");
 
 		this.setTitle(alarm.getAlarmName());
 
-		switch (alarm.getDifficulty()) {
-		/*case EASY:
+		/*switch (alarm.getDifficulty()) {
+		case EASY:
 			mathProblem = new MathProblem(3);
 			break;
 		case MEDIUM:
@@ -62,19 +62,19 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 			break;
 		case HARD:
 			mathProblem = new MathProblem(5);
-			break;*/
-		}
+			break;
+		}*/
 
 		/*answerString = String.valueOf(mathProblem.getAnswer());
 		if (answerString.endsWith(".0")) {
 			answerString = answerString.substring(0, answerString.length() - 2);
 		}*/
 
-		problemView = (TextView) findViewById(R.id.textView1);
+		//problemView = (TextView) findViewById(R.id.textView1);
 		//problemView.setText(mathProblem.toString());
 
-		answerView = (TextView) findViewById(R.id.textView2);
-		answerView.setText("= ?");
+		//answerView = (TextView) findViewById(R.id.textView2);
+		//answerView.setText("= ?");
 
 		/*((Button) findViewById(R.id.Button0)).setOnClickListener(this);
 		((Button) findViewById(R.id.Button1)).setOnClickListener(this);
@@ -207,7 +207,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		if (!alarmActive)
 			return;
-		String button = (String) v.getTag();
+		/*String button = (String) v.getTag();
 		v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 		if (button.equalsIgnoreCase("clear")) {
 			if (answerBuilder.length() > 0) {
@@ -251,7 +251,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 			answerView.setTextColor(Color.RED);
 		} else {
 			answerView.setTextColor(Color.WHITE);
-		}
+		}*/
 	}
 
 	public boolean isAnswerCorrect() {
