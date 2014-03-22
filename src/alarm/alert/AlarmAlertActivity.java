@@ -209,7 +209,8 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		}
 		super.onDestroy();
 	}
-
+	
+	
 	@Override
 	public void onClick(View v) {
 		if (!alarmActive)
