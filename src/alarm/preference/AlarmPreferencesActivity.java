@@ -63,7 +63,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					deleteButton.setBackgroundColor(getResources().getColor(R.color.holo_blue_light));
+					deleteButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -98,7 +98,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 										
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					deleteButton.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+					deleteButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				}
 				return true;

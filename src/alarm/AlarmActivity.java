@@ -50,7 +50,7 @@ public class AlarmActivity extends ListActivity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					newButton.setBackgroundColor(getResources().getColor(
-							R.color.darkorange));
+							android.R.color.holo_orange_dark));
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -60,7 +60,7 @@ public class AlarmActivity extends ListActivity implements
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
 					newButton.setBackgroundColor(getResources().getColor(
-							android.R.color.transparent));
+							android.R.color.holo_orange_light));
 					break;
 				}
 				return true;
