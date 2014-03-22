@@ -12,24 +12,24 @@ public class AlarmAlertBroadcastReciever extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Intent mathAlarmServiceIntent = new Intent(
+		Intent AlarmServiceIntent = new Intent(
 				context,
 				AlarmServiceBroadcastReciever.class);
-		context.sendBroadcast(mathAlarmServiceIntent, null);
+		context.sendBroadcast(AlarmServiceIntent, null);
 		
 		StaticWakeLock.lockOn(context);
 		Bundle bundle = intent.getExtras();
 		final Alarm alarm = (Alarm) bundle.getSerializable("alarm");
 
-		Intent mathAlarmAlertActivityIntent;
+		Intent AlarmAlertActivityIntent;
 
-		mathAlarmAlertActivityIntent = new Intent(context, MainAccelerometer.class); 
+		AlarmAlertActivityIntent = new Intent(context, MainAccelerometer.class); 
 
-		mathAlarmAlertActivityIntent.putExtra("alarm", alarm);
+		AlarmAlertActivityIntent.putExtra("alarm", alarm);
 
-		mathAlarmAlertActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		AlarmAlertActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-		context.startActivity(mathAlarmAlertActivityIntent);
+		context.startActivity(AlarmAlertActivityIntent);
 	}
 
 }
