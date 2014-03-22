@@ -23,7 +23,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	private MediaPlayer mediaPlayer;
 	private Vibrator vibrator;
 
-	private boolean alarmActive;
+	private boolean alarmActive = true;
 
 	private static int shakeCountDown = 10;
 
@@ -150,6 +150,8 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 
 	@Override
 	public void onBackPressed() {
+		Toast.makeText(getBaseContext(), "backbutton pressed", Toast.LENGTH_LONG).show();
+		
 		if (!alarmActive)
 			super.onBackPressed();
 	}
