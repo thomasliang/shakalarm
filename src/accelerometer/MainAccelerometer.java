@@ -72,6 +72,10 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 
 	}
 
+	/**
+	 * This function will be invoked (very frequently), when the force (by gravity) vector 
+	 * changes for the 3 dimension of the phone
+	 */
 	public void onAccelerationChanged(float x, float y, float z) {
 		// TODO Auto-generated method stub
 		acc_x.setText("Acceleration x: " + x + " m/s^2");
@@ -80,6 +84,9 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 
 	}
 
+	/**
+	 * This function will be invoked when the sensor detects a strong force (shaking)
+	 */
 	public void onShake(float force) {
 
 		// Called when Motion Detected
@@ -147,7 +154,10 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		}
 
 	}
-
+	
+	/**
+	 * Overriding this function prevents the user from destroying the activity by pressing the backbutton
+	 */
 	@Override
 	public void onBackPressed() {
 		Toast.makeText(getBaseContext(), "backbutton pressed", Toast.LENGTH_LONG).show();
