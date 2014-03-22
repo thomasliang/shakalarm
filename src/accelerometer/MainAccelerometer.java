@@ -25,7 +25,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 
 	private boolean alarmActive = true;
 
-	private static int shakeCountDown = 10;
+	private static int shakeCountDown = 150;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
