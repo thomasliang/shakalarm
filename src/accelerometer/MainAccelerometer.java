@@ -24,6 +24,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	private Vibrator vibrator;
 
 	private boolean toast_flag1 = true;
+	private boolean toast_flag2 = true;
 	private boolean alarmActive = true;
 
 	private int shakeCountDown = 150;
@@ -91,7 +92,10 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	public void onShake(float force) {
 
 		// Called when Motion Detected
-		Toast.makeText(getBaseContext(), "Motion detected", Toast.LENGTH_LONG).show();
+		if(toast_flag2){
+			toast_flag2=false;
+			Toast.makeText(getBaseContext(), "Motion detected", Toast.LENGTH_LONG).show();
+		}
 		shakeCountDown--;
 		ShakeCountDown_textview.setText("" + shakeCountDown);
 		if (shakeCountDown <= 0) {
