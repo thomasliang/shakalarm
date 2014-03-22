@@ -87,7 +87,7 @@ public class AlarmActivity extends ListActivity implements
 							public void onClick(DialogInterface dialog,
 									int which) {
 
-								alarmListAdapter.getMathAlarms().remove(alarm);
+								alarmListAdapter.getAlarms().remove(alarm);
 								alarmListAdapter.notifyDataSetChanged();
 
 								Database.init(AlarmActivity.this);
@@ -115,9 +115,9 @@ public class AlarmActivity extends ListActivity implements
 	}
 
 	private void callAlarmScheduleService() {
-		Intent mathAlarmServiceIntent = new Intent(AlarmActivity.this,
+		Intent alarmServiceIntent = new Intent(AlarmActivity.this,
 				AlarmServiceBroadcastReciever.class);
-		sendBroadcast(mathAlarmServiceIntent, null);
+		sendBroadcast(alarmServiceIntent, null);
 	}
 
 	@Override
