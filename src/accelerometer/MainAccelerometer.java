@@ -1,17 +1,27 @@
 package accelerometer;
 
+import alarm.Alarm;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 import za.co.neilson.alarm.R;
+
 public class MainAccelerometer extends Activity implements AccelerometerListener{
 
+	private Alarm alarm;
+	
 	private TextView acc_x;
 	private TextView acc_y;
 	private TextView acc_z;
 	
+	private MediaPlayer mediaPlayer;
+	private Vibrator vibrator;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,8 +29,13 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		acc_x = (TextView) findViewById(R.id.acceleration_x);
 		acc_y = (TextView) findViewById(R.id.acceleration_y);
 		acc_z = (TextView) findViewById(R.id.acceleration_z);
-		
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+		Bundle bundle = this.getIntent().getExtras();
+		alarm = (Alarm) bundle.getSerializable("alarm");
+
+		this.setTitle(alarm.getAlarmName());
+
+		getActionBar().setDisplayHomeAsUpEnabled(false);
         //This function disable the action bar Home
 
         startAlarm();
@@ -66,7 +81,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		// Called when Motion Detected
 		Toast.makeText(getBaseContext(), "Motion detected", 
 				Toast.LENGTH_LONG).show();
-		this.finish();
+		super.finish();
 	}
 
 	@Override

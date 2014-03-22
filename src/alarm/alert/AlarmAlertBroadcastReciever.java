@@ -23,7 +23,7 @@ public class AlarmAlertBroadcastReciever extends BroadcastReceiver {
 
 		Intent mathAlarmAlertActivityIntent;
 
-		mathAlarmAlertActivityIntent = new Intent(context, MainAccelerometer.class);
+		mathAlarmAlertActivityIntent = new Intent(context, MainAccelerometer.class); 
 
 		mathAlarmAlertActivityIntent.putExtra("alarm", alarm);
 
