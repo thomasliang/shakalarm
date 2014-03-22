@@ -198,7 +198,7 @@ public class AlarmActivity extends ListActivity implements
 			}
 			break;
 		case R.id.menu_item_website:
-			String url = "http://www.neilson.co.za";
+			String url = "github.com/thomasleung/shakalarm";
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
 			startActivity(i);
@@ -207,7 +207,7 @@ public class AlarmActivity extends ListActivity implements
 			Intent send = new Intent(Intent.ACTION_SENDTO);
 			String uriText;
 
-			String emailAddress = "bugs@neilson.co.za";
+			String emailAddress = "handsomeming@live.cn";
 			String subject = R.string.app_name + " Bug Report";
 			String body = "Debug:";
 			body += "\n OS Version: " + System.getProperty("os.version") + "("
