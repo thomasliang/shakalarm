@@ -33,7 +33,7 @@ public class AlarmActivity extends ListActivity implements
 		android.view.View.OnClickListener {
 
 	ImageButton newButton;
-	ListView mathAlarmListView;
+	ListView alarmListView;
 	AlarmListAdapter alarmListAdapter;
 
 	@Override
@@ -67,10 +67,10 @@ public class AlarmActivity extends ListActivity implements
 			}
 		});
 
-		mathAlarmListView = (ListView) findViewById(android.R.id.list);
+		alarmListView = (ListView) findViewById(android.R.id.list);
 
-		mathAlarmListView.setLongClickable(true);
-		mathAlarmListView
+		alarmListView.setLongClickable(true);
+		alarmListView
 				.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 					@Override
@@ -94,7 +94,7 @@ public class AlarmActivity extends ListActivity implements
 								Database.deleteEntry(alarm);
 
 								AlarmActivity.this
-										.callMathAlarmScheduleService();
+										.callAlarmScheduleService();
 							}
 						});
 						dialog.setNegativeButton("Cancel", new OnClickListener() {
@@ -111,10 +111,10 @@ public class AlarmActivity extends ListActivity implements
 					}
 				});
 
-		callMathAlarmScheduleService();
+		callAlarmScheduleService();
 	}
 
-	private void callMathAlarmScheduleService() {
+	private void callAlarmScheduleService() {
 		Intent mathAlarmServiceIntent = new Intent(AlarmActivity.this,
 				AlarmServiceBroadcastReciever.class);
 		sendBroadcast(mathAlarmServiceIntent, null);
@@ -167,7 +167,7 @@ public class AlarmActivity extends ListActivity implements
 					.getTag());
 			alarm.setAlarmActive(checkBox.isChecked());
 			Database.update(alarm);
-			AlarmActivity.this.callMathAlarmScheduleService();
+			AlarmActivity.this.callAlarmScheduleService();
 			if (checkBox.isChecked()) {
 				Toast.makeText(AlarmActivity.this,
 						alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG)
