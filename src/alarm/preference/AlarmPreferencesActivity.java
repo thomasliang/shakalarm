@@ -78,7 +78,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 						public void onClick(DialogInterface dialog, int which) {
 
 							Database.init(getApplicationContext());
-							if (getMathAlarm().getId() < 1) {
+							if (getAlarm().getId() < 1) {
 								//Alarm not saved
 							} else {
 								Database.deleteEntry(alarm);
@@ -117,13 +117,13 @@ public class AlarmPreferencesActivity extends ListActivity {
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Database.init(getApplicationContext());
-					if (getMathAlarm().getId() < 1) {
-						Database.create(getMathAlarm());
+					if (getAlarm().getId() < 1) {
+						Database.create(getAlarm());
 					} else {
-						Database.update(getMathAlarm());
+						Database.update(getAlarm());
 					}
 					callMathAlarmScheduleService();
-					Toast.makeText(AlarmPreferencesActivity.this, getMathAlarm().getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
+					Toast.makeText(AlarmPreferencesActivity.this, getAlarm().getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
 					finish();
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
@@ -157,7 +157,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null && bundle.containsKey("alarm")) {
-			setMathAlarm((Alarm) bundle.getSerializable("alarm"));
+			setAlarm((Alarm) bundle.getSerializable("alarm"));
 		}
 
 	}
@@ -219,7 +219,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 						alarm.setAlarmName(alarmPreference.getValue().toString());
 					}
 
-					alarmPreferenceListAdapter.setAlarm(getMathAlarm());
+					alarmPreferenceListAdapter.setAlarm(getAlarm());
 					alarmPreferenceListAdapter.notifyDataSetChanged();
 				}
 			});
@@ -316,7 +316,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 				multiListItems[i] = alarmPreference.getOptions()[i];
 
 			boolean[] checkedItems = new boolean[multiListItems.length];
-			for (Alarm.Day day : getMathAlarm().getDays()) {
+			for (Alarm.Day day : getAlarm().getDays()) {
 				checkedItems[day.ordinal()] = true;
 			}
 			alert.setMultiChoiceItems(multiListItems, checkedItems, new OnMultiChoiceClickListener() {
@@ -343,7 +343,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 			alert.setOnCancelListener(new OnCancelListener() {
 				@Override
 				public void onCancel(DialogInterface dialog) {
-					alarmPreferenceListAdapter.setMathAlarm(getMathAlarm());
+					alarmPreferenceListAdapter.setAlarm(getAlarm());
 					alarmPreferenceListAdapter.notifyDataSetChanged();
 
 				}
@@ -360,7 +360,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 					newAlarmTime.set(Calendar.MINUTE, minutes);
 					newAlarmTime.set(Calendar.SECOND, 0);
 					alarm.setAlarmTime(newAlarmTime);
-					alarmPreferenceListAdapter.setMathAlarm(getMathAlarm());
+					alarmPreferenceListAdapter.setAlarm(getAlarm());
 					alarmPreferenceListAdapter.notifyDataSetChanged();
 				}
 			}, alarm.getAlarmTime().get(Calendar.HOUR_OF_DAY), alarm.getAlarmTime().get(Calendar.MINUTE), true);
@@ -373,7 +373,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 
 	@Override
 	public Object onRetainNonConfigurationInstance() {
-		Object[] bundle = { getMathAlarm(), getListAdapter() };
+		Object[] bundle = { getAlarm(), getListAdapter() };
 		return bundle;
 	}
 
@@ -397,23 +397,23 @@ public class AlarmPreferencesActivity extends ListActivity {
 		@SuppressWarnings("deprecation")
 		final Object data = getLastNonConfigurationInstance();
 		if (data == null) {
-			if (getMathAlarm() == null)
-				setMathAlarm(new Alarm());
+			if (getAlarm() == null)
+				setAlarm(new Alarm());
 
-			setListAdapter(new AlarmPreferenceListAdapter(this, getMathAlarm()));
+			setListAdapter(new AlarmPreferenceListAdapter(this, getAlarm()));
 		} else {
 			Object[] bundle = (Object[]) data;
-			setMathAlarm((Alarm) bundle[0]);
+			setAlarm((Alarm) bundle[0]);
 			setListAdapter((AlarmPreferenceListAdapter) bundle[1]);
 		}
 		super.onResume();
 	}
 
-	public Alarm getMathAlarm() {
+	public Alarm getAlarm() {
 		return alarm;
 	}
 
-	public void setMathAlarm(Alarm alarm) {
+	public void setAlarm(Alarm alarm) {
 		this.alarm = alarm;
 	}
 
