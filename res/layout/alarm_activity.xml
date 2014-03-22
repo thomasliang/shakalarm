@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <LinearLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView_title_bar"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:paddingLeft="5dp"
-            android:text="@string/app_name"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/primary_text_dark"
-            android:background="@color/darkorange" />
-
-        <ImageButton
+	 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+         
+         <LinearLayout
+	        android:id="@+id/toolbar"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        
+	        android:orientation="horizontal">
+	
+	        <TextView
+	            android:id="@+id/textView_title_bar"
+	            android:layout_width="0dp"
+	            android:layout_height="50dp"
+	            android:layout_weight="2"
+	            android:gravity="center_vertical"
+	            android:paddingLeft="5dp"
+	            android:text="@string/app_name"
+	            android:textAppearance="?android:attr/textAppearanceLarge"
+	            android:textColor="@android:color/primary_text_dark"
+	            android:background="@color/darkorange" />
+	
+	        <ImageButton
             android:id="@+id/button_new"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/darkorange"
             android:contentDescription="@string/button_new"
-            android:src="@android:drawable/ic_menu_add" />
+            android:src="@drawable/ic_action_new" />
 
     </LinearLayout>
 
-    <View
+	<View
         android:id="@+id/title_border_bottom"
         android:layout_width="fill_parent"
         android:layout_height="5dp"
@@ -41,20 +42,89 @@
         android:padding="0dp"
         android:background="@color/bisque" />
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:longClickable="true" >
-    </ListView>
+     <ListView
+         android:id="@android:id/list"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1"
+         android:drawSelectorOnTop="false"
+         android:background="@color/white" />
 
-    <TextView
+     <TextView
         android:id="@android:id/empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/no_alarms"
         android:background="@color/white" />
+	
+	<View
+	    android:id="@+id/okCancel_border_top"
+	    android:layout_width="fill_parent"
+	    android:layout_height="5dp"
+	    android:layout_marginTop="0dp"
+	    android:padding="0dp"
+	    android:background="@color/bisque" />
 
-</LinearLayout>
+	<LinearLayout
+	    android:id="@+id/tabs"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"   
+		    android:orientation="horizontal" >
+		
+		    <ImageButton
+            android:id="@+id/Alarm_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Alarm_tab"
+            android:src="@drawable/ic_action_add_alarm" />
+		    
+			<View
+	            android:id="@+id/view1"
+	            android:layout_width="1dp"
+	            android:layout_height="match_parent"
+	            android:background="@color/cornsilk"/>
+			
+		    <ImageButton
+            android:id="@+id/Timer_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Timer_tab"
+            android:src="@drawable/ic_action_timer" />
+		    
+		    <View
+	            android:id="@+id/view2"
+	            android:layout_width="1dp"
+	            android:layout_height="match_parent"
+	            android:background="@color/cornsilk"/>
+		    
+		    <ImageButton
+            android:id="@+id/Counter_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Counter_tab"
+            android:src="@drawable/ic_action_counter" />
+		    
+		    <View
+	            android:id="@+id/view3"
+	            android:layout_width="1dp"
+	            android:layout_height="match_parent"
+	            android:background="@color/cornsilk"/>
+		    
+		    <ImageButton
+            android:id="@+id/Setting_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Setting_tab"
+            android:src="@drawable/ic_action_settings" />
+		
+		</LinearLayout>
+ </LinearLayout>

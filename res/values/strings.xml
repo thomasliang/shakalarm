@@ -325,6 +325,10 @@
 	<color name="title_background_color">#000000</color>
 		
 	<string name="button_delete">Delete</string>
+	<string name="Alarm_tab">Alarm</string>
+	<string name="Timer_tab">Timer</string>
+	<string name="Counter_tab">Counter</string>
+	<string name="Setting_tab">Setting</string>
 	<string name="ok">OK</string>
 	<string name="cancel">Cancel</string>
 

@@ -50,7 +50,7 @@ public class AlarmActivity extends ListActivity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					newButton.setBackgroundColor(getResources().getColor(
-							R.color.holo_blue_light));
+							R.color.darkorange));
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
