@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp" 
-        android:background="@color/white">
+        android:background="@color/black">
  
         <CheckBox
             android:id="@+id/checkBox_alarm_active"
@@ -12,13 +12,13 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:focusable="false" 
-            android:background="@color/white"/>
+            android:background="@color/black"/>
         <View
             android:id="@+id/view1"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            android:background="@color/white"
+            android:background="@color/black"
             android:paddingRight="10dp" />
 
         <LinearLayout
@@ -27,21 +27,21 @@
             android:paddingTop="5dp"
         	android:paddingBottom="5dp"
             android:orientation="vertical" 
-            android:background="@color/white">
+            android:background="@color/black">
 
             <TextView
                 android:id="@+id/textView_alarm_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:background="@color/white" />
+                android:background="@color/black" />
 
             <TextView
                 android:id="@+id/textView_alarm_days"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall" 
-                android:background="@color/white"/>
+                android:background="@color/black"/>
 
         </LinearLayout>
 
