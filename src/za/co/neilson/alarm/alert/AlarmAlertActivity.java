@@ -26,7 +26,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 	private Alarm alarm;
 	private MediaPlayer mediaPlayer;
 
-	private StringBuilder answerBuilder = new StringBuilder();
+	//private StringBuilder answerBuilder = new StringBuilder();
 
 	//private MathProblem mathProblem;
 	private Vibrator vibrator;
@@ -35,7 +35,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 	//private TextView problemView;
 	//private TextView answerView;
-	private String answerString;
+	//private String answerString;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
