@@ -2,45 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainAccelerometer" >
-
+    tools:context=".MainAccelerometer" 
+	android:background="@color/white">
+    
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Shake 10 times to go!" />
+        android:layout_marginTop="40dp"
+        android:text="@string/shake1" />
 
     <TextView
         android:id="@+id/acceleration_x"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="Acceleration x: null" />
+        android:layout_marginTop="80dp"
+        android:text="@string/shake2" />
 
     <TextView
         android:id="@+id/acceleration_y"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:text="Acceleration y: null" />
+        android:layout_marginTop="120dp"
+        android:text="@string/shake3" />
 
     <TextView
         android:id="@+id/acceleration_z"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:text="Acceleration z: null" />
+        android:layout_marginTop="160dp"
+        android:text="@string/shake4" />
 
     <TextView
         android:id="@+id/shakeCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
-        android:textSize="100dp"
-        android:text="10" />
+        android:layout_marginTop="200dp"
+        android:textSize="70sp"
+        android:text="@string/shake5" />
 		
 </RelativeLayout>
