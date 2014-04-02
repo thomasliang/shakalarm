@@ -53,13 +53,11 @@
      <TextView
         android:id="@android:id/empty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:padding="10dp"
         android:text="@string/no_alarms"
         android:background="@color/black" />
 	
-	
-
 	<LinearLayout
 	    android:id="@+id/tabs"
 		    android:layout_width="match_parent"
