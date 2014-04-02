@@ -162,7 +162,7 @@ public class Alarm implements Serializable {
 				Integer.parseInt(timePieces[0]));
 		newAlarmTime.set(Calendar.MINUTE, Integer.parseInt(timePieces[1]));
 		newAlarmTime.set(Calendar.SECOND, 0);
-		setAlarmTime(newAlarmTime);		
+		this.alarmTime = newAlarmTime;		
 	}
 
 	/**
