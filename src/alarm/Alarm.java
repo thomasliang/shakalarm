@@ -59,7 +59,7 @@ public class Alarm implements Serializable {
 				case 4:
 					return "Thursday";
 				case 5:
-					return "Friay";
+					return "Friday";
 				case 6:
 					return "Saturday";
 			}
