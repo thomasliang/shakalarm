@@ -59,7 +59,7 @@ public class Alarm implements Serializable {
 				case 4:
 					return "Thursday";
 				case 5:
-					return "Friday";
+					return "Friay";
 				case 6:
 					return "Saturday";
 			}
@@ -162,7 +162,7 @@ public class Alarm implements Serializable {
 				Integer.parseInt(timePieces[0]));
 		newAlarmTime.set(Calendar.MINUTE, Integer.parseInt(timePieces[1]));
 		newAlarmTime.set(Calendar.SECOND, 0);
-		this.alarmTime = newAlarmTime;		
+		setAlarmTime(newAlarmTime);		
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class Alarm implements Serializable {
 	public void removeDay(Day day) {
 	    
 		List<Day> result = new LinkedList<Day>();
-	    for(Day d : days)
+	    for(Day d : getDays())
 	        if(!d.equals(day))
 	            result.add(d);
 	    setDays(result.toArray(new Day[result.size()]));
@@ -265,17 +265,17 @@ public class Alarm implements Serializable {
 
 	public String getRepeatDaysString() {
 		StringBuilder daysStringBuilder = new StringBuilder();
-		if(days.length == Day.values().length){
+		if(getDays().length == Day.values().length){
 			daysStringBuilder.append("Every Day");		
 		}else{
-			Arrays.sort(days, new Comparator<Day>() {
+			Arrays.sort(getDays(), new Comparator<Day>() {
 				@Override
 				public int compare(Day lhs, Day rhs) {
 					
 					return lhs.ordinal() - rhs.ordinal();
 				}
 			});
-			for(Day d : days){
+			for(Day d : getDays()){
 				switch(d){
 				case TUESDAY:
 				case THURSDAY:

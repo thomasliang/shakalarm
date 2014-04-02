@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="@string/shake1"
-        android:textColor="#FFF5EE" />
+        android:text="@string/shake1" />
 
     <TextView
         android:id="@+id/acceleration_x"
@@ -19,8 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:text="@string/shake2"
-        android:textColor="#FFF5EE" />
+        android:text="@string/shake2" />
 
     <TextView
         android:id="@+id/acceleration_y"
@@ -43,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="270dp"
         android:textSize="70sp"
         android:text="@string/shake5" />
 		
