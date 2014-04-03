@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<!-- Application -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <!-- Application -->
 	<color name="holo_blue_light">#ff33b5e5</color>
 	<color name="white">#FFFFFF</color>
 	<!-- 白色  -->
@@ -335,5 +336,8 @@
 	<string name="Setting_tab">Setting</string>
 	<string name="ok">OK</string>
 	<string name="cancel">Cancel</string>
+	
+	<string name="hello">Hello World, StopWatch!</string>
+    <string name="chronometer_initial_format">Initial format:<xliff:g id="initial-format">%</xliff:g></string>
 
 </resources>

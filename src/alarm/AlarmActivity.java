@@ -1,6 +1,7 @@
 package alarm;
 
 import shakalarm.alarm.R;
+import stopwatch.StopWatchActivity;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import alarm.service.AlarmServiceBroadcastReciever;
@@ -24,6 +25,7 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -60,6 +62,33 @@ public class AlarmActivity extends ListActivity implements
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
 					newButton.setBackgroundColor(getResources().getColor(
+							android.R.color.holo_orange_light));
+					break;
+				}
+				return true;
+			}
+		});
+		
+		final View button = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
+		
+		button.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					button.setBackgroundColor(getResources().getColor(
+							android.R.color.holo_orange_dark));
+					break;
+				case MotionEvent.ACTION_UP:
+					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this,
+							StopWatchActivity.class);
+					startActivity(newAlarmIntent);
+					
+				case MotionEvent.ACTION_MOVE:
+				case MotionEvent.ACTION_CANCEL:
+					button.setBackgroundColor(getResources().getColor(
 							android.R.color.holo_orange_light));
 					break;
 				}

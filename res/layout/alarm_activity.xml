@@ -3,6 +3,8 @@
          android:orientation="vertical"
          android:layout_width="match_parent"
          android:layout_height="match_parent">
+
+
          
          <LinearLayout
 	        android:id="@+id/toolbar"
@@ -10,18 +12,18 @@
 	        android:layout_height="wrap_content"
 	        
 	        android:orientation="horizontal">
-	
-	        <TextView
-	            android:id="@+id/textView_title_bar"
-	            android:layout_width="0dp"
-	            android:layout_height="50dp"
-	            android:layout_weight="2"
-	            android:gravity="center_vertical"
-	            android:paddingLeft="5dp"
-	            android:text="@string/app_name"
-	            android:textAppearance="?android:attr/textAppearanceLarge"
-	            android:textColor="@android:color/primary_text_dark"
-	            android:background="@color/darkorange" />
+
+             <TextView
+                 android:id="@+id/textView_title_bar"
+                 android:layout_width="0dp"
+                 android:layout_height="50dp"
+                 android:layout_weight="2"
+                 android:background="@color/darkorange"
+                 android:gravity="center_vertical"
+                 android:paddingLeft="5dp"
+                 android:text="@string/app_name"
+                 android:textAppearance="?android:attr/textAppearanceLarge"
+                 android:textColor="@android:color/primary_text_dark" />
 	
 	        <ImageButton
             android:id="@+id/button_new"
