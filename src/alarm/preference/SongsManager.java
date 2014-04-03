@@ -8,7 +8,7 @@ import android.os.Environment;
 
 public class SongsManager {
 	final String MEDIA_PATH = Environment.getExternalStorageDirectory()
-	        .getPath() + "/";
+	        .getPath() + "/Music/";
 	private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 	private String mp3Pattern = ".mp3";
 
