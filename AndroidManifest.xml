@@ -58,6 +58,12 @@
             android:screenOrientation="portrait" >
         </activity>
 		
+		<activity
+            android:name = "stopwatch.StopWatchActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        
 		<receiver android:name="alarm.alert.AlarmAlertBroadcastReciever" >
         </receiver>
         <receiver android:name = "alarm.telephony.PhoneStateChangedBroadcastReciever">

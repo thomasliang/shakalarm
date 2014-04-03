@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Simple Countdown Timer"
+        android:textAppearance="?android:attr/textAppearanceLarge" android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/hoursLabel"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/titleLabel"
+        android:layout_below="@+id/titleLabel"
+        android:layout_marginTop="80dp"
+        android:text="Hours"
+        android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/minutesLabel"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/hoursLabel"
+        android:layout_alignBottom="@+id/hoursLabel"
+        android:layout_centerHorizontal="true"
+        android:text="Minutes"
+        android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/secondsLabel"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/minutesLabel"
+        android:layout_alignBottom="@+id/minutesLabel"
+        android:layout_alignRight="@+id/titleLabel"
+        android:text="Seconds"
+        android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/hoursBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/hoursLabel"
+        android:layout_alignRight="@+id/hoursLabel"
+        android:layout_below="@+id/hoursLabel"
+        android:layout_marginTop="40dp"
+        android:inputType="number" />
+    
+     <EditText
+         android:id="@+id/minutesBox"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/minutesLabel"
+         android:layout_alignRight="@+id/minutesLabel"
+         android:layout_below="@+id/minutesLabel"
+         android:layout_marginTop="40dp" 
+         android:inputType="number" />
+     
+      <EditText
+          android:id="@+id/secondsBox"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/secondsLabel"
+          android:layout_alignRight="@+id/secondsLabel"
+          android:layout_below="@+id/secondsLabel"
+          android:layout_marginTop="40dp" 
+          android:inputType="number" />
+
+      <Button
+          android:id="@+id/startButton"
+          android:layout_width="200dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/minutesBox"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="70dp"
+          android:text="Start" 
+          />
+
+</RelativeLayout>

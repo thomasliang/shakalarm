@@ -2,6 +2,7 @@ package alarm;
 
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
+import timer.TimerActivity;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import alarm.service.AlarmServiceBroadcastReciever;
@@ -69,15 +70,15 @@ public class AlarmActivity extends ListActivity implements
 			}
 		});
 		
-		final View button = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
+		final View stopWatchButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
 		
-		button.setOnTouchListener(new OnTouchListener() {
+		stopWatchButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					button.setBackgroundColor(getResources().getColor(
+					stopWatchButton.setBackgroundColor(getResources().getColor(
 							android.R.color.holo_orange_dark));
 					break;
 				case MotionEvent.ACTION_UP:
@@ -88,13 +89,41 @@ public class AlarmActivity extends ListActivity implements
 					
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					button.setBackgroundColor(getResources().getColor(
+					stopWatchButton.setBackgroundColor(getResources().getColor(
 							android.R.color.holo_orange_light));
 					break;
 				}
 				return true;
 			}
 		});
+		
+        final View timerButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Counter_tab);
+		
+		timerButton.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					timerButton.setBackgroundColor(getResources().getColor(
+							android.R.color.holo_orange_dark));
+					break;
+				case MotionEvent.ACTION_UP:
+					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this,
+							TimerActivity.class);
+					startActivity(newAlarmIntent);
+					
+				case MotionEvent.ACTION_MOVE:
+				case MotionEvent.ACTION_CANCEL:
+					timerButton.setBackgroundColor(getResources().getColor(
+							android.R.color.holo_orange_light));
+					break;
+				}
+				return true;
+			}
+		});
+		
 
 		alarmListView = (ListView) findViewById(android.R.id.list);
 
