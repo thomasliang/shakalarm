@@ -109,7 +109,6 @@ public class AlarmActivity extends ListActivity implements
 							android.R.color.holo_orange_dark));
 					break;
 				case MotionEvent.ACTION_UP:
-					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(AlarmActivity.this,
 							TimerActivity.class);
 					startActivity(newAlarmIntent);
