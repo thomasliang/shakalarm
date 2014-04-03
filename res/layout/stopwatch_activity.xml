@@ -3,37 +3,98 @@
     android:layout_height="fill_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="4dip" >
+    android:padding="4dip"
+	android:background="@drawable/firstbackground">
 
     <Chronometer
         android:id="@+id/chronometer"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:format="@string/chronometer_initial_format"
-        android:paddingBottom="30dip"
-        android:paddingTop="30dip" />
+        android:paddingBottom="20dip"
+        android:paddingTop="20dip" />
 
     <Button
         android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start" >
-
-        <requestFocus />
+        android:text="@string/Start">
     </Button>
 
     <Button
         android:id="@+id/stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop" >
+        android:text="@string/Stop" >
     </Button>
 
     <Button
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset" >
+        android:text="@string/Reset" >
     </Button>
-
-</LinearLayout>
+    
+   	<LinearLayout
+	    android:id="@+id/tabs"
+		    android:layout_width="match_parent"
+		    android:layout_height="fill_parent"
+		    android:gravity="bottom" 
+		    android:orientation="horizontal" >
+		
+		    <ImageButton
+            android:id="@+id/Alarm_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Alarm_tab"
+            android:src="@drawable/ic_action_add_alarm" />
+		    
+			<View
+	            android:id="@+id/view1"
+	            android:layout_width="1dp"
+	            android:layout_height="50dp"
+	            android:background="@color/cornsilk"/>
+			
+		    <ImageButton
+            android:id="@+id/Timer_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Timer_tab"
+            android:src="@drawable/ic_action_timer" />
+		    
+		    <View
+	            android:id="@+id/view2"
+	            android:layout_width="1dp"
+	            android:layout_height="50dp"
+	            android:background="@color/cornsilk"/>
+		    
+		    <ImageButton
+            android:id="@+id/Counter_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Counter_tab"
+            android:src="@drawable/ic_action_counter" />
+		    
+		    <View
+	            android:id="@+id/view3"
+	            android:layout_width="1dp"
+	            android:layout_height="50dp"
+	            android:background="@color/cornsilk"/>
+		    
+		    <ImageButton
+            android:id="@+id/Setting_tab"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/Setting_tab"
+            android:src="@drawable/ic_action_settings" />
+		
+		</LinearLayout>
+ </LinearLayout>
