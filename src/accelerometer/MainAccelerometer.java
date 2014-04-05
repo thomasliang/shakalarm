@@ -27,7 +27,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	private boolean toast_flag2 = true;
 	private boolean alarmActive = true;
 
-	private int shakeCountDown = 150;
+	private int shakeCountDown = 20;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,8 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		acc_y = (TextView) findViewById(R.id.acceleration_y);
 		acc_z = (TextView) findViewById(R.id.acceleration_z);
 		ShakeCountDown_textview = (TextView) findViewById(R.id.shakeCountDown);
-
+		ShakeCountDown_textview.setText(shakeCountDown);
+		
 		Bundle bundle = this.getIntent().getExtras();
 		alarm = (Alarm) bundle.getSerializable("alarm");
 
