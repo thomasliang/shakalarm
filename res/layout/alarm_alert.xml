@@ -12,6 +12,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:text="@string/shake1"
+        android:typeface="monospace"
+        android:textSize="18sp"
         android:textColor="#FFFFF0" />
 
     <TextView
@@ -21,6 +23,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:text="@string/shake2"
+        android:typeface="monospace"
+        android:textSize="18sp"
         android:textColor="#FFFFF0" />
 
     <TextView
@@ -30,6 +34,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:text="@string/shake3"
+        android:typeface="monospace"
+        android:textSize="18sp"
         android:textColor="#FFFFF0" />
 
     <TextView
@@ -39,6 +45,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="160dp"
         android:text="@string/shake4"
+        android:typeface="monospace"
+        android:textSize="18sp"
         android:textColor="#FFFFF0" />
 
     <TextView
@@ -49,6 +57,7 @@
         android:layout_marginTop="300dp"
         android:textSize="70sp"
         android:text="@string/shake5"
+        android:typeface="monospace"
         android:textColor="#FFFFF0" />
 		
 </RelativeLayout>
