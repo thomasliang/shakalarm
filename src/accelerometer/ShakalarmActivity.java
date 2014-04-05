@@ -46,37 +46,37 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarm_alert);
+		getActionBar().setDisplayHomeAsUpEnabled(false); //This function disables returning to app's Home by clicking the app icon above.
+		
+		//change textView on the screen
 		acceleration_textView_x = (TextView) findViewById(R.id.acceleration_x);
 		acceleration_textView_y = (TextView) findViewById(R.id.acceleration_y);
 		acceleration_textView_z = (TextView) findViewById(R.id.acceleration_z);
 		ShakeCountDown_textview = (TextView) findViewById(R.id.shakeCountDown);
 		ShakeCountDown_textview.setText("" + shakeCountDown);
-
+		
+		//get the alarm info passed from the BroadcastReceiver
 		Bundle bundle = this.getIntent().getExtras();
-		alarm = (Alarm) bundle.getSerializable("alarm");
-
+		alarm = (Alarm) bundle.getSerializable("alarm"); 
 		this.setTitle(alarm.getAlarmName());
 
-		getActionBar().setDisplayHomeAsUpEnabled(false); //This function disables returning to app's Home by clicking the app icon above.
-
+		//Seting the animation pictures
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		int height = metrics.heightPixels;
 		int width = metrics.widthPixels;
-
 		picture_imageView = new ImageView(ShakalarmActivity.this);
 		picture_imageView.setImageResource(R.drawable.kim_sung);
 		LayoutParams param = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
 		picture_imageView.setLayoutParams(param);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.alarm_alert_relativeLayout);
 		layout.addView(picture_imageView, Math.max(width, height), Math.max(width, height));
 
+		//----------------------------
 		startAlarm();
 	}
 
 	private void startAlarm() {
-
 		if (alarm.getAlarmTonePath() != "") {
 			mediaPlayer = new MediaPlayer();
 			if (alarm.getVibrate()) {
@@ -91,12 +91,10 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 				mediaPlayer.setLooping(true);
 				mediaPlayer.prepare();
 				mediaPlayer.start();
-
 			} catch (Exception e) {
 				mediaPlayer.release();
 			}
 		}
-
 	}
 
 	/**
@@ -117,16 +115,9 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	 * (shaking)
 	 */
 	public void onShake(float force) {
-		picture_imageView.setImageResource(R.drawable.oh_image);
-		handler.removeCallbacks(runnable);
-		runnable = new Runnable() {
-			@Override
-			public void run() {
-				picture_imageView.setImageResource(R.drawable.kim_sung);
-			}
-		};
-		handler.postDelayed(runnable, 500);
+		setFlashImage(); 
 
+		//-----------------------
 		shakeCountDown--;
 		ShakeCountDown_textview.setText("" + shakeCountDown);
 		if (shakeCountDown <= 0) {
@@ -141,10 +132,24 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 			try {
 				mediaPlayer.release();
 			} catch (Exception e) {
-
 			}
 			super.finish();
 		}
+	}
+
+	/**
+	 * Setting a flash of an image
+	 */
+	private void setFlashImage() {
+		picture_imageView.setImageResource(R.drawable.oh_image);
+		handler.removeCallbacks(runnable);
+		runnable = new Runnable() {
+			@Override
+			public void run() {
+				picture_imageView.setImageResource(R.drawable.kim_sung);
+			}
+		};
+		handler.postDelayed(runnable, 500);
 	}
 
 	@Override
@@ -161,10 +166,9 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	@Override
 	public void onStop() {
 		super.onStop();
-
+		
 		//Check device supported Accelerometer sensor or not
 		if (AccelerometerManager.isListening()) {
-
 			//Start Accelerometer Listening
 			AccelerometerManager.stopListening();
 		}
@@ -178,7 +182,6 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 
 		//Check device supported Accelerometer sensor or not
 		if (AccelerometerManager.isListening()) {
-
 			//Start Accelerometer Listening
 			AccelerometerManager.stopListening();
 		}
