@@ -2,17 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item 
         android:id="@+id/menu_item_rate"
-        android:title="@string/menu_item_rate"  >
+        android:title="@string/menu_item_rate"
+        android:typeface="monospace"  >
         
     </item>
     <item 
         android:id="@+id/menu_item_website"
-        android:title="@string/menu_item_website"  >
+        android:title="@string/menu_item_website"
+        android:typeface="monospace"  >
         
     </item>
     <item 
         android:id="@+id/menu_item_report"
-        android:title="@string/menu_item_report"  >        
+        android:title="@string/menu_item_report"
+        android:typeface="monospace"  >        
     </item>
 
 </menu>

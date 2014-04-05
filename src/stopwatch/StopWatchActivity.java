@@ -20,7 +20,9 @@ public class StopWatchActivity extends Activity {
         Button button;
 
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
-
+        mChronometer.setTextSize(70);
+       
+        
         // Watch for button clicks.
         button = (Button) findViewById(R.id.start);
         button.setOnClickListener(mStartListener);
