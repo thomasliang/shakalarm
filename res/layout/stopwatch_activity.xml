@@ -12,29 +12,29 @@
         android:layout_height="wrap_content"
         android:format="@string/chronometer_initial_format"
         android:gravity="center"
-        android:paddingBottom="20dip"
+        android:paddingBottom="40dip"
         android:paddingTop="20dip" />
 
     <Button
         android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Start">
-    </Button>
-
-    <Button
-        android:id="@+id/stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Stop" >
-    </Button>
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/start"
+         />
 
     <Button
         android:id="@+id/reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Reset" >
-    </Button>
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/reset"
+        />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/stop"
+        />
     
    	<LinearLayout
 	    android:id="@+id/tabs"
