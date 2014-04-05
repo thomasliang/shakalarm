@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="@string/shake1" />
+        android:text="@string/shake1"
+        android:textColor="#FFFFF0" />
 
     <TextView
         android:id="@+id/acceleration_x"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:text="@string/shake2" />
+        android:text="@string/shake2"
+        android:textColor="#FFFFF0" />
 
     <TextView
         android:id="@+id/acceleration_y"
@@ -27,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:text="@string/shake3" />
+        android:text="@string/shake3"
+        android:textColor="#FFFFF0" />
 
     <TextView
         android:id="@+id/acceleration_z"
@@ -35,15 +38,17 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="160dp"
-        android:text="@string/shake4" />
+        android:text="@string/shake4"
+        android:textColor="#FFFFF0" />
 
     <TextView
         android:id="@+id/shakeCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="300dp"
         android:textSize="70sp"
-        android:text="@string/shake5" />
+        android:text="@string/shake5"
+        android:textColor="#FFFFF0" />
 		
 </RelativeLayout>
