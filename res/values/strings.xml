@@ -321,11 +321,10 @@
     <string name="decimal_button_text">,</string>
 	<string name="clear_button_text">Clear</string>
 	<string name="minus_button_text">-</string>
-	<string name="shake1">Shake 10 times to stop!</string>
-	<string name="shake2">Acceleration x: null</string>
-	<string name="shake3">Acceleration y: null</string>
-	<string name="shake4">Acceleration z: null</string>
-	<string name="shake5">10</string>
+	<string name="acceleration_x">Acceleration x: null</string>
+	<string name="acceleration_y">Acceleration y: null</string>
+	<string name="acceleration_z">Acceleration z: null</string>
+	<string name="shakeCount">10</string>
 	
 	<color name="title_background_color">#000000</color>
 		

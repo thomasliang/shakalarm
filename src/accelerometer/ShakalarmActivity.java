@@ -30,7 +30,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	private float acceleration_z;
 
 	private ImageView picture_imageView;
-	private Handler handler = new Handler();;
+	private Handler handler = new Handler();
 	private Runnable runnable;
 
 	private TextView ShakeCountDown_textview;
