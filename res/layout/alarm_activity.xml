@@ -37,13 +37,6 @@
 
     </LinearLayout>
 
-	<View
-        android:id="@+id/title_border_bottom"
-        android:layout_width="fill_parent"
-        android:layout_height="5dp"
-        android:layout_margin="0dp"
-        android:padding="0dp"
-        android:background="@color/black" />
 
      <ListView
          android:id="@android:id/list"
@@ -51,7 +44,7 @@
          android:layout_height="0dp"
          android:layout_weight="1"
          android:drawSelectorOnTop="false"
-         android:background="@color/black" />
+         android:background="@drawable/alarm" />
 
      <TextView
         android:id="@android:id/empty"
@@ -60,7 +53,8 @@
         android:layout_weight="1"
         android:padding="10dp"
         android:text="@string/no_alarms"
-        android:background="@color/black" />
+        android:textColor="#FFFAFA"
+        android:background="@drawable/alarm" />
 	
 	
 	<LinearLayout
