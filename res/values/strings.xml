@@ -339,6 +339,11 @@
 	<string name="Start">Start</string>
 	<string name="Stop">Stop</string>
 	
+	<string name="timer1">Simple Countdown Timer</string>
+	<string name="timer2">Hours</string>
+	<string name="timer3">Minutes</string>
+	<string name="timer4">Seconds</string>
+	
 	<string name="hello">Hello World, StopWatch!</string>
     <string name="chronometer_initial_format">Initial format:<xliff:g id="initial-format">%</xliff:g></string>
     
