@@ -1,18 +1,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alarm_alert_relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShakalarmActivity" 
-	android:id="@+id/alarm_alert_relativeLayout"
-	android:background="@drawable/shakeit">
-    
+    android:background="@drawable/shakeit"
+    tools:context=".ShakalarmActivity" >
+
     <TextView
         android:id="@+id/acceleration_x"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:text="@string/shake2" />
+        android:text="@string/shake2"
+        android:textColor="#FFFFF0"
+        android:textSize="18sp"
+        android:typeface="monospace" />
 
     <TextView
         android:id="@+id/acceleration_y"
@@ -20,7 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:text="@string/shake3" />
+        android:text="@string/shake3"
+        android:textColor="#FFFFF0"
+        android:textSize="18sp"
+        android:typeface="monospace" />
 
     <TextView
         android:id="@+id/acceleration_z"
@@ -28,15 +34,20 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="160dp"
-        android:text="@string/shake4" />
+        android:text="@string/shake4"
+        android:textColor="#FFFFF0"
+        android:textSize="18sp"
+        android:typeface="monospace" />
 
     <TextView
         android:id="@+id/shakeCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="300dp"
+        android:text="@string/shake5"
+        android:textColor="#FFFFF0"
         android:textSize="70sp"
-        android:text="@string/shake5" />
-		
+        android:typeface="monospace" />
+
 </RelativeLayout>
