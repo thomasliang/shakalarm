@@ -1,14 +1,17 @@
 package accelerometer;
 
-import alarm.Alarm;
 import shakalarm.alarm.R;
+import alarm.Alarm;
+import android.app.Activity;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
-import android.app.Activity;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +19,18 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 
 	private Alarm alarm;
 
-	private TextView acc_x;
-	private TextView acc_y;
-	private TextView acc_z;
+	private TextView acceleration_textView_x;
+	private TextView acceleration_textView_y;
+	private TextView acceleration_textView_z;
+
+	private float acceleration_x;
+	private float acceleration_y;
+	private float acceleration_z;
+	
+	private ImageView picture_imageView;
+	private Handler handler = new Handler();;
+	private Runnable runnable;
+	
 	private TextView ShakeCountDown_textview;
 	private MediaPlayer mediaPlayer;
 	private Vibrator vibrator;
@@ -27,18 +39,18 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	private boolean toast_flag2 = true;
 	private boolean alarmActive = true;
 
-	private int shakeCountDown = 20;
+	private int shakeCountDown = 150;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarm_alert);
-		acc_x = (TextView) findViewById(R.id.acceleration_x);
-		acc_y = (TextView) findViewById(R.id.acceleration_y);
-		acc_z = (TextView) findViewById(R.id.acceleration_z);
+		acceleration_textView_x = (TextView) findViewById(R.id.acceleration_x);
+		acceleration_textView_y = (TextView) findViewById(R.id.acceleration_y);
+		acceleration_textView_z = (TextView) findViewById(R.id.acceleration_z);
 		ShakeCountDown_textview = (TextView) findViewById(R.id.shakeCountDown);
-		ShakeCountDown_textview.setText(shakeCountDown);
-		
+		ShakeCountDown_textview.setText("" + shakeCountDown);
+
 		Bundle bundle = this.getIntent().getExtras();
 		alarm = (Alarm) bundle.getSerializable("alarm");
 
@@ -49,6 +61,11 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 
 		startAlarm();
 		// Check onResume Method to start accelerometer listener
+
+		picture_imageView = new ImageView(MainAccelerometer.this);
+		picture_imageView.setImageResource(R.drawable.kim_sung);
+		RelativeLayout layout = (RelativeLayout) findViewById(R.id.alarm_alert_relativeLayout);
+		layout.addView(picture_imageView, 400, 400);
 	}
 
 	private void startAlarm() {
@@ -76,27 +93,34 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	}
 
 	/**
-	 * This function will be invoked (very frequently), when the force (by gravity) vector 
-	 * changes for the 3 dimension of the phone
+	 * This function will be invoked (very frequently), when the force (by
+	 * gravity) vector changes for the 3 dimension of the phone
 	 */
 	public void onAccelerationChanged(float x, float y, float z) {
 		// TODO Auto-generated method stub
-		acc_x.setText("Acceleration x: " + x + " m/s^2");
-		acc_y.setText("Acceleration y: " + y + " m/s^2");
-		acc_z.setText("Acceleration z: " + z + " m/s^2");
-
+		acceleration_textView_x.setText("Acceleration x: " + x + " m/s^2");
+		acceleration_textView_y.setText("Acceleration y: " + y + " m/s^2");
+		acceleration_textView_z.setText("Acceleration z: " + z + " m/s^2");
+		acceleration_x = x;
+		acceleration_y = y;
+		acceleration_z = z;
 	}
 
 	/**
-	 * This function will be invoked when the sensor detects a strong force (shaking)
+	 * This function will be invoked when the sensor detects a strong force
+	 * (shaking)
 	 */
 	public void onShake(float force) {
+		picture_imageView.setImageResource(R.drawable.oh_image);
+		handler.removeCallbacks(runnable);
+		runnable = new Runnable () {
+			@Override
+			public void run() {
+				picture_imageView.setImageResource(R.drawable.kim_sung);	
+			}
+		};
+		handler.postDelayed(runnable, 500);
 
-		// Called when Motion Detected
-		if(toast_flag2){
-			toast_flag2=false;
-			Toast.makeText(getBaseContext(), "Motion detected", Toast.LENGTH_LONG).show();
-		}
 		shakeCountDown--;
 		ShakeCountDown_textview.setText("" + shakeCountDown);
 		if (shakeCountDown <= 0) {
@@ -160,14 +184,15 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 		}
 
 	}
-	
+
 	/**
-	 * Overriding this function prevents the user from destroying the activity by pressing the backbutton
+	 * Overriding this function prevents the user from destroying the activity
+	 * by pressing the backbutton
 	 */
 	@Override
 	public void onBackPressed() {
-		if(toast_flag1){
-			toast_flag1=false;
+		if (toast_flag1) {
+			toast_flag1 = false;
 			Toast.makeText(getBaseContext(), "Don't press! Shake it!", Toast.LENGTH_LONG).show();
 		}
 		if (!alarmActive)
