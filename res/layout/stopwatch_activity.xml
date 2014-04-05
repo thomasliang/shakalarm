@@ -4,13 +4,14 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="4dip"
-	android:background="@color/black">
+	android:background="@drawable/stopwatch2">
 
     <Chronometer
         android:id="@+id/chronometer"
-        android:layout_width="152dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:format="@string/chronometer_initial_format"
+        android:gravity="center"
         android:paddingBottom="20dip"
         android:paddingTop="20dip" />
 

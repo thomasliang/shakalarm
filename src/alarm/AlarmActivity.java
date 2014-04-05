@@ -1,6 +1,7 @@
 package alarm;
 
 import shakalarm.alarm.R;
+
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
 import alarm.database.Database;
@@ -16,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,10 +28,10 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AlarmActivity extends ListActivity implements
@@ -38,12 +40,15 @@ public class AlarmActivity extends ListActivity implements
 	ImageButton newButton;
 	ListView alarmListView;
 	AlarmListAdapter alarmListAdapter;
-
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.alarm_activity);
+		
+		
 
 		newButton = (ImageButton) findViewById(shakalarm.alarm.R.id.button_new);
 		newButton.setOnTouchListener(new OnTouchListener() {
@@ -293,6 +298,9 @@ public class AlarmActivity extends ListActivity implements
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+		
 	}
+	
+
 
 }
