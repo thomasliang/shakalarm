@@ -4,7 +4,6 @@ import alarm.Alarm;
 import shakalarm.alarm.R;
 import android.app.Activity;
 import android.content.Context;
-//import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,28 +14,18 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-//import android.view.HapticFeedbackConstants;
 import android.view.Window;
 import android.view.WindowManager;
-//import android.widget.Button;
-//import android.widget.TextView;
 
 public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 	private Alarm alarm;
 	private MediaPlayer mediaPlayer;
 
-	//private StringBuilder answerBuilder = new StringBuilder();
-
-	//private MathProblem mathProblem;
 	private Vibrator vibrator;
 
 	private boolean alarmActive;
 
-	//private TextView problemView;
-	//private TextView answerView;
-	//private String answerString;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,43 +41,6 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		alarm = (Alarm) bundle.getSerializable("alarm");
 
 		this.setTitle(alarm.getAlarmName());
-
-		/*switch (alarm.getDifficulty()) {
-		case EASY:
-			mathProblem = new MathProblem(3);
-			break;
-		case MEDIUM:
-			mathProblem = new MathProblem(4);
-			break;
-		case HARD:
-			mathProblem = new MathProblem(5);
-			break;
-		}*/
-
-		/*answerString = String.valueOf(mathProblem.getAnswer());
-		if (answerString.endsWith(".0")) {
-			answerString = answerString.substring(0, answerString.length() - 2);
-		}*/
-
-		//problemView = (TextView) findViewById(R.id.textView1);
-		//problemView.setText(mathProblem.toString());
-
-		//answerView = (TextView) findViewById(R.id.textView2);
-		//answerView.setText("= ?");
-
-		/*((Button) findViewById(R.id.Button0)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button1)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button2)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button3)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button4)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button5)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button6)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button7)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button8)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button9)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button_clear)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button_decimal)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button_minus)).setOnClickListener(this);*/
 
 		TelephonyManager telephonyManager = (TelephonyManager) this
 				.getSystemService(Context.TELEPHONY_SERVICE);
@@ -129,8 +81,6 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 		telephonyManager.listen(phoneStateListener,
 				PhoneStateListener.LISTEN_CALL_STATE);
 
-		// Toast.makeText(this, answerString, Toast.LENGTH_LONG).show();
-
 		startAlarm();
 
 	}
@@ -167,22 +117,12 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onBackPressed()
-	 */
 	@Override
 	public void onBackPressed() {
 		if (!alarmActive)
 			super.onBackPressed();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onPause()
-	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -215,65 +155,10 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		if (!alarmActive)
 			return;
-		/*String button = (String) v.getTag();
-		v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-		if (button.equalsIgnoreCase("clear")) {
-			if (answerBuilder.length() > 0) {
-				answerBuilder.setLength(answerBuilder.length() - 1);
-				answerView.setText(answerBuilder.toString());
-			}
-		} else if (button.equalsIgnoreCase(".")) {
-			if (!answerBuilder.toString().contains(button)) {
-				if (answerBuilder.length() == 0)
-					answerBuilder.append(0);
-				answerBuilder.append(button);
-				answerView.setText(answerBuilder.toString());
-			}
-		} else if (button.equalsIgnoreCase("-")) {
-			if (answerBuilder.length() == 0) {
-				answerBuilder.append(button);
-				answerView.setText(answerBuilder.toString());
-			}
-		} else {
-			answerBuilder.append(button);
-			answerView.setText(answerBuilder.toString());
-			if (isAnswerCorrect()) {
-				alarmActive = false;
-				if (vibrator != null)
-					vibrator.cancel();
-				try {
-					mediaPlayer.stop();
-				} catch (IllegalStateException ise) {
-
-				}
-				try {
-					mediaPlayer.release();
-				} catch (Exception e) {
-
-				}
-				this.finish();
-			}
-		}
-		if (answerView.getText().length() >= answerString.length()
-				&& !isAnswerCorrect()) {
-			answerView.setTextColor(Color.RED);
-		} else {
-			answerView.setTextColor(Color.WHITE);
-		}*/
 	}
 
 	public boolean isAnswerCorrect() {
-		boolean correct = false;
-		/*try {
-			correct = mathProblem.getAnswer() == Float.parseFloat(answerBuilder
-					.toString());
-		} catch (NumberFormatException e) {
-			return false;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}*/
-		return correct;
+		return false;
 	}
 
 }

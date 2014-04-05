@@ -1,6 +1,6 @@
 package alarm.alert;
 
-import accelerometer.MainAccelerometer;
+import accelerometer.ShakalarmActivity;
 import alarm.Alarm;
 import alarm.service.AlarmServiceBroadcastReciever;
 import android.content.BroadcastReceiver;
@@ -23,7 +23,7 @@ public class AlarmAlertBroadcastReciever extends BroadcastReceiver {
 
 		Intent AlarmAlertActivityIntent;
 
-		AlarmAlertActivityIntent = new Intent(context, MainAccelerometer.class); 
+		AlarmAlertActivityIntent = new Intent(context, ShakalarmActivity.class); //changed from AlarmAlertActivity to ShakalarmActivity
 
 		AlarmAlertActivityIntent.putExtra("alarm", alarm);
 

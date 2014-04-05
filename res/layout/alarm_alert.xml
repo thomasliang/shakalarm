@@ -2,17 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainAccelerometer" 
+    tools:context=".ShakalarmActivity" 
 	android:id="@+id/alarm_alert_relativeLayout"
 	android:background="@drawable/shakeit">
     
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="@string/shake1" />
-
     <TextView
         android:id="@+id/acceleration_x"
         android:layout_width="wrap_content"

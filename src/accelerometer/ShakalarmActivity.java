@@ -9,13 +9,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainAccelerometer extends Activity implements AccelerometerListener {
+public class ShakalarmActivity extends Activity implements AccelerometerListener {
 
 	private Alarm alarm;
 
@@ -26,17 +28,16 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	private float acceleration_x;
 	private float acceleration_y;
 	private float acceleration_z;
-	
+
 	private ImageView picture_imageView;
 	private Handler handler = new Handler();;
 	private Runnable runnable;
-	
+
 	private TextView ShakeCountDown_textview;
 	private MediaPlayer mediaPlayer;
 	private Vibrator vibrator;
 
 	private boolean toast_flag1 = true;
-	private boolean toast_flag2 = true;
 	private boolean alarmActive = true;
 
 	private int shakeCountDown = 150;
@@ -56,16 +57,22 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 
 		this.setTitle(alarm.getAlarmName());
 
-		getActionBar().setDisplayHomeAsUpEnabled(false);
-		//This function disables returning to app's Home by clicking the app icon above.
+		getActionBar().setDisplayHomeAsUpEnabled(false); //This function disables returning to app's Home by clicking the app icon above.
+
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		int height = metrics.heightPixels;
+		int width = metrics.widthPixels;
+
+		picture_imageView = new ImageView(ShakalarmActivity.this);
+		picture_imageView.setImageResource(R.drawable.kim_sung);
+		LayoutParams param = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+		picture_imageView.setLayoutParams(param);
+		RelativeLayout layout = (RelativeLayout) findViewById(R.id.alarm_alert_relativeLayout);
+		layout.addView(picture_imageView, Math.max(width, height), Math.max(width, height));
 
 		startAlarm();
-		// Check onResume Method to start accelerometer listener
-
-		picture_imageView = new ImageView(MainAccelerometer.this);
-		picture_imageView.setImageResource(R.drawable.kim_sung);
-		RelativeLayout layout = (RelativeLayout) findViewById(R.id.alarm_alert_relativeLayout);
-		layout.addView(picture_imageView, 400, 400);
 	}
 
 	private void startAlarm() {
@@ -97,7 +104,6 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	 * gravity) vector changes for the 3 dimension of the phone
 	 */
 	public void onAccelerationChanged(float x, float y, float z) {
-		// TODO Auto-generated method stub
 		acceleration_textView_x.setText("Acceleration x: " + x + " m/s^2");
 		acceleration_textView_y.setText("Acceleration y: " + y + " m/s^2");
 		acceleration_textView_z.setText("Acceleration z: " + z + " m/s^2");
@@ -113,10 +119,10 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	public void onShake(float force) {
 		picture_imageView.setImageResource(R.drawable.oh_image);
 		handler.removeCallbacks(runnable);
-		runnable = new Runnable () {
+		runnable = new Runnable() {
 			@Override
 			public void run() {
-				picture_imageView.setImageResource(R.drawable.kim_sung);	
+				picture_imageView.setImageResource(R.drawable.kim_sung);
 			}
 		};
 		handler.postDelayed(runnable, 500);
@@ -144,9 +150,7 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	@Override
 	public void onResume() {
 		super.onResume();
-		Toast.makeText(getBaseContext(), "onResume Accelerometer Started", Toast.LENGTH_LONG).show();
-
-		//Check device supported Accelerometer senssor or not
+		//Check device supported Accelerometer sessor or not
 		if (AccelerometerManager.isSupported(this)) {
 
 			//Start Accelerometer Listening
@@ -158,13 +162,11 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	public void onStop() {
 		super.onStop();
 
-		//Check device supported Accelerometer senssor or not
+		//Check device supported Accelerometer sensor or not
 		if (AccelerometerManager.isListening()) {
 
 			//Start Accelerometer Listening
 			AccelerometerManager.stopListening();
-
-			Toast.makeText(getBaseContext(), "onStop Accelerometer Stoped", Toast.LENGTH_LONG).show();
 		}
 
 	}
@@ -172,15 +174,13 @@ public class MainAccelerometer extends Activity implements AccelerometerListener
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		Log.i("Sensor", "Service  distroy");
+		Log.i("Sensor", "Service  destroy");
 
-		//Check device supported Accelerometer senssor or not
+		//Check device supported Accelerometer sensor or not
 		if (AccelerometerManager.isListening()) {
 
 			//Start Accelerometer Listening
 			AccelerometerManager.stopListening();
-
-			Toast.makeText(getBaseContext(), "onDestroy Accelerometer Stoped", Toast.LENGTH_LONG).show();
 		}
 
 	}
