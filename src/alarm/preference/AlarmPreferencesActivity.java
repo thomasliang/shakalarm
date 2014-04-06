@@ -55,6 +55,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.alarm_preferences);
 
+		//The delete button (trash bin) on the top right corner
 		deleteButton = (ImageButton) findViewById(R.id.toolbar).findViewById(R.id.button_delete);
 		deleteButton.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -62,7 +63,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					deleteButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					deleteButton.setBackgroundColor(getResources().getColor(R.color.holo_blue_light));
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -97,13 +98,14 @@ public class AlarmPreferencesActivity extends ListActivity {
 										
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					deleteButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					deleteButton.setBackgroundColor(getResources().getColor(R.color.darkorange));
 					break;
 				}
 				return true;
 			}
 		});
 
+		//OK button
 		okButton = (TextView) findViewById(R.id.textView_OK);
 		okButton.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -126,13 +128,14 @@ public class AlarmPreferencesActivity extends ListActivity {
 					finish();
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					okButton.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+					okButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				}
 				return true;
 			}
 		});
 
+		//Cancel Button
 		cancelButton = (TextView) findViewById(R.id.textView_cancel);
 		cancelButton.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -147,7 +150,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 					finish();
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					cancelButton.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+					cancelButton.setBackgroundColor(getResources().getColor(R.color.darkorange));
 					break;
 				}
 				return true;

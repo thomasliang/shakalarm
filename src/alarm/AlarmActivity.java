@@ -51,18 +51,18 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 		newButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				case MotionEvent.ACTION_UP:
+					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(AlarmActivity.this, AlarmPreferencesActivity.class);
 					startActivity(newAlarmIntent);
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				}
 				return true;
@@ -77,16 +77,17 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				case MotionEvent.ACTION_UP:
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(AlarmActivity.this, StopWatchActivity.class);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				}
 				return true;
@@ -101,15 +102,16 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				case MotionEvent.ACTION_UP:
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					Intent newAlarmIntent = new Intent(AlarmActivity.this, TimerActivity.class);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				}
 				return true;
@@ -211,6 +213,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 
 	@Override
 	public void onClick(View v) {
+		//Toast.makeText(AlarmActivity.this, "AlarmActivity: onClick", Toast.LENGTH_LONG).show();
 		if (v.getId() == R.id.checkBox_alarm_active) {
 			CheckBox checkBox = (CheckBox) v;
 			Alarm alarm = (Alarm) alarmListAdapter.getItem((Integer) checkBox.getTag());
