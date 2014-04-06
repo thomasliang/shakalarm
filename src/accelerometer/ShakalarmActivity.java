@@ -53,7 +53,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		acceleration_textView_y = (TextView) findViewById(R.id.acceleration_y);
 		acceleration_textView_z = (TextView) findViewById(R.id.acceleration_z);
 		ShakeCountDown_textview = (TextView) findViewById(R.id.shakeCountDown);
-		ShakeCountDown_textview.setText("" + shakeCountDown);
+		ShakeCountDown_textview.setText("" + getShakeCountDown());
 		
 		//get the alarm info passed from the BroadcastReceiver
 		Bundle bundle = this.getIntent().getExtras();
@@ -118,9 +118,9 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		setFlashImage(); 
 
 		//-----------------------
-		shakeCountDown--;
-		ShakeCountDown_textview.setText("" + shakeCountDown);
-		if (shakeCountDown <= 0) {
+		setShakeCountDown(getShakeCountDown() - 1);
+		ShakeCountDown_textview.setText("" + getShakeCountDown());
+		if (getShakeCountDown() <= 0) {
 			alarmActive = false;
 			if (vibrator != null)
 				vibrator.cancel();
@@ -200,6 +200,14 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		}
 		if (!alarmActive)
 			super.onBackPressed();
+	}
+
+	public int getShakeCountDown() {
+		return shakeCountDown;
+	}
+
+	public void setShakeCountDown(int shakeCountDown) {
+		this.shakeCountDown = shakeCountDown;
 	}
 
 }

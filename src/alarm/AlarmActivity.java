@@ -34,22 +34,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AlarmActivity extends ListActivity implements
-		android.view.View.OnClickListener {
+public class AlarmActivity extends ListActivity implements android.view.View.OnClickListener {
 
 	ImageButton newButton;
 	ListView alarmListView;
 	AlarmListAdapter alarmListAdapter;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.alarm_activity);
-		
-		
 
+		//The plus button on the top right corner (adding new alarm)
 		newButton = (ImageButton) findViewById(shakalarm.alarm.R.id.button_new);
 		newButton.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -57,128 +54,116 @@ public class AlarmActivity extends ListActivity implements
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					newButton.setBackgroundColor(getResources().getColor(
-							android.R.color.holo_orange_dark));
+					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(AlarmActivity.this,
-							AlarmPreferencesActivity.class);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, AlarmPreferencesActivity.class);
 					startActivity(newAlarmIntent);
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					newButton.setBackgroundColor(getResources().getColor(
-							android.R.color.holo_orange_light));
+					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				}
 				return true;
 			}
 		});
-		
+
+		//The timer button on the bottom (2nd from the left)
 		final View stopWatchButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
-		
 		stopWatchButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					stopWatchButton.setBackgroundColor(getResources().getColor(
-							android.R.color.holo_orange_dark));
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(AlarmActivity.this,
-							StopWatchActivity.class);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, StopWatchActivity.class);
 					startActivity(newAlarmIntent);
-					
+
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					stopWatchButton.setBackgroundColor(getResources().getColor(
-							android.R.color.holo_orange_light));
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				}
 				return true;
 			}
 		});
-		
-        final View timerButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Counter_tab);
-		
+
+		//The count down timer button (3rd from the left)
+		final View timerButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Counter_tab);
 		timerButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
-					timerButton.setBackgroundColor(getResources().getColor(
-							android.R.color.holo_orange_dark));
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				case MotionEvent.ACTION_UP:
-					Intent newAlarmIntent = new Intent(AlarmActivity.this,
-							TimerActivity.class);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, TimerActivity.class);
 					startActivity(newAlarmIntent);
-					
+
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					timerButton.setBackgroundColor(getResources().getColor(
-							android.R.color.holo_orange_light));
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				}
 				return true;
 			}
 		});
-		
 
+		//The alarm list in the center
 		alarmListView = (ListView) findViewById(android.R.id.list);
-
 		alarmListView.setLongClickable(true);
-		alarmListView
-				.setOnItemLongClickListener(new OnItemLongClickListener() {
+		
+		//Long click: prompt "delete alarm?" message box
+		alarmListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+				view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+				final Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
+				Builder dialog = new AlertDialog.Builder(AlarmActivity.this);
+				dialog.setTitle("Delete");
+				dialog.setMessage("Delete this alarm?");
+				dialog.setPositiveButton("Ok", new OnClickListener() {
 
 					@Override
-					public boolean onItemLongClick(AdapterView<?> adapterView,
-							View view, int position, long id) {
-						view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-						final Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
-						Builder dialog = new AlertDialog.Builder(AlarmActivity.this);						
-						dialog.setTitle("Delete");
-						dialog.setMessage("Delete this alarm?");
-						dialog.setPositiveButton("Ok", new OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
 
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
+						alarmListAdapter.getAlarms().remove(alarm);
+						alarmListAdapter.notifyDataSetChanged();
 
-								alarmListAdapter.getAlarms().remove(alarm);
-								alarmListAdapter.notifyDataSetChanged();
+						Database.init(AlarmActivity.this);
+						Database.deleteEntry(alarm);
 
-								Database.init(AlarmActivity.this);
-								Database.deleteEntry(alarm);
+						AlarmActivity.this.callAlarmScheduleService();
+					}
+				});
+				dialog.setNegativeButton("Cancel", new OnClickListener() {
 
-								AlarmActivity.this
-										.callAlarmScheduleService();
-							}
-						});
-						dialog.setNegativeButton("Cancel", new OnClickListener() {
-							
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								dialog.dismiss();
-							}
-						});
-						
-						dialog.show();
-						
-						return true;
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
 					}
 				});
 
+				dialog.show();
+
+				return true;
+			}
+		});
+
+		//-----------------------
 		callAlarmScheduleService();
 	}
 
 	private void callAlarmScheduleService() {
-		Intent alarmServiceIntent = new Intent(AlarmActivity.this,
-				AlarmServiceBroadcastReciever.class);
+		Intent alarmServiceIntent = new Intent(AlarmActivity.this, AlarmServiceBroadcastReciever.class);
 		sendBroadcast(alarmServiceIntent, null);
 	}
 
@@ -210,13 +195,16 @@ public class AlarmActivity extends ListActivity implements
 		return alarmListAdapter;
 	}
 
+	/**
+	 * Go to the alarm preference activity when an item of the list is clicked
+	 * @author Wing
+	 */
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 		Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
-		Intent intent = new Intent(AlarmActivity.this,
-				AlarmPreferencesActivity.class);
+		Intent intent = new Intent(AlarmActivity.this, AlarmPreferencesActivity.class);
 		intent.putExtra("alarm", alarm);
 		startActivity(intent);
 	}
@@ -225,21 +213,19 @@ public class AlarmActivity extends ListActivity implements
 	public void onClick(View v) {
 		if (v.getId() == R.id.checkBox_alarm_active) {
 			CheckBox checkBox = (CheckBox) v;
-			Alarm alarm = (Alarm) alarmListAdapter.getItem((Integer) checkBox
-					.getTag());
+			Alarm alarm = (Alarm) alarmListAdapter.getItem((Integer) checkBox.getTag());
 			alarm.setAlarmActive(checkBox.isChecked());
 			Database.update(alarm);
 			AlarmActivity.this.callAlarmScheduleService();
 			if (checkBox.isChecked()) {
-				Toast.makeText(AlarmActivity.this,
-						alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG)
-						.show();
+				Toast.makeText(AlarmActivity.this, alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
 			}
 		}
 
 	}
 
 	@Override
+	//Inflate the option menu when the device option button is clicked
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu, menu);
@@ -247,6 +233,7 @@ public class AlarmActivity extends ListActivity implements
 	}
 
 	@Override
+	//When an option of the option menu is selected, this method will be called
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_item_rate:
@@ -255,8 +242,7 @@ public class AlarmActivity extends ListActivity implements
 			try {
 				startActivity(goToMarket);
 			} catch (ActivityNotFoundException e) {
-				Toast.makeText(this, "Couldn't launch the market",
-						Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Couldn't launch the market", Toast.LENGTH_LONG).show();
 			}
 			break;
 		case R.id.menu_item_website:
@@ -272,23 +258,15 @@ public class AlarmActivity extends ListActivity implements
 			String emailAddress = "handsomeming@live.cn";
 			String subject = R.string.app_name + " Bug Report";
 			String body = "Debug:";
-			body += "\n OS Version: " + System.getProperty("os.version") + "("
-					+ android.os.Build.VERSION.INCREMENTAL + ")";
+			body += "\n OS Version: " + System.getProperty("os.version") + "(" + android.os.Build.VERSION.INCREMENTAL + ")";
 			body += "\n OS API Level: " + android.os.Build.VERSION.SDK_INT;
 			body += "\n Device: " + android.os.Build.DEVICE;
-			body += "\n Model (and Product): " + android.os.Build.MODEL + " ("
-					+ android.os.Build.PRODUCT + ")";
-			body += "\n Screen Width: "
-					+ getWindow().getWindowManager().getDefaultDisplay()
-							.getWidth();
-			body += "\n Screen Height: "
-					+ getWindow().getWindowManager().getDefaultDisplay()
-							.getHeight();
-			body += "\n Hardware Keyboard Present: "
-					+ (getResources().getConfiguration().keyboard != Configuration.KEYBOARD_NOKEYS);
+			body += "\n Model (and Product): " + android.os.Build.MODEL + " (" + android.os.Build.PRODUCT + ")";
+			body += "\n Screen Width: " + getWindow().getWindowManager().getDefaultDisplay().getWidth();
+			body += "\n Screen Height: " + getWindow().getWindowManager().getDefaultDisplay().getHeight();
+			body += "\n Hardware Keyboard Present: " + (getResources().getConfiguration().keyboard != Configuration.KEYBOARD_NOKEYS);
 
-			uriText = "mailto:" + emailAddress + "?subject=" + subject
-					+ "&body=" + body;
+			uriText = "mailto:" + emailAddress + "?subject=" + subject + "&body=" + body;
 
 			uriText = uriText.replace(" ", "%20");
 			Uri emalUri = Uri.parse(uriText);
@@ -298,9 +276,7 @@ public class AlarmActivity extends ListActivity implements
 			break;
 		}
 		return super.onOptionsItemSelected(item);
-		
-	}
-	
 
+	}
 
 }
