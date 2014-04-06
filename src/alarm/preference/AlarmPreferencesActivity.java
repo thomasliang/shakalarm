@@ -67,8 +67,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 					break;
 				case MotionEvent.ACTION_UP:
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					
-					
+
 					Builder dialog = new AlertDialog.Builder(AlarmPreferencesActivity.this);
 					dialog.setTitle("Delete");
 					dialog.setMessage("Delete this alarm?");
@@ -88,14 +87,14 @@ public class AlarmPreferencesActivity extends ListActivity {
 						}
 					});
 					dialog.setNegativeButton("Cancel", new OnClickListener() {
-						
+
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
 						}
 					});
 					dialog.show();
-										
+
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
 					deleteButton.setBackgroundColor(getResources().getColor(R.color.darkorange));
@@ -200,17 +199,12 @@ public class AlarmPreferencesActivity extends ListActivity {
 			alarmPreference.setValue(checked);
 			break;
 		case STRING:
-
 			alert = new AlertDialog.Builder(this);
-
 			alert.setTitle(alarmPreference.getTitle());
 			// alert.setMessage(message);
-
 			// Set an EditText view to get user input
 			final EditText input = new EditText(this);
-
 			input.setText(alarmPreference.getValue().toString());
-
 			alert.setView(input);
 			alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
@@ -265,8 +259,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 								mediaPlayer.prepare();
 								mediaPlayer.start();
 
-								// Force the mediaPlayer to stop after 3
-								// seconds...
+								// Force the mediaPlayer to stop after 3 seconds...
 								if (alarmToneTimer != null)
 									alarmToneTimer.cancel();
 								alarmToneTimer = new CountDownTimer(3000, 3000) {
@@ -332,9 +325,9 @@ public class AlarmPreferencesActivity extends ListActivity {
 						alarm.addDay(thisDay);
 					} else {
 						//Only remove the day if there are more than 1 selected
-						if(alarm.getDays().length > 1){
+						if (alarm.getDays().length > 1) {
 							alarm.removeDay(thisDay);
-						}else{
+						} else {
 							//If the last day was unchecked, re-check it
 							((AlertDialog) dialog).getListView().setItemChecked(which, true);
 						}

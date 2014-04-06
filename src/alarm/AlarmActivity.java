@@ -1,14 +1,11 @@
 package alarm;
 
 import shakalarm.alarm.R;
-
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import alarm.service.AlarmServiceBroadcastReciever;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
@@ -17,7 +14,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,7 +29,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class AlarmActivity extends ListActivity implements android.view.View.OnClickListener {
