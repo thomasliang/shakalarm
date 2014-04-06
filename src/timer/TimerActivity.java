@@ -2,6 +2,8 @@ package timer;
 
 
 import shakalarm.alarm.R;
+import stopwatch.StopWatchActivity;
+import alarm.AlarmActivity;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,9 +11,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class TimerActivity extends Activity {
 	
@@ -35,6 +41,80 @@ public class TimerActivity extends Activity {
       minutesBox = (EditText) findViewById(R.id.minutesBox);
 	  secondsBox = (EditText) findViewById(R.id.secondsBox);
       Button startButton = (Button) findViewById(R.id.startButton);
+      
+  	final View alarmButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
+  	alarmButton.setOnTouchListener(new OnTouchListener() {
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+
+			switch (event.getAction()) {
+			case MotionEvent.ACTION_DOWN:
+				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+				break;
+			case MotionEvent.ACTION_UP:
+				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+				v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+				Intent newAlarmIntent = new Intent(TimerActivity.this, AlarmActivity.class);
+				startActivity(newAlarmIntent);
+
+			case MotionEvent.ACTION_MOVE:
+			case MotionEvent.ACTION_CANCEL:
+				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+				break;
+			}
+			return true;
+		}
+	});
+	
+      
+		//The timer button on the bottom (2nd from the left)
+		final View stopWatchButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
+		stopWatchButton.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					break;
+				case MotionEvent.ACTION_UP:
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					Intent newAlarmIntent = new Intent(TimerActivity.this, StopWatchActivity.class);
+					startActivity(newAlarmIntent);
+
+				case MotionEvent.ACTION_MOVE:
+				case MotionEvent.ACTION_CANCEL:
+					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					break;
+				}
+				return true;
+			}
+		});
+
+		//The count down timer button (3rd from the left)
+		final View timerButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Counter_tab);
+		timerButton.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					break;
+				case MotionEvent.ACTION_UP:
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					Intent newAlarmIntent = new Intent(TimerActivity.this, TimerActivity.class);
+					startActivity(newAlarmIntent);
+
+				case MotionEvent.ACTION_MOVE:
+				case MotionEvent.ACTION_CANCEL:
+					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					break;
+				}
+				return true;
+			}
+			});
        
       startButton.setOnClickListener(new View.OnClickListener() {
     
