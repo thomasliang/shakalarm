@@ -53,9 +53,6 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		
 		
 		//change textView on the screen
-		acceleration_textView_x = (TextView) findViewById(R.id.acceleration_x);
-		acceleration_textView_y = (TextView) findViewById(R.id.acceleration_y);
-		acceleration_textView_z = (TextView) findViewById(R.id.acceleration_z);
 		ShakeCountDown_textview = (TextView) findViewById(R.id.shakeCountDown);
 		ShakeCountDown_textview.setText("" + getShakeCountDown());
 		
@@ -125,9 +122,6 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	 * gravity) vector changes for the 3 dimension of the phone
 	 */
 	public void onAccelerationChanged(float x, float y, float z) {
-		acceleration_textView_x.setText("Acceleration x: " + x + " m/s^2");
-		acceleration_textView_y.setText("Acceleration y: " + y + " m/s^2");
-		acceleration_textView_z.setText("Acceleration z: " + z + " m/s^2");
 		acceleration_x = x;
 		acceleration_y = y;
 		acceleration_z = z;
@@ -157,11 +151,11 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 			} catch (Exception e) {
 			}
 			
-			try {
-				Thread.sleep(3000); //wait for 3 seconds before finish
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(3000); //wait for 3 seconds before finish
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 			super.finish();
 		}
 	}
