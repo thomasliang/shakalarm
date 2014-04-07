@@ -136,7 +136,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		//-----------------------
 		setShakeCountDown(getShakeCountDown() - 1);
 		ShakeCountDown_textview.setText("" + getShakeCountDown());
-		if (getShakeCountDown() <= 0) {
+		if (getShakeCountDown() <= -20) {
 			setShakeCountDown(0);
 			alarmActive = false;
 			if (vibrator != null)
