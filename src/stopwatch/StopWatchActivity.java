@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 
 public class StopWatchActivity extends Activity {
     Chronometer mChronometer;
+    long time = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,18 +116,21 @@ public class StopWatchActivity extends Activity {
 
     View.OnClickListener mStartListener = new OnClickListener() {
         public void onClick(View v) {
+        	mChronometer.setBase(SystemClock.elapsedRealtime()+time);
             mChronometer.start();
         }
     };
 
     View.OnClickListener mStopListener = new OnClickListener() {
         public void onClick(View v) {
+        	time = mChronometer.getBase()-SystemClock.elapsedRealtime();
             mChronometer.stop();
         }
     };
 
     View.OnClickListener mResetListener = new OnClickListener() {
         public void onClick(View v) {
+        	time = 0;
             mChronometer.setBase(SystemClock.elapsedRealtime());
         }
     };
