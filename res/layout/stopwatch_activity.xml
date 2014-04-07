@@ -8,7 +8,7 @@
 
     <Chronometer
         android:id="@+id/chronometer"
-        android:layout_width="180dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:format="@string/chronometer_initial_format"
         android:gravity="center"
