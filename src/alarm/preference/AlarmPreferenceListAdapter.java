@@ -1,9 +1,8 @@
 package alarm.preference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-
 import alarm.Alarm;
 import alarm.preference.AlarmPreference.Type;
 import android.content.Context;
@@ -39,8 +38,30 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 //			@Override
 //			public void run() {
 				Log.d("AlarmPreferenceListAdapter", "Loading Ringtones...");
+                //RingtoneManager ringtoneMgr = new RingtoneManager(getContext());
 				
-				RingtoneManager ringtoneMgr = new RingtoneManager(getContext());
+				//ringtoneMgr.setType(RingtoneManager.TYPE_ALL);//.TYPE_ALARM);
+				
+				SongsManager songsMgr = new SongsManager();
+				ArrayList<HashMap<String, String>> songList = songsMgr.getPlayList();
+				
+				//Cursor alarmsCursor = ringtoneMgr.getCursor();
+				
+				/*alarmTones = new String[alarmsCursor.getCount()+1];
+				alarmTones[0] = "Silent"; 
+				alarmTonePaths = new String[alarmsCursor.getCount()+1];
+				alarmTonePaths[0] = "";*/
+				
+				alarmTones = new String[songList.size()];
+				alarmTonePaths = new String[songList.size()];
+				
+				for (int i = 0; i < songList.size(); i++) {		    			
+				//alarmTonePaths[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtoneUri(alarmsCursor.getPosition()).toString();
+					alarmTones[i] = songList.get(i).get("songTitle");
+					alarmTonePaths[i] =songList.get(i).get("songPath");				
+				}
+				
+				/*RingtoneManager ringtoneMgr = new RingtoneManager(getContext());
 				
 				ringtoneMgr.setType(RingtoneManager.TYPE_ALARM);
 				
@@ -56,9 +77,9 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 						alarmTones[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtone(alarmsCursor.getPosition()).getTitle(getContext());
 						alarmTonePaths[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtoneUri(alarmsCursor.getPosition()).toString();
 					}while(alarmsCursor.moveToNext());					
-				}
+				}*/
 				Log.d("AlarmPreferenceListAdapter", "Finished Loading " + alarmTones.length + " Ringtones.");
-				alarmsCursor.close();
+				//alarmsCursor.close();
 //				
 //			}
 //			
