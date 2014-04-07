@@ -3,6 +3,7 @@ package accelerometer;
 import shakalarm.alarm.R;
 import alarm.Alarm;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -41,6 +42,8 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	private boolean alarmActive = true;
 
 	private int shakeCountDown = 150;
+	private final int initialShakeCountDown = 150;
+	private int[] animation_picture_series_id = new int[15];
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +51,8 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		setContentView(R.layout.alarm_alert);
 		getActionBar().setDisplayHomeAsUpEnabled(false); //This function disables returning to app's Home by clicking the app icon above.
 		
+		
 		//change textView on the screen
-		acceleration_textView_x = (TextView) findViewById(R.id.acceleration_x);
-		acceleration_textView_y = (TextView) findViewById(R.id.acceleration_y);
-		acceleration_textView_z = (TextView) findViewById(R.id.acceleration_z);
 		ShakeCountDown_textview = (TextView) findViewById(R.id.shakeCountDown);
 		ShakeCountDown_textview.setText("" + getShakeCountDown());
 		
@@ -61,19 +62,38 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		this.setTitle(alarm.getAlarmName());
 
 		//Seting the animation pictures
+		init_animation_pic();
+
+		//----------------------------
+		startAlarm();
+	}
+
+	private void init_animation_pic() {
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		int height = metrics.heightPixels;
 		int width = metrics.widthPixels;
 		picture_imageView = new ImageView(ShakalarmActivity.this);
-		picture_imageView.setImageResource(R.drawable.kim_sung);
+		picture_imageView.setImageResource(R.drawable.a15);
 		LayoutParams param = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		picture_imageView.setLayoutParams(param);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.alarm_alert_relativeLayout);
 		layout.addView(picture_imageView, Math.max(width, height), Math.max(width, height));
-
-		//----------------------------
-		startAlarm();
+		animation_picture_series_id[0] = R.drawable.a15;
+		animation_picture_series_id[1] = R.drawable.a14;
+		animation_picture_series_id[2] = R.drawable.a13;
+		animation_picture_series_id[3] = R.drawable.a12;
+		animation_picture_series_id[4] = R.drawable.a11;
+		animation_picture_series_id[5] = R.drawable.a10;
+		animation_picture_series_id[6] = R.drawable.a9;
+		animation_picture_series_id[7] = R.drawable.a8;
+		animation_picture_series_id[8] = R.drawable.a7;
+		animation_picture_series_id[9] = R.drawable.a6;
+		animation_picture_series_id[10] = R.drawable.a5;
+		animation_picture_series_id[11] = R.drawable.a4;
+		animation_picture_series_id[12] = R.drawable.a3;
+		animation_picture_series_id[13] = R.drawable.a2;
+		animation_picture_series_id[14] = R.drawable.a1;
 	}
 
 	private void startAlarm() {
@@ -102,9 +122,6 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	 * gravity) vector changes for the 3 dimension of the phone
 	 */
 	public void onAccelerationChanged(float x, float y, float z) {
-		acceleration_textView_x.setText("Acceleration x: " + x + " m/s^2");
-		acceleration_textView_y.setText("Acceleration y: " + y + " m/s^2");
-		acceleration_textView_z.setText("Acceleration z: " + z + " m/s^2");
 		acceleration_x = x;
 		acceleration_y = y;
 		acceleration_z = z;
@@ -115,12 +132,12 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	 * (shaking)
 	 */
 	public void onShake(float force) {
-		setFlashImage(); 
-
+		setAnimationImage(); 
 		//-----------------------
 		setShakeCountDown(getShakeCountDown() - 1);
 		ShakeCountDown_textview.setText("" + getShakeCountDown());
-		if (getShakeCountDown() <= 0) {
+		if (getShakeCountDown() <= -20) {
+			setShakeCountDown(0);
 			alarmActive = false;
 			if (vibrator != null)
 				vibrator.cancel();
@@ -133,23 +150,26 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 				mediaPlayer.release();
 			} catch (Exception e) {
 			}
+			
+//			try {
+//				Thread.sleep(3000); //wait for 3 seconds before finish
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 			super.finish();
 		}
 	}
 
 	/**
-	 * Setting a flash of an image
+	 * Setting the animation image
 	 */
-	private void setFlashImage() {
-		picture_imageView.setImageResource(R.drawable.oh_image);
-		handler.removeCallbacks(runnable);
-		runnable = new Runnable() {
-			@Override
-			public void run() {
-				picture_imageView.setImageResource(R.drawable.kim_sung);
-			}
-		};
-		handler.postDelayed(runnable, 500);
+	private void setAnimationImage() {
+		int partitions = (150 / animation_picture_series_id.length);
+		int image_no = (initialShakeCountDown - shakeCountDown + partitions - 1) / partitions;
+		if (image_no > 14) {
+			image_no = 14;
+		}		
+		picture_imageView.setImageResource(animation_picture_series_id[image_no]);
 	}
 
 	@Override
