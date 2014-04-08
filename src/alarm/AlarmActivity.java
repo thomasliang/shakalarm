@@ -1,7 +1,5 @@
 package alarm;
 
-import java.util.Calendar;
-
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
@@ -18,7 +16,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -142,34 +139,6 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 			}
 		});
 
-		final View settingButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Setting_tab);
-		settingButton.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_DOWN:
-					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
-					break;
-				case MotionEvent.ACTION_UP:
-					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
-	                Alarm test = new Alarm();
-	                Calendar testTime = Calendar.getInstance();
-	                testTime.add(13,3);
-	                test.setAlarmTonePath(Environment.getExternalStorageDirectory()
-	        .getPath() + "/Music/Fox.mp3");
-	                test.setAlarmTime(testTime);
-	                test.schedule(getBaseContext());
-	                break;
-	                
-				case MotionEvent.ACTION_MOVE:
-				case MotionEvent.ACTION_CANCEL:
-					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
-					break;
-				}
-				return true;
-			}
-		});
 		//The alarm list in the center
 		alarmListView = (ListView) findViewById(android.R.id.list);
 		alarmListView.setLongClickable(true);
