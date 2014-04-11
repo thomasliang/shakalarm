@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Notes from Wing: 
+Please change the category of an activity to be 
+<category android:name="android.intent.category.DEFAULT" /> 
+										^^^NOT LANUCHER^^^ !!!! -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
     package="shakalarm.alarm"
     android:versionCode="2"
     android:versionName="1.1" >
@@ -72,7 +78,7 @@
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" /> 
             </intent-filter>
         </activity>
         
