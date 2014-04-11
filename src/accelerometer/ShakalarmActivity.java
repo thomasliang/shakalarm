@@ -41,9 +41,11 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	private boolean toast_flag1 = true;
 	private boolean alarmActive = true;
 
-	private int shakeCountDown = 150;
-	private final int initialShakeCountDown = 150;
+	private int shakeCountDown = 200;
+	private final int INITIAL_SHAKECOUNTDOWN = 200;
 	private int[] animation_picture_series_id = new int[15];
+
+	private final int LAST_IMAGE_REMAINING_SHAKE_COUNT = 40;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +138,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		//-----------------------
 		setShakeCountDown(getShakeCountDown() - 1);
 		ShakeCountDown_textview.setText("" + getShakeCountDown());
-		if (getShakeCountDown() <= -20) {
+		if (getShakeCountDown() <= 0) { 
 			setShakeCountDown(0);
 			alarmActive = false;
 			if (vibrator != null)
@@ -150,12 +152,6 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 				mediaPlayer.release();
 			} catch (Exception e) {
 			}
-			
-//			try {
-//				Thread.sleep(3000); //wait for 3 seconds before finish
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
 			super.finish();
 		}
 	}
@@ -164,8 +160,8 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	 * Setting the animation image
 	 */
 	private void setAnimationImage() {
-		int partitions = (150 / animation_picture_series_id.length);
-		int image_no = (initialShakeCountDown - shakeCountDown + partitions - 1) / partitions;
+		int partitions = (INITIAL_SHAKECOUNTDOWN - LAST_IMAGE_REMAINING_SHAKE_COUNT) / animation_picture_series_id.length; // (200 - 40)/ 15; in last 40 shake countdowns, show the last image; other images occupy same amount of countdowns
+		int image_no = (INITIAL_SHAKECOUNTDOWN - shakeCountDown) / partitions;
 		if (image_no > 14) {
 			image_no = 14;
 		}		
