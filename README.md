@@ -4,6 +4,6 @@ shakalarm
 
 -Timer: from
 
--Stopwath: from 
+-Stopwatch: from 
 
 -Alarm: from https://github.com/SheldonNeilson/Android-Alarm-Clock.git
