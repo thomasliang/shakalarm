@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-
 import alarm.Alarm;
 import alarm.alert.AlarmAlertBroadcastReciever;
 import alarm.database.Database;
@@ -25,81 +24,68 @@ public class AlarmService extends Service {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Service#onCreate()
-	 */
 	@Override
 	public void onCreate() {
-		Log.d(this.getClass().getSimpleName(),"onCreate()");
-		super.onCreate();		
+		Log.d(this.getClass().getSimpleName(), "onCreate()");
+		super.onCreate();
 	}
 
-	private Alarm getNext(){
-		Log.d(this.getClass().getSimpleName(),"getNext()");
+	private Alarm getNext() {
+		Log.d(this.getClass().getSimpleName(), "getNext()");
 
 		Set<Alarm> alarmQueue = new TreeSet<Alarm>(new Comparator<Alarm>() {
 			@Override
 			public int compare(Alarm lhs, Alarm rhs) {
 				int result = 0;
-				long diff = lhs.getAlarmTime().getTimeInMillis() - rhs.getAlarmTime().getTimeInMillis();				
-				if(diff>0){
+				long diff = lhs.getAlarmTime().getTimeInMillis() - rhs.getAlarmTime().getTimeInMillis();
+				if (diff > 0) {
 					return 1;
-				}else if (diff < 0){
+				} else if (diff < 0) {
 					return -1;
 				}
 				return result;
 			}
 		});
-				
+
 		Database.init(getApplicationContext());
 		List<Alarm> alarms = Database.getAll();
-		
-		for(Alarm alarm : alarms){
-			if(alarm.getAlarmActive())
+
+		for (Alarm alarm : alarms) {
+			if (alarm.getAlarmActive())
 				alarmQueue.add(alarm);
 		}
-		if(alarmQueue.iterator().hasNext()){
+		if (alarmQueue.iterator().hasNext()) {
 			return alarmQueue.iterator().next();
-		}else{
+		} else {
 			return null;
 		}
 	}
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Service#onDestroy()
-	 */
+
 	@Override
 	public void onDestroy() {
 		Database.deactivate();
 		super.onDestroy();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Service#onStartCommand(android.content.Intent, int, int)
-	 */
+	//called after this Service is created
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.d(this.getClass().getSimpleName(),"onStartCommand()");
+		Log.d(this.getClass().getSimpleName(), "onStartCommand()");
 		Alarm alarm = getNext();
-		if(null != alarm){
+		if (null != alarm) {
 			alarm.schedule(getApplicationContext());
-			Log.d(this.getClass().getSimpleName(),alarm.getTimeUntilNextAlarmMessage());
-			
-		}else{
+			Log.d(this.getClass().getSimpleName(), alarm.getTimeUntilNextAlarmMessage());
+
+		} else {
 			Intent myIntent = new Intent(getApplicationContext(), AlarmAlertBroadcastReciever.class);
 			myIntent.putExtra("alarm", new Alarm());
-			
-			PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, myIntent,PendingIntent.FLAG_CANCEL_CURRENT);			
-			AlarmManager alarmManager = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-			
+
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+			AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+
 			alarmManager.cancel(pendingIntent);
 		}
-		return START_NOT_STICKY;
+		return START_NOT_STICKY; 
 	}
 
 }

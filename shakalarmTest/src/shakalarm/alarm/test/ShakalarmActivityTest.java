@@ -16,27 +16,6 @@ import android.widget.TextView;
 
 public class ShakalarmActivityTest extends ActivityInstrumentationTestCase2<ShakalarmActivity> {
 	private ShakalarmActivity shakalarmActivity;
-	private Alarm alarm;
-	private TextView acceleration_textView_x;
-	private TextView acceleration_textView_y;
-	private TextView acceleration_textView_z;
-	
-	private float acceleration_x;
-	private float acceleration_y;
-	private float acceleration_z;
-
-	private ImageView picture_imageView;
-	private Handler handler = new Handler();
-	private Runnable runnable;
-
-	private TextView ShakeCountDown_textview;
-	private MediaPlayer mediaPlayer;
-	private Vibrator vibrator;
-
-	private boolean toast_flag1 = true;
-	private boolean alarmActive = true;
-
-	private int shakeCountDown = 150;
 
 	public ShakalarmActivityTest() {
 		super(ShakalarmActivity.class);
