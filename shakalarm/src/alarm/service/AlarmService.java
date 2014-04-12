@@ -37,6 +37,8 @@ public class AlarmService extends Service {
 	}
 
 	private Alarm getNext(){
+		Log.d(this.getClass().getSimpleName(),"getNext()");
+
 		Set<Alarm> alarmQueue = new TreeSet<Alarm>(new Comparator<Alarm>() {
 			@Override
 			public int compare(Alarm lhs, Alarm rhs) {
