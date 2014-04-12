@@ -23,69 +23,34 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 	private Context context;
 	private Alarm alarm;
 	private List<AlarmPreference> preferences = new ArrayList<AlarmPreference>();
-	private final String[] repeatDays = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};	
-	private final String[] alarmDifficulties = {"Easy","Medium","Hard"};
-	
+	private final String[] repeatDays = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+	private final String[] alarmDifficulties = { "Easy", "Medium", "Hard" };
+
 	private String[] alarmTones;
 	private String[] alarmTonePaths;
-	
+
 	public AlarmPreferenceListAdapter(Context context, Alarm alarm) {
 		setContext(context);
-		
-		
-//		(new Runnable(){
-//
-//			@Override
-//			public void run() {
-				Log.d("AlarmPreferenceListAdapter", "Loading Ringtones...");
-                //RingtoneManager ringtoneMgr = new RingtoneManager(getContext());
-				
-				//ringtoneMgr.setType(RingtoneManager.TYPE_ALL);//.TYPE_ALARM);
-				
-				SongsManager songsMgr = new SongsManager();
-				ArrayList<HashMap<String, String>> songList = songsMgr.getPlayList();
-				
-				//Cursor alarmsCursor = ringtoneMgr.getCursor();
-				
-				/*alarmTones = new String[alarmsCursor.getCount()+1];
-				alarmTones[0] = "Silent"; 
-				alarmTonePaths = new String[alarmsCursor.getCount()+1];
-				alarmTonePaths[0] = "";*/
-				
-				alarmTones = new String[songList.size()];
-				alarmTonePaths = new String[songList.size()];
-				
-				for (int i = 0; i < songList.size(); i++) {		    			
-				//alarmTonePaths[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtoneUri(alarmsCursor.getPosition()).toString();
-					alarmTones[i] = songList.get(i).get("songTitle");
-					alarmTonePaths[i] =songList.get(i).get("songPath");				
-				}
-				
-				/*RingtoneManager ringtoneMgr = new RingtoneManager(getContext());
-				
-				ringtoneMgr.setType(RingtoneManager.TYPE_ALARM);
-				
-				Cursor alarmsCursor = ringtoneMgr.getCursor();
-				
-				alarmTones = new String[alarmsCursor.getCount()+1];
-				alarmTones[0] = "Silent"; 
-				alarmTonePaths = new String[alarmsCursor.getCount()+1];
-				alarmTonePaths[0] = "";
-				
-				if (alarmsCursor.moveToFirst()) {		    			
-					do {
-						alarmTones[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtone(alarmsCursor.getPosition()).getTitle(getContext());
-						alarmTonePaths[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtoneUri(alarmsCursor.getPosition()).toString();
-					}while(alarmsCursor.moveToNext());					
-				}*/
-				Log.d("AlarmPreferenceListAdapter", "Finished Loading " + alarmTones.length + " Ringtones.");
-				//alarmsCursor.close();
-//				
-//			}
-//			
-//		}).run();
-//		
-	    setAlarm(alarm);		
+
+		initRingtoneList();
+		setAlarm(alarm);
+	}
+
+	private void initRingtoneList() {
+		Log.d("AlarmPreferenceListAdapter", "Loading Ringtones...");
+
+		SongsManager songsMgr = new SongsManager();
+		ArrayList<HashMap<String, String>> songList = songsMgr.getPlayList();
+
+		alarmTones = new String[songList.size()];
+		alarmTonePaths = new String[songList.size()];
+
+		for (int i = 0; i < songList.size(); i++) {
+			alarmTones[i] = songList.get(i).get("songTitle");
+			alarmTonePaths[i] = songList.get(i).get("songPath");
+		}
+
+		Log.d("AlarmPreferenceListAdapter", "Finished Loading " + alarmTones.length + " Ringtones.");
 	}
 
 	@Override
@@ -109,8 +74,8 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 		LayoutInflater layoutInflater = LayoutInflater.from(getContext());
 		switch (alarmPreference.getType()) {
 		case BOOLEAN:
-			if(null == convertView || convertView.getId() != android.R.layout.simple_list_item_checked)
-			convertView = layoutInflater.inflate(android.R.layout.simple_list_item_checked, null);
+			if (null == convertView || convertView.getId() != android.R.layout.simple_list_item_checked)
+				convertView = layoutInflater.inflate(android.R.layout.simple_list_item_checked, null);
 
 			CheckedTextView checkedTextView = (CheckedTextView) convertView.findViewById(android.R.id.text1);
 			checkedTextView.setText(alarmPreference.getTitle());
@@ -122,13 +87,13 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 		case MULTIPLE_LIST:
 		case TIME:
 		default:
-			if(null == convertView || convertView.getId() != android.R.layout.simple_list_item_2)
-			convertView = layoutInflater.inflate(android.R.layout.simple_list_item_2, null);
-			
+			if (null == convertView || convertView.getId() != android.R.layout.simple_list_item_2)
+				convertView = layoutInflater.inflate(android.R.layout.simple_list_item_2, null);
+
 			TextView text1 = (TextView) convertView.findViewById(android.R.id.text1);
 			text1.setTextSize(18);
 			text1.setText(alarmPreference.getTitle());
-			
+
 			TextView text2 = (TextView) convertView.findViewById(android.R.id.text2);
 			text2.setText(alarmPreference.getSummary());
 			break;
@@ -137,58 +102,60 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 		return convertView;
 	}
 
-	public Alarm getAlarm() {		
-		for(AlarmPreference preference : preferences){
-			switch(preference.getKey()){
-				case ALARM_ACTIVE:
-					alarm.setAlarmActive((Boolean) preference.getValue());
-					break;
-				case ALARM_NAME:
-					alarm.setAlarmName((String) preference.getValue());
-					break;
-				case ALARM_TIME:
-					alarm.setAlarmTime((String) preference.getValue());
-					break;
-				case ALARM_DIFFICULTY:
-					alarm.setDifficulty(Alarm.Difficulty.valueOf((String)preference.getValue()));
-					break;
-				case ALARM_TONE:
-					alarm.setAlarmTonePath((String) preference.getValue());
-					break;
-				case ALARM_VIBRATE:
-					alarm.setVibrate((Boolean) preference.getValue());
-					break;
-				case ALARM_REPEAT:
-					alarm.setDays((Alarm.Day[]) preference.getValue());
-					break;
+	public Alarm getAlarm() {
+		for (AlarmPreference preference : preferences) {
+			switch (preference.getKey()) {
+			case ALARM_ACTIVE:
+				alarm.setAlarmActive((Boolean) preference.getValue());
+				break;
+			case ALARM_NAME:
+				alarm.setAlarmName((String) preference.getValue());
+				break;
+			case ALARM_TIME:
+				alarm.setAlarmTime((String) preference.getValue());
+				break;
+			case ALARM_DIFFICULTY:
+				alarm.setDifficulty(Alarm.Difficulty.valueOf((String) preference.getValue()));
+				break;
+			case ALARM_TONE:
+				alarm.setAlarmTonePath((String) preference.getValue());
+				break;
+			case ALARM_VIBRATE:
+				alarm.setVibrate((Boolean) preference.getValue());
+				break;
+			case ALARM_REPEAT:
+				alarm.setDays((Alarm.Day[]) preference.getValue());
+				break;
 			}
 		}
-				
+
 		return alarm;
 	}
 
 	public void setAlarm(Alarm alarm) {
 		this.alarm = alarm;
 		preferences.clear();
-		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_ACTIVE,"Active", null, null, alarm.getAlarmActive(),Type.BOOLEAN));
-		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_NAME, "Label",alarm.getAlarmName(), null, alarm.getAlarmName(), Type.STRING));
-		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_TIME, "Set time",alarm.getAlarmTimeString(), null, alarm.getAlarmTime(), Type.TIME));
-		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_REPEAT, "Repeat",alarm.getRepeatDaysString(), repeatDays, alarm.getDays(),Type.MULTIPLE_LIST));
-		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_DIFFICULTY,"Difficulty", alarm.getDifficulty().toString(), alarmDifficulties, alarm.getDifficulty(), Type.LIST));
-		
-			Uri alarmToneUri = Uri.parse(alarm.getAlarmTonePath());
-			Ringtone alarmTone = RingtoneManager.getRingtone(getContext(), alarmToneUri);
-		
-		if(alarmTone instanceof Ringtone && !alarm.getAlarmTonePath().equalsIgnoreCase("")){
-			preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_TONE, "Ringtone", alarmTone.getTitle(getContext()),alarmTones, alarm.getAlarmTonePath(), Type.LIST));
-		}else{
-			preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_TONE, "Ringtone", getAlarmTones()[0],alarmTones, null, Type.LIST));
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_ACTIVE, "Active", null, null, alarm.getAlarmActive(), Type.BOOLEAN));
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_NAME, "Label", alarm.getAlarmName(), null, alarm.getAlarmName(), Type.STRING));
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_TIME, "Set time", alarm.getAlarmTimeString(), null, alarm.getAlarmTime(), Type.TIME));
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_REPEAT, "Repeat", alarm.getRepeatDaysString(), repeatDays, alarm.getDays(),
+				Type.MULTIPLE_LIST));
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_DIFFICULTY, "Difficulty", alarm.getDifficulty().toString(), alarmDifficulties, alarm
+				.getDifficulty(), Type.LIST));
+
+		Uri alarmToneUri = Uri.parse(alarm.getAlarmTonePath());
+		Ringtone alarmTone = RingtoneManager.getRingtone(getContext(), alarmToneUri);
+
+		if (alarmTone instanceof Ringtone && !alarm.getAlarmTonePath().equalsIgnoreCase("")) {
+			preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_TONE, "Ringtone", alarmTone.getTitle(getContext()), alarmTones, alarm
+					.getAlarmTonePath(), Type.LIST));
+		} else {
+			preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_TONE, "Ringtone", getAlarmTones()[0], alarmTones, null, Type.LIST));
 		}
-		
-		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_VIBRATE, "Vibrate",null, null, alarm.getVibrate(), Type.BOOLEAN));
+
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_VIBRATE, "Vibrate", null, null, alarm.getVibrate(), Type.BOOLEAN));
 	}
 
-	
 	public Context getContext() {
 		return context;
 	}

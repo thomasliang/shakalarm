@@ -1,25 +1,31 @@
 package shakalarm.alarm.test;
 
+import java.util.Calendar;
 import java.util.List;
 
-import accelerometer.ShakalarmActivity;
 import alarm.Alarm;
-import alarm.AlarmActivity;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
-import android.app.Instrumentation.ActivityMonitor;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.widget.ImageButton;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.robotium.solo.Solo;
 
 public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCase2<AlarmPreferencesActivity> {
 
 	private AlarmPreferencesActivity mActivity;
 	TextView cancelButton;
 	TextView okButton;
+	private ListView listView;
+
+	private Solo solo;
 
 	public AlarmPreferenceAcitivityTest() {
 		super(AlarmPreferencesActivity.class);
@@ -39,14 +45,20 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 
 		mActivity = (AlarmPreferencesActivity) getActivity();
 
+		solo = new Solo(getInstrumentation(), getActivity());
+
 		cancelButton = (TextView) mActivity.findViewById(shakalarm.alarm.R.id.textView_cancel);
 		okButton = (TextView) mActivity.findViewById(shakalarm.alarm.R.id.textView_OK);
-
+		listView = (ListView) mActivity.findViewById(android.R.id.list);
 	}
 
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
+		List<Alarm> alarms = Database.getAll();
+		for (Alarm a : alarms) {
+			Database.deleteEntry(a);
+		}
 	}
 
 	@SmallTest
@@ -65,6 +77,18 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 	public void testAddAlarm() {
 		TouchUtils.clickView(this, okButton);
 		List<Alarm> alarms = Database.getAll();
-		assertTrue(alarms.size() >= 1);
+		assertTrue(alarms.size() == 1);
+	}
+
+	@SmallTest
+	public void testAlarmSetTime() throws InterruptedException {
+		View timeView = listView.getChildAt(2);
+		TouchUtils.clickView(this, timeView);
+		Calendar calendar = Calendar.getInstance();
+		solo.setTimePicker(0, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE) + 1);
+		solo.clickOnView(solo.getView(android.R.id.button1)); //click on the positive button
+		getInstrumentation().waitForIdleSync();
+		TouchUtils.clickView(this, okButton);		
+		fail("test ringing after 1 min");
 	}
 }
