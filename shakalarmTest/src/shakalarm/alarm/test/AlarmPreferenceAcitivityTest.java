@@ -1,3 +1,8 @@
+/*
+ * If there is NoClassDefFoundError, 
+ * go to java Build Path -> Order and Export and check robotium's lib
+ */
+
 package shakalarm.alarm.test;
 
 import java.util.Calendar;
