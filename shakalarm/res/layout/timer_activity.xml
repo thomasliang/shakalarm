@@ -95,52 +95,39 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@color/darkorange"
+            android:background="@color/black"
             android:contentDescription="@string/Alarm_tab"
             android:src="@drawable/ic_action_add_alarm" />
 		    
-			<View
-	            android:id="@+id/view1"
-	            android:layout_width="1dp"
-	            android:layout_height="50dp"
-	            android:background="@color/cornsilk"/>
+			
 			
 		    <ImageButton
             android:id="@+id/Timer_tab"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@color/darkorange"
+            android:background="@color/black"
             android:contentDescription="@string/Timer_tab"
             android:src="@drawable/ic_action_timer" />
 		    
-		    <View
-	            android:id="@+id/view2"
-	            android:layout_width="1dp"
-	            android:layout_height="50dp"
-	            android:background="@color/cornsilk"/>
 		    
 		    <ImageButton
             android:id="@+id/Counter_tab"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@color/darkorange"
+            android:background="@color/black"
             android:contentDescription="@string/Counter_tab"
             android:src="@drawable/ic_action_counter" />
 		    
-		    <View
-	            android:id="@+id/view3"
-	            android:layout_width="1dp"
-	            android:layout_height="50dp"
-	            android:background="@color/cornsilk"/>
+		   
 		    
 		    <ImageButton
             android:id="@+id/Setting_tab"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@color/darkorange"
+            android:background="@color/black"
             android:contentDescription="@string/Setting_tab"
             android:src="@drawable/ic_action_settings" />
 		

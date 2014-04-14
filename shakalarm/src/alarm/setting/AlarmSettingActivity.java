@@ -36,14 +36,14 @@ public class AlarmSettingActivity extends Activity {
     				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
     				break;
     			case MotionEvent.ACTION_UP:
-    				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     				v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
     				Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, AlarmActivity.class);
     				startActivity(newAlarmIntent);
 
     			case MotionEvent.ACTION_MOVE:
     			case MotionEvent.ACTION_CANCEL:
-    				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     				break;
     			}
     			return true;
@@ -62,14 +62,14 @@ public class AlarmSettingActivity extends Activity {
     					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
     					break;
     				case MotionEvent.ACTION_UP:
-    					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
     					Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, StopWatchActivity.class);
     					startActivity(newAlarmIntent);
 
     				case MotionEvent.ACTION_MOVE:
     				case MotionEvent.ACTION_CANCEL:
-    					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     					break;
     				}
     				return true;
@@ -87,13 +87,13 @@ public class AlarmSettingActivity extends Activity {
     					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
     					break;
     				case MotionEvent.ACTION_UP:
-    					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    					timerButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     					Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, TimerActivity.class);
     					startActivity(newAlarmIntent);
 
     				case MotionEvent.ACTION_MOVE:
     				case MotionEvent.ACTION_CANCEL:
-    					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    					timerButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     					break;
     				}
     				return true;
@@ -110,14 +110,14 @@ public class AlarmSettingActivity extends Activity {
     					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
     					break;
     				case MotionEvent.ACTION_UP:
-    					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
     					Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, AlarmSettingActivity.class);
     					startActivity(newAlarmIntent);
 
     				case MotionEvent.ACTION_MOVE:
     				case MotionEvent.ACTION_CANCEL:
-    					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+    					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
     					break;
     				}
     				return true;
