@@ -4,6 +4,7 @@ package timer;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import alarm.AlarmActivity;
+import alarm.setting.AlarmSettingActivity;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -115,6 +116,30 @@ public class TimerActivity extends Activity {
 				return true;
 			}
 			});
+		
+		final View settingButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Setting_tab);
+		settingButton.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					break;
+				case MotionEvent.ACTION_UP:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					Intent newAlarmIntent = new Intent(TimerActivity.this, AlarmSettingActivity.class);
+					startActivity(newAlarmIntent);
+
+				case MotionEvent.ACTION_MOVE:
+				case MotionEvent.ACTION_CANCEL:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					break;
+				}
+				return true;
+			}
+		});
        
       startButton.setOnClickListener(new View.OnClickListener() {
     

@@ -2,6 +2,7 @@ package stopwatch;
 import shakalarm.alarm.R;
 import timer.TimerActivity;
 import alarm.AlarmActivity;
+import alarm.setting.AlarmSettingActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -107,6 +108,30 @@ public class StopWatchActivity extends Activity {
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
 					alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					break;
+				}
+				return true;
+			}
+		});
+	  	
+	  	final View settingButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Setting_tab);
+		settingButton.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					break;
+				case MotionEvent.ACTION_UP:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					Intent newAlarmIntent = new Intent(StopWatchActivity.this, AlarmSettingActivity.class);
+					startActivity(newAlarmIntent);
+
+				case MotionEvent.ACTION_MOVE:
+				case MotionEvent.ACTION_CANCEL:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					break;
 				}
 				return true;

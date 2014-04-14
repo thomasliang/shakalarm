@@ -1,4 +1,6 @@
 package alarm;
+import shakalarm.alarm.R;
+import java.util.Calendar;
 
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
@@ -6,6 +8,8 @@ import timer.TimerActivity;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import alarm.service.AlarmServiceBroadcastReciever;
+import alarm.setting.AlarmSettingActivity;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
@@ -16,6 +20,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,7 +41,6 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 	ImageButton newButton;
 	ListView alarmListView;
 	AlarmListAdapter alarmListAdapter;
-	ImageButton alarmButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +48,6 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.alarm_activity);
 
-		initView();
-		//-----------------------
-		callAlarmScheduleService();
-	}
-
-	private void initView() {
 		//The plus button on the top right corner (adding new alarm)
 		newButton = (ImageButton) findViewById(shakalarm.alarm.R.id.button_new);
 		newButton.setOnTouchListener(new OnTouchListener() {
@@ -72,10 +70,9 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				return true;
 			}
 		});
-
-		//The alarm plus button on the bottom (1st from the left)
-		alarmButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
-		alarmButton.setOnTouchListener(new OnTouchListener() {
+		
+	  	final View alarmButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
+	  	alarmButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 
@@ -101,6 +98,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 		//The timer button on the bottom (2nd from the left)
 		final View stopWatchButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
 		stopWatchButton.setOnTouchListener(new OnTouchListener() {
+			@SuppressLint("InlinedApi")
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 
@@ -146,11 +144,37 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				return true;
 			}
 		});
+		
+		final View settingButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Setting_tab);
+		settingButton.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
 
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+					break;
+				case MotionEvent.ACTION_UP:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, AlarmSettingActivity.class);
+					startActivity(newAlarmIntent);
+
+				case MotionEvent.ACTION_MOVE:
+				case MotionEvent.ACTION_CANCEL:
+					settingButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					break;
+				}
+				return true;
+			}
+		});
+
+		
+		
 		//The alarm list in the center
 		alarmListView = (ListView) findViewById(android.R.id.list);
 		alarmListView.setLongClickable(true);
-
+		
 		//Long click: prompt "delete alarm?" message box
 		alarmListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -188,6 +212,9 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				return true;
 			}
 		});
+
+		//-----------------------
+		callAlarmScheduleService();
 	}
 
 	private void callAlarmScheduleService() {
@@ -225,7 +252,6 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 
 	/**
 	 * Go to the alarm preference activity when an item of the list is clicked
-	 * 
 	 * @author Wing
 	 */
 	@Override
