@@ -25,6 +25,7 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 	private List<AlarmPreference> preferences = new ArrayList<AlarmPreference>();
 	private final String[] repeatDays = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 	private final String[] alarmDifficulties = { "Easy", "Medium", "Hard" };
+	private final String[] alarmModes = { "Shakalarm", "Blowalarm", "ScreamAlarm" };
 
 	private String[] alarmTones;
 	private String[] alarmTonePaths;
@@ -126,6 +127,8 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 			case ALARM_REPEAT:
 				alarm.setDays((Alarm.Day[]) preference.getValue());
 				break;
+			case ALARM_MODE:
+				alarm.setMode(Alarm.AlarmMode.valueOf((String) preference.getValue()));
 			}
 		}
 
@@ -154,6 +157,7 @@ public class AlarmPreferenceListAdapter extends BaseAdapter {
 		}
 
 		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_VIBRATE, "Vibrate", null, null, alarm.getVibrate(), Type.BOOLEAN));
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_MODE, "Alarm mode", alarm.getMode().toString(), alarmModes, alarm.getMode(), Type.LIST));
 	}
 
 	public Context getContext() {

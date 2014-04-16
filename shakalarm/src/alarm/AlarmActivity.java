@@ -1,14 +1,11 @@
 package alarm;
-import shakalarm.alarm.R;
-import java.util.Calendar;
-
+import screamalarm.ScreamAlarmActivity;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import alarm.service.AlarmServiceBroadcastReciever;
-import alarm.setting.AlarmSettingActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -20,7 +17,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -157,7 +153,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(AlarmActivity.this, AlarmSettingActivity.class);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, ScreamAlarmActivity.class);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
