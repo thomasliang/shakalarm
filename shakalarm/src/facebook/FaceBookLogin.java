@@ -4,6 +4,8 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Application;
+import com.facebook.*;
+import com.facebook.model.GraphUser;
 
 public class FaceBookLogin extends Activity{
 	private List<GraphUser> selectedUsers;
