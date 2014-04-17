@@ -23,7 +23,14 @@
 	            android:textAppearance="?android:attr/textAppearanceLarge"
 	            android:textColor="@android:color/primary_text_dark"
 	            android:background="@color/darkorange" />
-	
+	 <ImageButton
+            android:id="@+id/button_new"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/darkorange"
+            android:contentDescription="@string/button_new"
+            android:src="@drawable/ic_action_new" />
 	        
 
     </LinearLayout>
