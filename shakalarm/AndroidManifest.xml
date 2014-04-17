@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Notes from Wing: 
+<!--
+Notes from Wing: 
 Please change the category of an activity to be 
 <category android:name="android.intent.category.DEFAULT" /> 
-										^^^NOT LANUCHER^^^ !!!! -->
+										^^^NOT LANUCHER^^^ !!!!
+-->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="shakalarm.alarm"
     android:versionCode="2"
     android:versionName="1.1" >
@@ -16,96 +17,99 @@ Please change the category of an activity to be
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-	
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
         <activity
             android:name="alarm.AlarmActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+        <activity
+            android:name="screamalarm.ScreamAlarmActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="alarm.preference.AlarmPreferencesActivity"
             android:label="@string/app_name" >
-        </activity>        
-        
+        </activity>
+
         <service
-            android:process="alarm.serviceProcess"
             android:name="alarm.service.AlarmService"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
-            >
+            android:process="alarm.serviceProcess" >
         </service>
-		<receiver android:name="alarm.service.AlarmServiceBroadcastReciever" >
+
+        <receiver android:name="alarm.service.AlarmServiceBroadcastReciever" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        
+
         <activity
-            android:name = "alarm.alert.AlarmAlertActivity"
+            android:name="alarm.alert.AlarmAlertActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
-		
-		<activity
-            android:name = "accelerometer.ShakalarmActivity"
+        <activity
+            android:name="accelerometer.ShakalarmActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
-		
-		<activity
-            android:name = "stopwatch.StopWatchActivity"
+        <activity
+            android:name="stopwatch.StopWatchActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name = "alarm.setting.AlarmSettingActivity"
+            android:name="alarm.setting.AlarmSettingActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
-        
-        
-		 <activity
-            android:theme="@android:style/Theme.NoTitleBar"
+        <activity
+            android:name="timer.TimerActivity"
             android:label="@string/app_name"
-            android:name="timer.TimerActivity" >
-            <intent-filter >
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" /> 
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
-           android:theme="@android:style/Theme.NoTitleBar"
-           android:label="@string/app_name"
-           android:name="timer.TimerCountdownActivity" 
-           android:launchMode="singleTop" >
+            android:name="timer.TimerCountdownActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-        
-        <activity 
-            android:name="timer.TimerFinishedDialog" 
-            android:theme="@android:style/Theme.Dialog" 
-            android:launchMode="singleInstance" 
+        <activity
+            android:name="timer.TimerFinishedDialog"
             android:excludeFromRecents="true"
- 		 	android:taskAffinity="" >
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
-        
-		<receiver android:name="alarm.alert.AlarmAlertBroadcastReciever" >
+
+        <receiver android:name="alarm.alert.AlarmAlertBroadcastReciever" >
         </receiver>
-        <receiver android:name = "alarm.telephony.PhoneStateChangedBroadcastReciever">
+        <receiver android:name="alarm.telephony.PhoneStateChangedBroadcastReciever" >
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>

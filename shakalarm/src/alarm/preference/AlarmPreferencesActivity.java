@@ -236,6 +236,10 @@ public class AlarmPreferencesActivity extends ListActivity {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					switch (alarmPreference.getKey()) {
+					case ALARM_MODE:
+						Alarm.AlarmMode m = Alarm.AlarmMode.values()[which];
+						alarm.setMode(m);
+						break;
 					case ALARM_DIFFICULTY:
 						Alarm.Difficulty d = Alarm.Difficulty.values()[which];
 						alarm.setDifficulty(d);
