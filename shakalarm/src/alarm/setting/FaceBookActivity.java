@@ -1,5 +1,8 @@
 package alarm.setting;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.Signature;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -29,6 +32,9 @@ import shakalarm.alarm.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -37,6 +43,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,9 +63,9 @@ public class FaceBookActivity extends FragmentActivity {
     private final String PENDING_ACTION_BUNDLE_KEY = "com.facebook.samples.hellofacebook:PendingAction";
 
     private Button postStatusUpdateButton;
-    private Button postPhotoButton;
-    private Button pickFriendsButton;
-    private Button pickPlaceButton;
+    //private Button postPhotoButton;
+    //private Button pickFriendsButton;
+    //private Button pickPlaceButton;
     private LoginButton loginButton;
     private ProfilePictureView profilePictureView;
     private TextView greeting;
@@ -132,26 +139,26 @@ public class FaceBookActivity extends FragmentActivity {
             }
         });
 
-        postPhotoButton = (Button) findViewById(R.id.postPhotoButton);
+       /* postPhotoButton = (Button) findViewById(R.id.postPhotoButton);
         postPhotoButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onClickPostPhoto();
             }
-        });
+        });*/
 
-        pickFriendsButton = (Button) findViewById(R.id.pickFriendsButton);
+       /* pickFriendsButton = (Button) findViewById(R.id.pickFriendsButton);
         pickFriendsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onClickPickFriends();
             }
-        });
+        });*/
 
-        pickPlaceButton = (Button) findViewById(R.id.pickPlaceButton);
+        /*pickPlaceButton = (Button) findViewById(R.id.pickPlaceButton);
         pickPlaceButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onClickPickPlace();
             }
-        });
+        });*/
 
         controlsContainer = (ViewGroup) findViewById(R.id.main_ui_container);
 
@@ -161,11 +168,11 @@ public class FaceBookActivity extends FragmentActivity {
             // If we're being re-created and have a fragment, we need to a) hide the main UI controls and
             // b) hook up its listeners again.
             controlsContainer.setVisibility(View.GONE);
-            if (fragment instanceof FriendPickerFragment) {
+            /*if (fragment instanceof FriendPickerFragment) {
                 setFriendPickerListeners((FriendPickerFragment) fragment);
             } else if (fragment instanceof PlacePickerFragment) {
                 setPlacePickerListeners((PlacePickerFragment) fragment);
-            }
+            }*/
         }
 
         // Listen for changes in the back stack so we know if a fragment got popped off because the user
@@ -247,9 +254,9 @@ public class FaceBookActivity extends FragmentActivity {
         boolean enableButtons = (session != null && session.isOpened());
 
         postStatusUpdateButton.setEnabled(enableButtons || canPresentShareDialog);
-        postPhotoButton.setEnabled(enableButtons || canPresentShareDialogWithPhotos);
-        pickFriendsButton.setEnabled(enableButtons);
-        pickPlaceButton.setEnabled(enableButtons);
+        //postPhotoButton.setEnabled(enableButtons || canPresentShareDialogWithPhotos);
+        //pickFriendsButton.setEnabled(enableButtons);
+        //pickPlaceButton.setEnabled(enableButtons);
 
         if (enableButtons && user != null) {
             profilePictureView.setProfileId(user.getId());
@@ -268,9 +275,9 @@ public class FaceBookActivity extends FragmentActivity {
         pendingAction = PendingAction.NONE;
 
         switch (previouslyPendingAction) {
-            case POST_PHOTO:
+            /*case POST_PHOTO:
                 postPhoto();
-                break;
+                break;*/
             case POST_STATUS_UPDATE:
                 postStatusUpdate();
                 break;
@@ -330,7 +337,7 @@ public class FaceBookActivity extends FragmentActivity {
         }
     }
 
-    private void onClickPostPhoto() {
+    /*private void onClickPostPhoto() {
         performPublish(PendingAction.POST_PHOTO, canPresentShareDialogWithPhotos);
     }
 
@@ -462,7 +469,7 @@ public class FaceBookActivity extends FragmentActivity {
                 }
             }
         });
-    }
+    }*/
 
     private void showAlert(String title, String message) {
         new AlertDialog.Builder(this)

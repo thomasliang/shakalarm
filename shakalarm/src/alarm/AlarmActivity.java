@@ -1,4 +1,7 @@
 package alarm;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import screamalarm.ScreamAlarmActivity;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
@@ -14,9 +17,15 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
