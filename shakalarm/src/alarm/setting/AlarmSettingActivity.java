@@ -69,7 +69,7 @@ public class AlarmSettingActivity extends Activity {
       			}
       		});
       		
-        //testing
+        //testing hhaha
         final View alarmButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
       	alarmButton.setOnTouchListener(new OnTouchListener() {
     		@Override
