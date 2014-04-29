@@ -2,6 +2,8 @@ package facebook;
 
 import java.util.List;
 
+import com.facebook.model.GraphUser;
+
 import android.app.Activity;
 import android.app.Application;
 
