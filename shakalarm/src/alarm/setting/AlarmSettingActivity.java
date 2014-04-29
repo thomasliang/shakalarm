@@ -1,6 +1,9 @@
 package alarm.setting;
 
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
@@ -8,12 +11,17 @@ import alarm.AlarmActivity;
 import alarm.preference.AlarmPreferencesActivity;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Base64;
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -24,6 +32,19 @@ public class AlarmSettingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(shakalarm.alarm.R.layout.setting_activity);
+        
+        /*try {
+			PackageInfo info = getPackageManager().getPackageInfo("com.facebook.scrumptious", PackageManager.GET_SIGNATURES);
+			for (Signature signature : info.signatures) {
+			    MessageDigest md = MessageDigest.getInstance("SHA");
+			    md.update(signature.toByteArray());
+			    Log.e("MY KEY HASH:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+			}
+			} catch (NameNotFoundException e) {
+
+			} catch (NoSuchAlgorithmException e) {
+
+			}*/
 
       //The plus button on the top right corner (adding new alarm)
       		newButton = (ImageButton) findViewById(shakalarm.alarm.R.id.button_new);
@@ -48,7 +69,7 @@ public class AlarmSettingActivity extends Activity {
       			}
       		});
       		
-        
+        //testing hhaha
         final View alarmButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
       	alarmButton.setOnTouchListener(new OnTouchListener() {
     		@Override
@@ -123,6 +144,7 @@ public class AlarmSettingActivity extends Activity {
     			}
     			});
     		
+    		//setting button (final button)
     		final View settingButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Setting_tab);
     		settingButton.setOnTouchListener(new OnTouchListener() {
     			@Override
