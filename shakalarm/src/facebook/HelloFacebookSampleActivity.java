@@ -126,7 +126,7 @@ public class HelloFacebookSampleActivity extends Activity {
      // Add code to print out the key hash
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.facebook.samples.hellofacebook", 
+                    getPackageName(), 
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -134,9 +134,10 @@ public class HelloFacebookSampleActivity extends Activity {
                 Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
                 }
         } catch (NameNotFoundException e) {
+        	Log.e("KeyHashError:", e.toString());
 
         } catch (NoSuchAlgorithmException e) {
-
+        	Log.e("KeyHashError:", e.toString());
         }
         
         uiHelper = new UiLifecycleHelper(this, callback);

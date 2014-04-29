@@ -49,7 +49,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 	ImageButton newButton;
 	ListView alarmListView;
 	AlarmListAdapter alarmListAdapter;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -165,7 +165,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(AlarmActivity.this, FaceBookActivity.class);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, HelloFacebookSampleActivity.class);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
