@@ -2,6 +2,8 @@ package alarm;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import facebook.HelloFacebookSampleActivity;
+
 import screamalarm.ScreamAlarmActivity;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
@@ -9,6 +11,7 @@ import timer.TimerActivity;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import alarm.service.AlarmServiceBroadcastReciever;
+import alarm.setting.FaceBookActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -162,7 +165,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(AlarmActivity.this, ScreamAlarmActivity.class);
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, FaceBookActivity.class);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
