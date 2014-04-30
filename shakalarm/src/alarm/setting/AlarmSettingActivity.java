@@ -58,8 +58,8 @@ public class AlarmSettingActivity extends Activity {
       				case MotionEvent.ACTION_UP:
       					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
       					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-//      					Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, FaceBookActivity.class);
-//      					startActivity(newAlarmIntent);
+      					Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, FaceBookActivity.class);
+      					startActivity(newAlarmIntent);
       				case MotionEvent.ACTION_MOVE:
       				case MotionEvent.ACTION_CANCEL:
       					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
@@ -69,7 +69,7 @@ public class AlarmSettingActivity extends Activity {
       			}
       		});
       		
-        //testing hhaha
+        
         final View alarmButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
       	alarmButton.setOnTouchListener(new OnTouchListener() {
     		@Override
