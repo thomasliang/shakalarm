@@ -21,10 +21,12 @@ public class ScreamAlarmActivity extends Activity {
 
 	private Handler mHandler = new Handler();
 
-	private TextView mStatusView;
+	private TextView mStatusView; //The status textView showing "monitoring voice..." or "stopped"
 	private SoundLevelView mDisplay;
 
 	private SoundMeter mSensor;
+
+	private int screamCount = 10;
 
 	private Runnable mSleepTask = new Runnable() {
 		public void run() {
@@ -39,7 +41,7 @@ public class ScreamAlarmActivity extends Activity {
 
 			double amp = mSensor.getAmplitude();
 			//Log.i("Noise", "runnable mPollTask");
-			updateDisplay("Monitoring Voice...", amp);
+			updateDisplay("SCREAM!: " + screamCount, amp);
 
 			if ((amp > mThreshold)) {
 				callForHelp();
@@ -138,8 +140,13 @@ public class ScreamAlarmActivity extends Activity {
 
 		//stop();
 
-		// Show alert when noise thersold crossed
-		Toast.makeText(getApplicationContext(), "Noise Thersold Crossed, do here your stuff.", Toast.LENGTH_LONG).show();
+		// Show alert when noise threshold crossed
+		Toast.makeText(getApplicationContext(), "Noise Threshold Crossed! Continue!.", Toast.LENGTH_LONG).show();
+		--screamCount;
+		if (screamCount <= 0) {
+			screamCount = 0;
+			super.finish();
+		}
 	}
 
 	/**
@@ -150,7 +157,7 @@ public class ScreamAlarmActivity extends Activity {
 	public void onBackPressed() {
 		if (toast_flag1) {
 			toast_flag1 = false;
-			Toast.makeText(getBaseContext(), "Don't press! Shake it!", Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(), "Don't press! SCREAM!", Toast.LENGTH_LONG).show();
 		}
 	}
 
