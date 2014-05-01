@@ -60,7 +60,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					startActivity(newAlarmIntent);
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+					newButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					break;
 				}
 				return true;

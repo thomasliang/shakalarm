@@ -43,7 +43,7 @@ import android.widget.Toast;
 
 public class AlarmPreferencesActivity extends ListActivity {
 
-	ImageButton deleteButton;
+	TextView deleteButton;
 	TextView okButton;
 	TextView cancelButton;
 	private Alarm alarm;
@@ -56,7 +56,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 		setContentView(R.layout.alarm_preferences);
 
 		//The delete button (trash bin) on the top right corner
-		deleteButton = (ImageButton) findViewById(R.id.toolbar).findViewById(R.id.button_delete);
+		deleteButton =  (TextView) findViewById(R.id.textView_delete);
 		deleteButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
