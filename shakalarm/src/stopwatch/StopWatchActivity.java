@@ -1,8 +1,8 @@
 package stopwatch;
+import facebook.HelloFacebookSampleActivity;
 import shakalarm.alarm.R;
 import timer.TimerActivity;
 import alarm.AlarmActivity;
-import alarm.setting.AlarmSettingActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -126,7 +126,7 @@ public class StopWatchActivity extends Activity {
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(StopWatchActivity.this, AlarmSettingActivity.class);
+					Intent newAlarmIntent = new Intent(StopWatchActivity.this, HelloFacebookSampleActivity.class);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:

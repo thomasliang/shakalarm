@@ -1,10 +1,10 @@
 package timer;
 
 
+import facebook.HelloFacebookSampleActivity;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import alarm.AlarmActivity;
-import alarm.setting.AlarmSettingActivity;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -129,7 +129,7 @@ public class TimerActivity extends Activity {
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(TimerActivity.this, AlarmSettingActivity.class);
+					Intent newAlarmIntent = new Intent(TimerActivity.this, HelloFacebookSampleActivity.class);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:

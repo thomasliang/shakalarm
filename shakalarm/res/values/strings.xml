@@ -347,7 +347,7 @@
 	<string name="hello">Hello World, StopWatch!</string>
     <string name="chronometer_initial_format">Initial format:<xliff:g id="initial-format">%</xliff:g></string>
     
-    <string name="title">Simple Countdown Timer</string>
+    <string name="title">" "</string>
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
     <string name="seconds">Seconds</string>
