@@ -1,5 +1,6 @@
 package alarm.alert;
 
+import screamalarm.ScreamAlarmActivity;
 import accelerometer.ShakalarmActivity;
 import alarm.Alarm;
 import alarm.service.AlarmServiceBroadcastReciever;
@@ -22,9 +23,10 @@ public class AlarmAlertBroadcastReciever extends BroadcastReceiver {
 		final Alarm alarm = (Alarm) bundle.getSerializable("alarm");
 
 		Intent AlarmAlertActivityIntent;
-
-		AlarmAlertActivityIntent = new Intent(context, ShakalarmActivity.class); //changed from AlarmAlertActivity to ShakalarmActivity
-
+		if(alarm.getMode()==Alarm.AlarmMode.SHAKALARM)AlarmAlertActivityIntent = new Intent(context, ShakalarmActivity.class);//changed from AlarmAlertActivity to ShakalarmActivity
+		else if (alarm.getMode()==Alarm.AlarmMode.BLOWALARM) AlarmAlertActivityIntent = new Intent(context, ScreamAlarmActivity.class);
+		else AlarmAlertActivityIntent = new Intent(context, ScreamAlarmActivity.class); 
+		
 		AlarmAlertActivityIntent.putExtra("alarm", alarm);
 
 		AlarmAlertActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
