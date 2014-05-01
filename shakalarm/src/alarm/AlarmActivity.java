@@ -1,5 +1,12 @@
 package alarm;
+<<<<<<< HEAD
 import facebook.HelloFacebookSampleActivity;
+=======
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import screamalarm.ScreamAlarmActivity;
+>>>>>>> refs/remotes/origin/master
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
@@ -14,9 +21,15 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,7 +50,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 	ImageButton newButton;
 	ListView alarmListView;
 	AlarmListAdapter alarmListAdapter;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -153,8 +166,13 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+<<<<<<< HEAD
       				Intent newAlarmIntent = new Intent(AlarmActivity.this, HelloFacebookSampleActivity.class);
          			startActivity(newAlarmIntent);
+=======
+					Intent newAlarmIntent = new Intent(AlarmActivity.this, ScreamAlarmActivity.class);
+					startActivity(newAlarmIntent);
+>>>>>>> refs/remotes/origin/master
 
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
