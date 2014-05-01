@@ -44,8 +44,8 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.alarm_activity);
 
-		//The plus button on the top right corner (adding new alarm)
-		newButton = (ImageButton) findViewById(shakalarm.alarm.R.id.button_new);
+		////The alarm button on the bottom  (adding new alarm)
+		newButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
 		newButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -67,29 +67,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 			}
 		});
 		
-	  	final View alarmButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Alarm_tab);
-	  	alarmButton.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_DOWN:
-					alarmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
-					break;
-				case MotionEvent.ACTION_UP:
-					alarmButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
-					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(AlarmActivity.this, AlarmActivity.class);
-					startActivity(newAlarmIntent);
-
-				case MotionEvent.ACTION_MOVE:
-				case MotionEvent.ACTION_CANCEL:
-					alarmButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
-					break;
-				}
-				return true;
-			}
-		});
+	  	
 
 		//The timer button on the bottom (2nd from the left)
 		final View stopWatchButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
