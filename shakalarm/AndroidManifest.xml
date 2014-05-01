@@ -132,7 +132,7 @@ Please change the category of an activity to be
                   android:name="com.facebook.NativeAppCallContentProvider"
                   android:exported="true"/>
         
-        <receiver android:name="com.facebook.samples.hellofacebook.HelloFacebookBroadcastReceiver">
+        <receiver android:name="facebook.HelloFacebookBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.facebook.platform.AppCallResultBroadcast" />
             </intent-filter>

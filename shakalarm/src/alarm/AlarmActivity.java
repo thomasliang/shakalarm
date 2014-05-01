@@ -1,4 +1,5 @@
 package alarm;
+import facebook.HelloFacebookSampleActivity;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
@@ -152,8 +153,8 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-//					Intent newAlarmIntent = new Intent(AlarmActivity.this, FaceBookActivity.class);
-//					startActivity(newAlarmIntent);
+      				Intent newAlarmIntent = new Intent(AlarmActivity.this, HelloFacebookSampleActivity.class);
+         			startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
