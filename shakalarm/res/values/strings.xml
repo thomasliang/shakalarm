@@ -351,7 +351,7 @@
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
     <string name="seconds">Seconds</string>
-    <string name="stopped">stopped...</string>
+    <string name="stopped">stopped</string>
     
     <string name="app_id">293247367504484</string>
     
@@ -368,5 +368,7 @@
     <string name="no_place_selected">&lt;No place selected&gt;</string>
     <string name="pick_seattle_place">Pick a Seattle Place</string>
     <string name="exception">Exception: %1$s</string>
+    <string name="status">Post Status Update</string>
+    <string name="photo">Post Photo</string>
 
 </resources>

@@ -18,7 +18,6 @@ package facebook;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -26,8 +25,6 @@ import java.util.List;
 import shakalarm.alarm.R;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -37,18 +34,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.AppEventsLogger;
 import com.facebook.FacebookAuthorizationException;
-import com.facebook.FacebookException;
 import com.facebook.FacebookOperationCanceledException;
 import com.facebook.FacebookRequestError;
 import com.facebook.Request;
@@ -60,28 +54,18 @@ import com.facebook.model.GraphObject;
 import com.facebook.model.GraphPlace;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.FacebookDialog;
-import com.facebook.widget.FriendPickerFragment;
 import com.facebook.widget.LoginButton;
-import com.facebook.widget.PickerFragment;
-import com.facebook.widget.PlacePickerFragment;
 import com.facebook.widget.ProfilePictureView;
 
 public class HelloFacebookSampleActivity extends Activity {
 
     private static final String PERMISSION = "publish_actions";
-    private static final Location SEATTLE_LOCATION = new Location("") {
-        {
-            setLatitude(47.6097);
-            setLongitude(-122.3331);
-        }
-    };
+
 
     private final String PENDING_ACTION_BUNDLE_KEY = "com.facebook.samples.hellofacebook:PendingAction";
 
     private Button postStatusUpdateButton;
     private Button postPhotoButton;
-    private Button pickFriendsButton;
-    private Button pickPlaceButton;
     private LoginButton loginButton;
     private ProfilePictureView profilePictureView;
     private TextView greeting;
@@ -249,9 +233,8 @@ public class HelloFacebookSampleActivity extends Activity {
         boolean enableButtons = (session != null && session.isOpened());
 
         postStatusUpdateButton.setEnabled(enableButtons || canPresentShareDialog);
-       // postPhotoButton.setEnabled(enableButtons || canPresentShareDialogWithPhotos);
-       // pickFriendsButton.setEnabled(enableButtons);
-        //pickPlaceButton.setEnabled(enableButtons);
+        postPhotoButton.setEnabled(enableButtons || canPresentShareDialogWithPhotos);
+
 
         if (enableButtons && user != null) {
             profilePictureView.setProfileId(user.getId());
@@ -361,7 +344,8 @@ public class HelloFacebookSampleActivity extends Activity {
 
 
 
-    private void showAlert(String title, String message) {
+    @SuppressWarnings("unused")
+	private void showAlert(final String title, final String message) {
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)

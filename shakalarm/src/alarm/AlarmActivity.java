@@ -1,9 +1,4 @@
 package alarm;
-import facebook.HelloFacebookSampleActivity;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import screamalarm.ScreamAlarmActivity;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
@@ -18,15 +13,9 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,6 +30,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+import facebook.HelloFacebookSampleActivity;
 
 public class AlarmActivity extends ListActivity implements android.view.View.OnClickListener {
 

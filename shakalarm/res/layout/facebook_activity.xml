@@ -27,6 +27,7 @@
                   android:layout_height="fill_parent"
                   android:background="#FFF"
                   android:id="@+id/main_ui_container">
+                  
         <com.facebook.widget.LoginButton
                 android:id="@+id/login_button"
                 android:layout_width="wrap_content"
@@ -49,6 +50,7 @@
                     android:layout_gravity="center"
                     android:textColor="#333"
                     android:textSize="18sp"/>
+            
             <com.facebook.widget.ProfilePictureView
                     android:id="@+id/profilePicture"
                     android:layout_height="wrap_content"
@@ -60,13 +62,13 @@
                     android:id="@+id/postStatusUpdateButton"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Post Status Update"
+                    android:text="@string/status"
                     />
             <Button
                     android:id="@+id/postPhotoButton"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Post Photo"
+                    android:text="@string/photo"
                     />
  
         </LinearLayout>

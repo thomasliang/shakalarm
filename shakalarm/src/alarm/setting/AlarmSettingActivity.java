@@ -1,30 +1,18 @@
 package alarm.setting;
 
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
 import alarm.AlarmActivity;
-import alarm.preference.AlarmPreferencesActivity;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.util.Base64;
-import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.Button;
 import android.widget.ImageButton;
+import facebook.HelloFacebookSampleActivity;
 
 public class AlarmSettingActivity extends Activity {
 	ImageButton newButton;
@@ -58,7 +46,7 @@ public class AlarmSettingActivity extends Activity {
       				case MotionEvent.ACTION_UP:
       					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
       					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-      					Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, FaceBookActivity.class);
+      					Intent newAlarmIntent = new Intent(AlarmSettingActivity.this, HelloFacebookSampleActivity.class);
       					startActivity(newAlarmIntent);
       				case MotionEvent.ACTION_MOVE:
       				case MotionEvent.ACTION_CANCEL:
