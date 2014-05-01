@@ -36,7 +36,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
 				| WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
 		setContentView(R.layout.alarm_activity);
-
+		
 		Bundle bundle = this.getIntent().getExtras();
 		alarm = (Alarm) bundle.getSerializable("alarm");
 

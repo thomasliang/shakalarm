@@ -37,7 +37,7 @@ public class TimerActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.timer_activity);
-        
+    
       hoursBox = (EditText) findViewById(R.id.hoursBox);
       minutesBox = (EditText) findViewById(R.id.minutesBox);
 	  secondsBox = (EditText) findViewById(R.id.secondsBox);
