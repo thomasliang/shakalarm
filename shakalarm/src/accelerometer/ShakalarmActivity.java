@@ -1,14 +1,19 @@
 package accelerometer;
 
+import facebook.HelloFacebookSampleActivity;
+import facebook.HelloFacebookSampleActivity.*;
 import shakalarm.alarm.R;
+import stopwatch.StopWatchActivity;
 import alarm.Alarm;
-import alarm.Alarm.Difficulty;
+import alarm.AlarmActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.DisplayMetrics;
@@ -20,8 +25,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ShakalarmActivity extends Activity implements AccelerometerListener {
+	
+	public static final String message = "OK";
 
 	private Alarm alarm;
+    public final static String EXTRA_MESSAGE = "accelerometer.ShakalarmActivity.MESSAGE";
+
 
 	private TextView acceleration_textView_x;
 	private TextView acceleration_textView_y;
@@ -38,7 +47,22 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 	private TextView ShakeCountDown_textview;
 	private MediaPlayer mediaPlayer;
 	private Vibrator vibrator;
+    private CountDownTimer timer = new CountDownTimer(10000, 1000000) {
+    	@Override
+    	public void onFinish() {
+    		Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_LONG).show();
+    		Intent intent = new Intent(ShakalarmActivity.this, HelloFacebookSampleActivity.class);
+    		String message = "ok";
+    	    intent.putExtra(EXTRA_MESSAGE, message);
+			startActivity(intent);
+    	}
 
+		@Override
+		public void onTick(long arg0) {
+			
+		}
+    };
+    
 	private boolean toast_flag1 = true;
 	private boolean alarmActive = true;
 
@@ -53,7 +77,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarm_alert);
 		getActionBar().setDisplayHomeAsUpEnabled(false); //This function disables returning to app's Home by clicking the app icon above.
-		
+		timer.start();
 		
 		//change textView on the screen
 		ShakeCountDown_textview = (TextView) findViewById(R.id.shakeCountDown);
@@ -70,6 +94,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		//----------------------------
 		startAlarm();
 	}
+
 
 	private void init_animation_pic() {
 		DisplayMetrics metrics = new DisplayMetrics();
@@ -174,7 +199,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		super.onResume();
 		//Check device supported Accelerometer sessor or not
 		if (AccelerometerManager.isSupported(this)) {
-			AccelerometerManager.setDifficulty(alarm.getDifficulty().ordinal());
+
 			//Start Accelerometer Listening
 			AccelerometerManager.startListening(this);
 		}

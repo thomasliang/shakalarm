@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 import shakalarm.alarm.R;
+import accelerometer.ShakalarmActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -40,6 +41,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AppEventsLogger;
 import com.facebook.FacebookAuthorizationException;
@@ -172,6 +174,15 @@ public class HelloFacebookSampleActivity extends Activity {
         // Can we present the share dialog for photos?
         canPresentShareDialogWithPhotos = FacebookDialog.canPresentShareDialog(this,
                 FacebookDialog.ShareDialogFeature.PHOTOS);
+        
+        Intent intent = getIntent();
+        String m = intent.getStringExtra(ShakalarmActivity.EXTRA_MESSAGE);
+        if(m.equals("ok"))
+        	onClickPostStatusUpdate();
+        	
+
+
+
     }
 
     @Override
