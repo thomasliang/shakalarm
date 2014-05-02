@@ -1,6 +1,8 @@
 package accelerometer;
 
 import java.util.List;
+
+import alarm.Alarm.Difficulty;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,6 +18,10 @@ public class AccelerometerManager {
     /** Accuracy configuration */
     private static float threshold  = 15.0f; 
     private static int interval     = 200;
+    
+    private static float [] Threshold = {15.0f, 30.0f, 45.0f}; 
+    
+    private static int difficulty;
  
     private static Sensor sensor;
     private static SensorManager sensorManager;
@@ -81,8 +87,8 @@ public class AccelerometerManager {
      * @param interval
      *             minimum interval between to shake events
      */
-    public static void configure(int threshold, int interval) {
-        AccelerometerManager.threshold = threshold;
+    public static void configure(int difficulty, int interval) {
+        AccelerometerManager.threshold = Threshold[difficulty];
         AccelerometerManager.interval = interval;
     }
  
@@ -128,9 +134,13 @@ public class AccelerometerManager {
      */
     public static void startListening(
             AccelerometerListener accelerometerListener, 
-            int threshold, int interval) {
-        configure(threshold, interval);
+            int difficulty, int interval) {
+        configure(difficulty, interval);
         startListening(accelerometerListener);
+    }
+    
+    public static void setDifficulty (int difficulty) {
+    	AccelerometerManager.difficulty = difficulty;
     }
  
     /**
@@ -184,7 +194,7 @@ public class AccelerometerManager {
                                 / timeDiff;*/ 
                     force = Math.abs(x + y + z - lastX - lastY - lastZ);
                 	
-                	if (Float.compare(force, threshold) >0 ) {
+                	if (Float.compare(force, Threshold[difficulty]) >0 ) {
                     	//Toast.makeText(aContext, (now-lastShake)+"  >= "+interval, 1000).show();
                         if (now - lastShake >= interval) { 
                         	
