@@ -43,9 +43,9 @@ import android.widget.Toast;
 
 public class AlarmPreferencesActivity extends ListActivity {
 
-	TextView deleteButton;
-	TextView okButton;
-	TextView cancelButton;
+	ImageButton deleteButton;
+	ImageButton okButton;
+	ImageButton cancelButton;
 	private Alarm alarm;
 	private MediaPlayer mediaPlayer;
 
@@ -56,7 +56,8 @@ public class AlarmPreferencesActivity extends ListActivity {
 		setContentView(R.layout.alarm_preferences);
 
 		//The delete button (trash bin) on the top right corner
-		deleteButton =  (TextView) findViewById(R.id.textView_delete);
+	
+		deleteButton =  (ImageButton) findViewById(R.id.textView_delete);
 		deleteButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -97,7 +98,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
-					deleteButton.setBackgroundColor(getResources().getColor(R.color.darkorange));
+					deleteButton.setBackgroundColor(getResources().getColor(R.color.black));
 					break;
 				}
 				return true;
@@ -105,7 +106,7 @@ public class AlarmPreferencesActivity extends ListActivity {
 		});
 
 		//OK button
-		okButton = (TextView) findViewById(R.id.textView_OK);
+		okButton =  (ImageButton) findViewById(R.id.textView_OK);
 		okButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -134,8 +135,8 @@ public class AlarmPreferencesActivity extends ListActivity {
 			}
 		});
 
-		//Cancel Button
-		cancelButton = (TextView) findViewById(R.id.textView_cancel);
+		//back Button
+		cancelButton = (ImageButton) findViewById(R.id.textView_back);
 		cancelButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {

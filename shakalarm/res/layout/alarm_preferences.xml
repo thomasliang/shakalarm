@@ -14,7 +14,7 @@
          android:layout_height="0dp"
          android:layout_weight="1"
          android:drawSelectorOnTop="false"
-         android:background="@drawable/stopwatch2" />
+         android:background="@drawable/stopwatch5" />
 
      <TextView
         android:id="@android:id/empty"
@@ -30,49 +30,37 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"   
 		    android:orientation="horizontal" >
-		 	<TextView
+		 	<ImageButton
+		        android:id="@+id/textView_back"
+		        android:layout_width="0dp"
+		        android:layout_height="50dp"
+		        android:layout_weight="1"
+		        android:clickable="true"
+		        android:background="@color/black"
+            	android:contentDescription="@string/Counter_tab"
+            	android:src="@drawable/ic_action_back" />
+		 
+		 	
+		    <ImageButton
 		        android:id="@+id/textView_delete"
 		        android:layout_width="0dp"
 		        android:layout_height="50dp"
 		        android:layout_weight="1"
 		        android:clickable="true"
-		        android:gravity="center"
-		        android:text="@string/cancel"
-		        android:textAppearance="?android:attr/textAppearanceMedium"
-		        android:textColor="@android:color/primary_text_dark"
-		        android:background="@color/black" />
-		 	<View
-	            android:id="@+id/view1"
-	            android:layout_width="1dp"
-	            android:layout_height="match_parent"
-	            android:background="@color/cornsilk"/>
-		    <TextView
-		        android:id="@+id/textView_cancel"
-		        android:layout_width="0dp"
-		        android:layout_height="50dp"
-		        android:layout_weight="1"
-		        android:clickable="true"
-		        android:gravity="center"
-		        android:text="@string/cancel"
-		        android:textAppearance="?android:attr/textAppearanceMedium"
-		        android:textColor="@android:color/primary_text_dark"
-		        android:background="@color/black" />
-			<View
-	            android:id="@+id/view1"
-	            android:layout_width="1dp"
-	            android:layout_height="match_parent"
-	            android:background="@color/cornsilk"/>
-		    <TextView
+		        android:background="@color/black"
+            	android:contentDescription="@string/Counter_tab"
+            	android:src="@drawable/ic_action_cancel" 
+		   		 />
+			
+		    <ImageButton
 		        android:id="@+id/textView_OK"
 		        android:layout_width="0dp"
 		        android:layout_height="50dp"
 		        android:layout_weight="1"
-		        android:clickable="true"
-		        android:gravity="center"
-		        android:text="@string/ok"
-		        android:textAppearance="?android:attr/textAppearanceMedium"
-		        android:textColor="@android:color/primary_text_dark"
-		        android:background="@color/black" />
+		        android:background="@color/black"
+            	android:contentDescription="@string/Counter_tab"
+            	android:src="@drawable/ic_action_good" 
+		         />
 		
 		</LinearLayout>
  </LinearLayout>

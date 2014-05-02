@@ -44,16 +44,15 @@
 		    
 			
 			
-		    <ImageButton
+		      <ImageButton
             android:id="@+id/Timer_tab"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/black"
             android:contentDescription="@string/Timer_tab"
-            android:src="@drawable/ic_action_timer" />
+            android:src="@drawable/ic_action_counter" />
 		    
-		   
 		    
 		    <ImageButton
             android:id="@+id/Counter_tab"
@@ -62,7 +61,7 @@
             android:layout_weight="1"
             android:background="@color/black"
             android:contentDescription="@string/Counter_tab"
-            android:src="@drawable/ic_action_counter" />
+            android:src="@drawable/ic_action_timer" />
 		    
 		   
 		    <ImageButton
