@@ -4,7 +4,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="4dip"
-	android:background="@drawable/stopwatch">
+	android:background="@drawable/stopwatch2">
 
     <Chronometer
         android:id="@+id/chronometer"
@@ -36,9 +36,9 @@
         android:background="@drawable/stop"
         />
     
-   	<LinearLayout
+   	  <LinearLayout
 	    android:id="@+id/tabs"
-		    android:layout_width="match_parent"
+		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"
 		    android:gravity="bottom" 
 		    android:orientation="horizontal" >
@@ -61,8 +61,7 @@
             android:layout_weight="1"
             android:background="@color/black"
             android:contentDescription="@string/Timer_tab"
-            android:src="@drawable/ic_action_timer" />
-		    
+            android:src="@drawable/ic_action_counter" />
 		    
 		    
 		    <ImageButton
@@ -72,9 +71,9 @@
             android:layout_weight="1"
             android:background="@color/black"
             android:contentDescription="@string/Counter_tab"
-            android:src="@drawable/ic_action_counter" />
+            android:src="@drawable/ic_action_timer" />
 		    
-		    
+		   
 		    
 		    <ImageButton
             android:id="@+id/Setting_tab"
