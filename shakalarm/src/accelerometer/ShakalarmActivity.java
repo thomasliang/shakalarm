@@ -2,6 +2,7 @@ package accelerometer;
 
 import shakalarm.alarm.R;
 import alarm.Alarm;
+import alarm.Alarm.Difficulty;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.media.AudioManager;
@@ -173,7 +174,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
 		super.onResume();
 		//Check device supported Accelerometer sessor or not
 		if (AccelerometerManager.isSupported(this)) {
-
+			AccelerometerManager.setDifficulty(alarm.getDifficulty().ordinal());
 			//Start Accelerometer Listening
 			AccelerometerManager.startListening(this);
 		}
