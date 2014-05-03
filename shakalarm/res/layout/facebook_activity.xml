@@ -20,12 +20,12 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="#FFF"
+              android:background="@drawable/stopwatch1"
         >
     <LinearLayout android:orientation="vertical"
                   android:layout_width="fill_parent"
                   android:layout_height="fill_parent"
-                  android:background="#FFF"
+                  android:background="@drawable/stopwatch1"
                   android:id="@+id/main_ui_container">
         <LinearLayout
                 android:layout_width="150dp"
@@ -66,12 +66,14 @@
             android:id="@+id/postStatusUpdateButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/status" />
+            android:text="@string/status"
+            android:textColor="#F0FFF0" />
 
         <Button
             android:id="@+id/postPhotoButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textColor="#F0FFF0"
             android:text="@string/photo" />
 
     </LinearLayout>
