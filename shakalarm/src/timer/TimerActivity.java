@@ -56,6 +56,7 @@ public class TimerActivity extends Activity {
 				alarmButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 				v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 				Intent newAlarmIntent = new Intent(TimerActivity.this, AlarmActivity.class);
+				newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				startActivity(newAlarmIntent);
 
 			case MotionEvent.ACTION_MOVE:
@@ -82,6 +83,7 @@ public class TimerActivity extends Activity {
 					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(TimerActivity.this, StopWatchActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -106,6 +108,7 @@ public class TimerActivity extends Activity {
 				case MotionEvent.ACTION_UP:
 					timerButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					Intent newAlarmIntent = new Intent(TimerActivity.this, TimerActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -130,6 +133,7 @@ public class TimerActivity extends Activity {
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(TimerActivity.this, HelloFacebookSampleActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:

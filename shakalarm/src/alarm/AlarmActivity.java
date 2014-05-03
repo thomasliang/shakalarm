@@ -57,6 +57,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					newButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(AlarmActivity.this, AlarmPreferencesActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
@@ -84,6 +85,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(AlarmActivity.this, StopWatchActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -108,6 +110,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				case MotionEvent.ACTION_UP:
 					timerButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					Intent newAlarmIntent = new Intent(AlarmActivity.this, TimerActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -132,6 +135,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
       				Intent newAlarmIntent = new Intent(AlarmActivity.this, HelloFacebookSampleActivity.class);
+      				newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
          			//startActivity(newAlarmIntent);
 					//Intent newAlarmIntent = new Intent(AlarmActivity.this, ScreamAlarmActivity.class);
 					startActivity(newAlarmIntent);
