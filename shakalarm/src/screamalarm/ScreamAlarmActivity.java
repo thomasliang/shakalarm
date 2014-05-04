@@ -6,8 +6,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class ScreamAlarmActivity extends Activity {
@@ -21,12 +24,19 @@ public class ScreamAlarmActivity extends Activity {
 
 	private Handler mHandler = new Handler();
 
-	private TextView mStatusView; //The status textView showing "monitoring voice..." or "stopped"
-	private SoundLevelView mDisplay;
+	//private TextView mStatusView; //The status textView showing "monitoring voice..." or "stopped"
+	//private SoundLevelView mDisplay;
 
 	private SoundMeter mSensor;
 
-	private int screamCount = 10;
+	private int screamCount = 14;
+	private int INIT_SCREAM_COUNT = 14;
+
+	private boolean toast_flag1 = true;
+
+	private int[] animation_picture_series_id = new int[7];
+
+	private ImageView picture_imageView;
 
 	private Runnable mSleepTask = new Runnable() {
 		public void run() {
@@ -55,22 +65,22 @@ public class ScreamAlarmActivity extends Activity {
 		}
 	};
 
-	private boolean toast_flag1 = true;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// Defined SoundLevelView in main.xml file
 		setContentView(R.layout.screamalarm_activity);
-		mStatusView = (TextView) findViewById(R.id.status);
+		//mStatusView = (TextView) findViewById(R.id.status);
 
 		// Used to record voice
 		mSensor = new SoundMeter();
-		mDisplay = (SoundLevelView) findViewById(R.id.volume);
+		//mDisplay = (SoundLevelView) findViewById(R.id.volume);
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
+
+		init_animation_pic();
 	}
 
 	@Override
@@ -79,7 +89,7 @@ public class ScreamAlarmActivity extends Activity {
 		//Log.i("Noise", "==== onResume ===");
 
 		initializeApplicationConstants();
-		mDisplay.setLevel(0, mThreshold);
+		//mDisplay.setLevel(0, mThreshold);
 
 		if (!mRunning) {
 			mRunning = true;
@@ -118,7 +128,7 @@ public class ScreamAlarmActivity extends Activity {
 		mHandler.removeCallbacks(mSleepTask);
 		mHandler.removeCallbacks(mPollTask);
 		mSensor.stop();
-		mDisplay.setLevel(0, 0);
+		//mDisplay.setLevel(0, 0);
 		updateDisplay("stopped...", 0.0);
 		mRunning = false;
 
@@ -131,12 +141,39 @@ public class ScreamAlarmActivity extends Activity {
 	}
 
 	private void updateDisplay(String status, double signalEMA) {
-		mStatusView.setText(status);
+		//mStatusView.setText(status);
 		// 
-		mDisplay.setLevel((int) signalEMA, mThreshold);
+		//mDisplay.setLevel((int) signalEMA, mThreshold);
+	}
+
+	private void init_animation_pic() {
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		int height = metrics.heightPixels;
+		int width = metrics.widthPixels;
+		picture_imageView = new ImageView(ScreamAlarmActivity.this);
+		picture_imageView.setImageResource(R.drawable.screamalarm1);
+		LayoutParams param = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		picture_imageView.setLayoutParams(param);
+		RelativeLayout layout = (RelativeLayout) findViewById(R.id.screamalarm_activity_relativeLayout);
+		layout.addView(picture_imageView, Math.max(width, height), Math.max(width, height));
+		animation_picture_series_id[0] = R.drawable.screamalarm1;
+		animation_picture_series_id[1] = R.drawable.screamalarm2;
+		animation_picture_series_id[2] = R.drawable.screamalarm3;
+		animation_picture_series_id[3] = R.drawable.screamalarm4;
+		animation_picture_series_id[4] = R.drawable.screamalarm5;
+		animation_picture_series_id[5] = R.drawable.screamalarm6;
+		animation_picture_series_id[6] = R.drawable.screamalarm7;
 	}
 
 	private void callForHelp() {
+		int partitions = (INIT_SCREAM_COUNT) / animation_picture_series_id.length;
+		int image_no = (INIT_SCREAM_COUNT - screamCount) / partitions;
+		if (image_no > animation_picture_series_id.length - 1) {
+			picture_imageView.setImageResource(animation_picture_series_id[animation_picture_series_id.length - 1]);
+		} else {
+			picture_imageView.setImageResource(animation_picture_series_id[image_no]);
+		}
 
 		//stop();
 
