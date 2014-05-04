@@ -77,12 +77,15 @@
 
       <Button
           android:id="@+id/startButton"
-          android:layout_width="100dp"
-          android:layout_height="100dp"
+          android:layout_width="200dp"
+          android:layout_height="40dp"
           android:layout_below="@+id/minutesBox"
           android:layout_centerHorizontal="true"
           android:layout_marginTop="70dp"
-          android:background="@drawable/timer_start"
+          android:text="@string/Start"
+          android:textColor="#D2691E"
+          android:typeface="monospace"
+          android:background="@drawable/round_rec"
           />
       <LinearLayout
 	    android:id="@+id/tabs"

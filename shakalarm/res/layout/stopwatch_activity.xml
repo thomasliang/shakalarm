@@ -17,26 +17,32 @@
 
     <Button
         android:id="@+id/start"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/start"
-         />
+        android:layout_width="80sp"
+		android:layout_height="80sp"
+		android:background="@drawable/round_button"
+		android:gravity="center_vertical|center_horizontal"
+		android:text="@string/Start"
+		android:textColor="#fff" />
 
-    <Button
-        android:id="@+id/reset"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/reset"
-        />
-
-    <Button
+     <Button
         android:id="@+id/stop"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/stop"
-        />
-    
-   	  <LinearLayout
+        android:layout_width="80sp"
+		android:layout_height="80sp"
+		android:background="@drawable/round_button"
+		android:gravity="center_vertical|center_horizontal"
+		android:text="@string/Stop"
+		android:textColor="#fff" />
+
+     <Button
+         android:id="@+id/reset"
+         android:layout_width="80sp"
+         android:layout_height="80sp"
+         android:background="@drawable/round_button"
+         android:gravity="center_vertical|center_horizontal"
+         android:text="@string/Reset"
+         android:textColor="#fff" />
+   	 
+     <LinearLayout
 	    android:id="@+id/tabs"
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"

@@ -20,7 +20,6 @@ import android.widget.ImageButton;
 public class StopWatchActivity extends Activity {
     Chronometer mChronometer;
     long time = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +35,7 @@ public class StopWatchActivity extends Activity {
         // Watch for button clicks.
         button = (Button) findViewById(R.id.start);
         button.setOnClickListener(mStartListener);
+       
 
         button = (Button) findViewById(R.id.stop);
         button.setOnClickListener(mStopListener);
@@ -43,6 +43,7 @@ public class StopWatchActivity extends Activity {
         button = (Button) findViewById(R.id.reset);
         button.setOnClickListener(mResetListener);
         
+       
 		//The timer button on the bottom (2nd from the left)
 		final View stopWatchButton = (ImageButton) findViewById(shakalarm.alarm.R.id.Timer_tab);
 		stopWatchButton.setOnTouchListener(new OnTouchListener() {
@@ -57,6 +58,7 @@ public class StopWatchActivity extends Activity {
 					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(StopWatchActivity.this, StopWatchActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -81,6 +83,7 @@ public class StopWatchActivity extends Activity {
 				case MotionEvent.ACTION_UP:
 					timerButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					Intent newAlarmIntent = new Intent(StopWatchActivity.this, TimerActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -104,6 +107,7 @@ public class StopWatchActivity extends Activity {
 					alarmButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(StopWatchActivity.this, AlarmActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -128,6 +132,7 @@ public class StopWatchActivity extends Activity {
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 					Intent newAlarmIntent = new Intent(StopWatchActivity.this, HelloFacebookSampleActivity.class);
+					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(newAlarmIntent);
 
 				case MotionEvent.ACTION_MOVE:
@@ -142,6 +147,7 @@ public class StopWatchActivity extends Activity {
 
     View.OnClickListener mStartListener = new OnClickListener() {
         public void onClick(View v) {
+        
         	mChronometer.setBase(SystemClock.elapsedRealtime()+time);
             mChronometer.start();
         }
