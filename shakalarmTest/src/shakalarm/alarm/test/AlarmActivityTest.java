@@ -37,7 +37,7 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 		super.setUp();
 		
 		mActivity = (AlarmActivity) getActivity();		
-		newButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.button_new);
+		newButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Alarm_tab);
 	}
 
 

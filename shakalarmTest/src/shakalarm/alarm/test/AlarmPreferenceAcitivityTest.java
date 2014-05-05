@@ -52,7 +52,7 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 
 		solo = new Solo(getInstrumentation(), getActivity());
 
-		cancelButton = (TextView) mActivity.findViewById(shakalarm.alarm.R.id.textView_cancel);
+		cancelButton = (TextView) mActivity.findViewById(shakalarm.alarm.R.id.textView_delete);
 		okButton = (TextView) mActivity.findViewById(shakalarm.alarm.R.id.textView_OK);
 		listView = (ListView) mActivity.findViewById(android.R.id.list);
 	}
