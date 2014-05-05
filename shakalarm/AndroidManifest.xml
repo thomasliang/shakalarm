@@ -112,7 +112,7 @@ Please change the category of an activity to be
         
         <!-- facebook login activity -->
         
-        <activity android:name="facebook.HelloFacebookSampleActivity"
+        <activity android:name="facebook.FacebookSampleActivity"
                   android:label="@string/app_name"
                   android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -130,7 +130,7 @@ Please change the category of an activity to be
                   android:name="com.facebook.NativeAppCallContentProvider"
                   android:exported="true"/>
         
-        <receiver android:name="facebook.HelloFacebookBroadcastReceiver">
+        <receiver android:name="facebook.FacebookBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.facebook.platform.AppCallResultBroadcast" />
             </intent-filter>

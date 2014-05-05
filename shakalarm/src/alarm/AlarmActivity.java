@@ -30,7 +30,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
-import facebook.HelloFacebookSampleActivity;
+import facebook.FacebookSampleActivity;
 
 public class AlarmActivity extends ListActivity implements android.view.View.OnClickListener {
 
@@ -134,7 +134,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 				case MotionEvent.ACTION_UP:
 					settingButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
 					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-      				Intent newAlarmIntent = new Intent(AlarmActivity.this, HelloFacebookSampleActivity.class);
+      				Intent newAlarmIntent = new Intent(AlarmActivity.this, FacebookSampleActivity.class);
       				newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
          			//startActivity(newAlarmIntent);
 					//Intent newAlarmIntent = new Intent(AlarmActivity.this, ScreamAlarmActivity.class);

@@ -59,7 +59,7 @@ import com.facebook.widget.FacebookDialog;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.ProfilePictureView;
 
-public class HelloFacebookSampleActivity extends Activity {
+public class FacebookSampleActivity extends Activity {
 
     private static final String PERMISSION = "publish_actions";
 
@@ -139,7 +139,7 @@ public class HelloFacebookSampleActivity extends Activity {
         loginButton.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
             @Override
             public void onUserInfoFetched(GraphUser user) {
-                HelloFacebookSampleActivity.this.user = user;
+                FacebookSampleActivity.this.user = user;
                 updateUI();
                 // It's possible that we were waiting for this.user to be populated in order to post a
                 // status update.
@@ -231,7 +231,7 @@ public class HelloFacebookSampleActivity extends Activity {
         if (pendingAction != PendingAction.NONE &&
                 (exception instanceof FacebookOperationCanceledException ||
                 exception instanceof FacebookAuthorizationException)) {
-                new AlertDialog.Builder(HelloFacebookSampleActivity.this)
+                new AlertDialog.Builder(FacebookSampleActivity.this)
                     .setTitle(R.string.cancelled)
                     .setMessage(R.string.permission_not_granted)
                     .setPositiveButton(R.string.ok, null)

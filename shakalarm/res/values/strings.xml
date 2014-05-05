@@ -361,7 +361,7 @@
     <string name="success">Success</string>
     <string name="successfully_posted_post">Successfully posted \'%1$s\'.\nPost ID: %2$s</string>
     <string name="error">Error</string>
-    <string name="status_update">Updating status for %1$s at %2$s</string>
+    <string name="status_update">I, %1$s cannot get up at %2$s this morning! Because of this, I decided to buy all of you dinner! </string>
     <string name="photo_post">Photo Post</string>
     <string name="you_picked">You picked:</string>
     <string name="no_friends_selected">&lt;No friends selected&gt;</string>

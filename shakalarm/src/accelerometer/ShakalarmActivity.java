@@ -1,7 +1,7 @@
 package accelerometer;
 
-import facebook.HelloFacebookSampleActivity;
-import facebook.HelloFacebookSampleActivity.*;
+import facebook.FacebookSampleActivity;
+import facebook.FacebookSampleActivity.*;
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import alarm.Alarm;
@@ -51,7 +51,7 @@ public class ShakalarmActivity extends Activity implements AccelerometerListener
     	@Override
     	public void onFinish() {
     		Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_LONG).show();
-    		Intent intent = new Intent(ShakalarmActivity.this, HelloFacebookSampleActivity.class);
+    		Intent intent = new Intent(ShakalarmActivity.this, FacebookSampleActivity.class);
     		String message = "ok";
     	    intent.putExtra(EXTRA_MESSAGE, message);
 			startActivity(intent);
