@@ -77,7 +77,9 @@ public class FacebookSampleActivity extends Activity {
     private GraphPlace place;
     private List<GraphUser> tags;
     private boolean canPresentShareDialog;
-    private boolean canPresentShareDialogWithPhotos;
+    private boolean canPresentShareDialogWithPhotos; 
+    
+
 
     private enum PendingAction {
         NONE,
@@ -177,10 +179,11 @@ public class FacebookSampleActivity extends Activity {
         
         Intent intent = getIntent();
         String m = intent.getStringExtra(ShakalarmActivity.EXTRA_MESSAGE);
+        
         if(m != null && m.equals("ok"))
         {
         	onClickPostStatusUpdate();
-        	this.finish();
+        	//this.finish();
         	}
         
         	
@@ -316,7 +319,17 @@ public class FacebookSampleActivity extends Activity {
             FacebookDialog shareDialog = createShareDialogBuilderForLink().build();
             uiHelper.trackPendingDialogCall(shareDialog.present());
         } else if (user != null && hasPublishPermission()) {
-            final String message = getString(R.string.status_update, user.getFirstName(), (new Date().toString()));
+        	final String message;
+            Intent intent = getIntent();
+            String m = intent.getStringExtra(ShakalarmActivity.EXTRA_MESSAGE);
+            
+        	if(m != null && m.equals("ok")) {
+        	    message = getString(R.string.status_update, user.getFirstName(), (new Date().toString()));
+        	     }
+        	else{
+        		message = getString(R.string.status_test, (new Date().toString()));
+                 }
+        	
             Request request = Request
                     .newStatusUpdateRequest(Session.getActiveSession(), message, place, tags, new Request.Callback() {
                         @Override
