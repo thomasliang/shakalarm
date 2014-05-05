@@ -20,12 +20,12 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="@drawable/stopwatch1"
+              android:background="@drawable/stopwatch3"
         >
     <LinearLayout android:orientation="vertical"
                   android:layout_width="fill_parent"
                   android:layout_height="fill_parent"
-                  android:background="@drawable/stopwatch1"
+                  android:background="@drawable/stopwatch3"
                   android:id="@+id/main_ui_container">
         <LinearLayout
                 android:layout_width="150dp"
@@ -38,6 +38,7 @@
                 android:id="@+id/profilePicture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 facebook:preset_size="normal" >
@@ -47,7 +48,7 @@
                 android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 facebook:confirm_logout="false"
                 facebook:fetch_user_info="true" />
 
@@ -56,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="center"
                     android:textColor="#333"
                     android:textSize="18sp"/>
@@ -67,13 +69,19 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/status"
-            android:textColor="#F0FFF0" />
+           android:layout_marginTop="10dp"
+          android:textColor="#D2691E"
+          android:typeface="monospace"
+          android:background="@drawable/round_rec" />
 
         <Button
             android:id="@+id/postPhotoButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#F0FFF0"
+            android:textColor="#D2691E"
+            android:layout_marginTop="10dp" 
+          android:typeface="monospace"
+          android:background="@drawable/round_rec"
             android:text="@string/photo" />
 
     </LinearLayout>
