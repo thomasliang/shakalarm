@@ -67,7 +67,6 @@ public class FacebookSampleActivity extends Activity {
     private final String PENDING_ACTION_BUNDLE_KEY = "com.facebook.samples.hellofacebook:PendingAction";
 
     private Button postStatusUpdateButton;
-    private Button postPhotoButton;
     private LoginButton loginButton;
     private ProfilePictureView profilePictureView;
     private TextView greeting;
@@ -76,9 +75,7 @@ public class FacebookSampleActivity extends Activity {
     private GraphUser user;
     private GraphPlace place;
     private List<GraphUser> tags;
-    private boolean canPresentShareDialog;
-    private boolean canPresentShareDialogWithPhotos; 
-    
+    private boolean canPresentShareDialog;    
 
 
     private enum PendingAction {
@@ -167,9 +164,7 @@ public class FacebookSampleActivity extends Activity {
         // Can we present the share dialog for regular links?
         canPresentShareDialog = FacebookDialog.canPresentShareDialog(this,
                 FacebookDialog.ShareDialogFeature.SHARE_DIALOG);
-        // Can we present the share dialog for photos?
-        canPresentShareDialogWithPhotos = FacebookDialog.canPresentShareDialog(this,
-                FacebookDialog.ShareDialogFeature.PHOTOS);
+
         
         Intent intent = getIntent();
         String m = intent.getStringExtra(ShakalarmActivity.EXTRA_MESSAGE);
@@ -245,8 +240,6 @@ public class FacebookSampleActivity extends Activity {
         boolean enableButtons = (session != null && session.isOpened());
 
         postStatusUpdateButton.setEnabled(enableButtons || canPresentShareDialog);
-        postPhotoButton.setEnabled(enableButtons || canPresentShareDialogWithPhotos);
-
 
         if (enableButtons && user != null) {
             profilePictureView.setProfileId(user.getId());
@@ -265,9 +258,7 @@ public class FacebookSampleActivity extends Activity {
         pendingAction = PendingAction.NONE;
 
         switch (previouslyPendingAction) {
-            case POST_PHOTO:
-                postPhoto();
-                break;
+
             case POST_STATUS_UPDATE:
                 postStatusUpdate();
                 break;
@@ -337,32 +328,7 @@ public class FacebookSampleActivity extends Activity {
         }
     }
 
-    private void onClickPostPhoto() {
-        performPublish(PendingAction.POST_PHOTO, canPresentShareDialogWithPhotos);
-    }
 
-    private FacebookDialog.PhotoShareDialogBuilder createShareDialogBuilderForPhoto(Bitmap... photos) {
-        return new FacebookDialog.PhotoShareDialogBuilder(this)
-                .addPhotos(Arrays.asList(photos));
-    }
-
-    private void postPhoto() {
-        Bitmap image = BitmapFactory.decodeResource(this.getResources(), R.drawable.icon);
-        if (canPresentShareDialogWithPhotos) {
-            FacebookDialog shareDialog = createShareDialogBuilderForPhoto(image).build();
-            uiHelper.trackPendingDialogCall(shareDialog.present());
-        } else if (hasPublishPermission()) {
-            Request request = Request.newUploadPhotoRequest(Session.getActiveSession(), image, new Request.Callback() {
-                @Override
-                public void onCompleted(Response response) {
-                    showPublishResult(getString(R.string.photo_post), response.getGraphObject(), response.getError());
-                }
-            });
-            request.executeAsync();
-        } else {
-            pendingAction = PendingAction.POST_PHOTO;
-        }
-    }
 
 
 
