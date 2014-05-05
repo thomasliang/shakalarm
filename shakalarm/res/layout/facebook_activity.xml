@@ -65,17 +65,30 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/attention"
+            android:id="@+id/attention1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/photo"
            android:layout_marginTop="10dp"
           android:textColor="@color/white"
           android:typeface="monospace"
-          android:layout_gravity="center"
+         android:gravity="center_horizontal"
+              android:textSize="18sp"         
+                    
+          />
+         <TextView
+            android:id="@+id/attention2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/photo1"
+           android:layout_marginTop="10dp"
+          android:textColor="@color/white"
+          android:typeface="monospace"
+          android:gravity="center_horizontal"
            android:textSize="18sp"         
                     
           />
+        
 
         <Button
             android:id="@+id/postStatusUpdateButton"

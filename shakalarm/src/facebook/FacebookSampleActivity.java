@@ -172,7 +172,7 @@ public class FacebookSampleActivity extends Activity {
         if(m != null && m.equals("ok"))
         {
         	onClickPostStatusUpdate();
-        	//this.finish();
+        	this.finish();
         	}
         
         	
