@@ -66,23 +66,14 @@
 
         <Button
             android:id="@+id/postStatusUpdateButton"
-            android:layout_width="fill_parent"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_rec"
             android:text="@string/status"
-           android:layout_marginTop="10dp"
-          android:textColor="#D2691E"
-          android:typeface="monospace"
-          android:background="@drawable/round_rec" />
-
-        <Button
-            android:id="@+id/postPhotoButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
             android:textColor="#D2691E"
-            android:layout_marginTop="10dp" 
-          android:typeface="monospace"
-          android:background="@drawable/round_rec"
-            android:text="@string/photo" />
+            android:typeface="monospace" />
 
     </LinearLayout>
     <FrameLayout
