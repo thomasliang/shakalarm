@@ -15,7 +15,7 @@
 <item android:state_focused="true" >
         <shape
              android:shape="rectangle">
-            <solid android:color="#FFFFF0"/>
+            <solid />
             <stroke android:width="2sp" android:color="#fff" />
            <corners    android:bottomLeftRadius="15dip"
                 android:topRightRadius="15dip"
@@ -28,7 +28,7 @@
  <item>        
         <shape
          android:shape="rectangle">
-            <solid android:color="#FFFFF0"/>
+            <solid />
             <stroke android:width="2sp" android:color="#fff" />
             <corners    android:bottomLeftRadius="15dip"
                 android:topRightRadius="15dip"

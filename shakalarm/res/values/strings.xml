@@ -369,7 +369,7 @@
     <string name="pick_seattle_place">Pick a Seattle Place</string>
     <string name="exception">Exception: %1$s</string>
     <string name="status">Post Test Message</string>
-    <string name="photo">Post Photo</string>
+    <string name="photo">Press this button if you login the first time</string>
     <string name="status_test">Try Shakalarm now! Cool and useful! %1$s</string>
     
 

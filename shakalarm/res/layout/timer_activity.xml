@@ -83,7 +83,7 @@
           android:layout_centerHorizontal="true"
           android:layout_marginTop="70dp"
           android:text="@string/Start"
-          android:textColor="#D2691E"
+          android:textColor="@color/white"
           android:typeface="monospace"
           android:background="@drawable/round_rec"
           />

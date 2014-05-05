@@ -38,7 +38,7 @@
                 android:id="@+id/profilePicture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 facebook:preset_size="normal" >
@@ -48,7 +48,7 @@
                 android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 facebook:confirm_logout="false"
                 facebook:fetch_user_info="true" />
 
@@ -64,16 +64,29 @@
  
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/attention"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/photo"
+           android:layout_marginTop="10dp"
+          android:textColor="@color/white"
+          android:typeface="monospace"
+          android:layout_gravity="center"
+           android:textSize="18sp"         
+                    
+          />
+
         <Button
             android:id="@+id/postStatusUpdateButton"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/round_rec"
-            android:text="@string/status"
-            android:textColor="#D2691E"
-            android:typeface="monospace" />
+           android:layout_width="250dp"
+          android:layout_height="45dp"
+          android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp" 
+          android:typeface="monospace"
+          android:background="@drawable/round_rec"
+            android:text="@string/status" />
 
     </LinearLayout>
     <FrameLayout
