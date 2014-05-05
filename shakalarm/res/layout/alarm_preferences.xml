@@ -14,7 +14,7 @@
          android:layout_height="0dp"
          android:layout_weight="1"
          android:drawSelectorOnTop="false"
-         android:background="@drawable/stopwatch5" />
+         android:background="@drawable/stopwatch10" />
 
      <TextView
         android:id="@android:id/empty"
