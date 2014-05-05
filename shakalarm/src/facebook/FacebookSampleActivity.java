@@ -159,12 +159,6 @@ public class FacebookSampleActivity extends Activity {
             }
         });
 
-        postPhotoButton = (Button) findViewById(R.id.postPhotoButton);
-        postPhotoButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                onClickPostPhoto();
-            }
-        });
 
         controlsContainer = (ViewGroup) findViewById(R.id.main_ui_container);
 
