@@ -306,11 +306,11 @@ public class FacebookSampleActivity extends Activity {
         } else if (user != null && hasPublishPermission()) {
         	final String message;
             Intent intent = getIntent();
-            String m = intent.getStringExtra(ShakalarmActivity.EXTRA_MESSAGE);
+            String k = intent.getStringExtra(ShakalarmActivity.EXTRA_MESSAGE);
             
-        	if(m != null && m.equals("ok")) {
+        	if(k != null && k.equals("ok")) {
         	    message = getString(R.string.status_update, user.getFirstName(), (new Date().toString()));
-        	     }
+        	    }
         	else{
         		message = getString(R.string.status_test, (new Date().toString()));
                  }
