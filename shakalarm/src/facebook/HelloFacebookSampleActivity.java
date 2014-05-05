@@ -177,7 +177,7 @@ public class HelloFacebookSampleActivity extends Activity {
         
         Intent intent = getIntent();
         String m = intent.getStringExtra(ShakalarmActivity.EXTRA_MESSAGE);
-        if(m.equals("ok"))
+        if(m != null && m.equals("ok"))
         	onClickPostStatusUpdate();
         	
 
