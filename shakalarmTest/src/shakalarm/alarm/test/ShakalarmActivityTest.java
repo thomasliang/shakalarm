@@ -11,6 +11,7 @@ import android.os.Vibrator;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,5 +64,11 @@ public class ShakalarmActivityTest extends ActivityInstrumentationTestCase2<Shak
 			shakalarmActivity.onShake(10f);
 		}
 		assertTrue(this.shakalarmActivity.isFinishing());
+	}
+	
+	@SmallTest
+	public void testBackButtonPressed() {
+		shakalarmActivity.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
+		assertFalse(this.shakalarmActivity.isFinishing());
 	}
 }

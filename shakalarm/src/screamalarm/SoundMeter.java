@@ -51,9 +51,9 @@ public class SoundMeter {
 
 	}
 
-	public double getAmplitudeEMA() {
-		double amp = getAmplitude();
-		mEMA = EMA_FILTER * amp + (1.0 - EMA_FILTER) * mEMA;
-		return mEMA;
-	}
+//	public double getAmplitudeEMA() {
+//		double amp = getAmplitude();
+//		mEMA = EMA_FILTER * amp + (1.0 - EMA_FILTER) * mEMA;
+//		return mEMA;
+//	}
 }

@@ -18,7 +18,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.robotium.solo.Solo;
 
@@ -86,13 +85,13 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 
 	@SmallTest
 	public void testAlarmSetTime() throws InterruptedException {
+		fail("test ringing after 1 min");
 		View timeView = listView.getChildAt(2);
 		TouchUtils.clickView(this, timeView);
 		Calendar calendar = Calendar.getInstance();
 		solo.setTimePicker(0, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE) + 1);
 		solo.clickOnView(solo.getView(android.R.id.button1)); //click on the positive button
 		getInstrumentation().waitForIdleSync();
-		TouchUtils.clickView(this, okButton);		
-		fail("test ringing after 1 min");
+		TouchUtils.clickView(this, okButton);
 	}
 }
