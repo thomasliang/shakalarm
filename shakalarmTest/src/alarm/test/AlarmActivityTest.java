@@ -1,12 +1,13 @@
 package alarm.test;
 
+import java.util.Calendar;
+import java.util.List;
+
+import alarm.Alarm;
 import alarm.AlarmActivity;
-import alarm.preference.AlarmPreferencesActivity;
-import android.app.Instrumentation.ActivityMonitor;
+import alarm.database.Database;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.view.KeyEvent;
 import android.widget.ImageButton;
 
 import com.robotium.solo.Solo;
@@ -15,25 +16,17 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 
 	private AlarmActivity mActivity;
 
-	private ImageButton newButton;
-
 	Solo solo;
-
-	private ImageButton stopwatchButton;
-
-	private ImageButton timerButton;
-
-	private ImageButton facebookButton;
 
 	public AlarmActivityTest() {
 		super(AlarmActivity.class);
 	}
 
-	@SmallTest
-	// SmallTest: this test doesn't interact with any file system or network. 
-	public void testView() { // checks if the activity is created 
-		assertNotNull(getActivity());
-	}
+	//	@SmallTest
+	//	// SmallTest: this test doesn't interact with any file system or network. 
+	//	public void testView() { // checks if the activity is created 
+	//		assertNotNull(getActivity());
+	//	}
 
 	@Override
 	protected void setUp() throws Exception {
@@ -41,11 +34,6 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 		solo = new Solo(getInstrumentation(), getActivity());
 
 		mActivity = (AlarmActivity) getActivity();
-
-		newButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Alarm_tab);
-		stopwatchButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Timer_tab);
-		timerButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Counter_tab);
-		facebookButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Setting_tab);
 	}
 
 	@Override
@@ -66,34 +54,43 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 
 	@SmallTest
 	public void testAddDeleteAlarm() {
-		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(AlarmPreferencesActivity.class.getName(), null, false);
-
-		TouchUtils.clickView(this, newButton);
-		AlarmPreferencesActivity nextActivity = (AlarmPreferencesActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 500);
-		assertNotNull(nextActivity);
-
-		ImageButton okButton = (ImageButton) nextActivity.findViewById(shakalarm.alarm.R.id.textView_OK);
-		TouchUtils.clickView(this, okButton);
+		solo.clickOnImageButton(0);
+		solo.clickOnImageButton(2);
 		//assertTrue(alarms.size() == 1);
 
 		//getInstrumentation().waitForIdleSync();
 
-		activityMonitor = getInstrumentation().addMonitor(AlarmPreferencesActivity.class.getName(), null, false);
 		solo.clickInList(0);
 		solo.clickOnImageButton(1); //click delete
 		solo.clickOnButton("Ok");
 	}
 
 	@SmallTest
-	public void testSwitchActivity() {
-		solo.clickOnView(stopwatchButton);
-		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
-		solo.clickOnView(newButton);
-		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
-		solo.clickOnView(timerButton);
-		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
-		solo.clickOnView(facebookButton);
-		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+	public void testUpdateAlarm() {
+		solo.clickOnImageButton(0);
+		solo.clickOnImageButton(2);
+		//assertTrue(alarms.size() == 1);
+
+		//getInstrumentation().waitForIdleSync();
+		solo.clickInList(0);
+		solo.clickInList(3);
+		Calendar calendar = Calendar.getInstance();
+		solo.setTimePicker(0, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE) - 1);
+		solo.clickOnView(solo.getView(android.R.id.button1)); //click on the positive button
+
+		solo.clickOnImageButton(2);
 	}
+
+	//	@SmallTest
+	//	public void testSwitchActivity() {
+	//		solo.clickOnView(stopwatchButton);
+	//		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+	//		solo.clickOnView(newButton);
+	//		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+	//		solo.clickOnView(timerButton);
+	//		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+	//		solo.clickOnView(facebookButton);
+	//		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+	//	}
 
 }
