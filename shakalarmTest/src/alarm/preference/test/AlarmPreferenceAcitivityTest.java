@@ -3,7 +3,7 @@
  * go to java Build Path -> Order and Export and check robotium's lib
  */
 
-package shakalarm.alarm.test;
+package alarm.preference.test;
 
 import java.util.Calendar;
 import java.util.List;

@@ -34,9 +34,9 @@ import facebook.FacebookSampleActivity;
 
 public class AlarmActivity extends ListActivity implements android.view.View.OnClickListener {
 
-	ImageButton newButton;
-	ListView alarmListView;
-	AlarmListAdapter alarmListAdapter;
+	private ImageButton newButton;
+	private ListView alarmListView;
+	private AlarmListAdapter alarmListAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

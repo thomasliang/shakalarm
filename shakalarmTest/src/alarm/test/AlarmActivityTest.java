@@ -1,16 +1,13 @@
-package shakalarm.alarm.test;
+package alarm.test;
 
 import alarm.AlarmActivity;
-import alarm.AlarmListAdapter;
-import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import android.app.Instrumentation.ActivityMonitor;
-import android.database.Cursor;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.view.KeyEvent;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 import com.robotium.solo.Solo;
 
@@ -18,12 +15,16 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 
 	private AlarmActivity mActivity;
 
-	ImageButton newButton;
-	ListView alarmListView;
-	AlarmListAdapter alarmListAdapter;
-	ImageButton alarmButton;
+	private ImageButton newButton;
 
 	Solo solo;
+
+	private ImageButton stopwatchButton;
+
+	private ImageButton timerButton;
+
+	private ImageButton facebookButton;
+
 	public AlarmActivityTest() {
 		super(AlarmActivity.class);
 	}
@@ -37,31 +38,32 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		
-		mActivity = (AlarmActivity) getActivity();		
-		newButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Alarm_tab);
-
-
 		solo = new Solo(getInstrumentation(), getActivity());
-	}
 
+		mActivity = (AlarmActivity) getActivity();
+
+		newButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Alarm_tab);
+		stopwatchButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Timer_tab);
+		timerButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Counter_tab);
+		facebookButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.Setting_tab);
+	}
 
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
 
-//	@SmallTest
-//	// test whether the AlarmPreferece activity will be started after the add button on the top right corner is clicked
-//	public void testTouchAdd() {
-//		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(AlarmPreferencesActivity.class.getName(), null, false);
-//		AlarmPreferencesActivity nextActivity = (AlarmPreferencesActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 500);
-//
-//		TouchUtils.clickView(this, newButton);
-//		assertNotNull(nextActivity);
-//		nextActivity.finish();
-//	}
-	
+	//	@SmallTest
+	//	// test whether the AlarmPreferece activity will be started after the add button on the top right corner is clicked
+	//	public void testTouchAdd() {
+	//		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(AlarmPreferencesActivity.class.getName(), null, false);
+	//		AlarmPreferencesActivity nextActivity = (AlarmPreferencesActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 500);
+	//
+	//		TouchUtils.clickView(this, newButton);
+	//		assertNotNull(nextActivity);
+	//		nextActivity.finish();
+	//	}
+
 	@SmallTest
 	public void testAddDeleteAlarm() {
 		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(AlarmPreferencesActivity.class.getName(), null, false);
@@ -81,4 +83,17 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 		solo.clickOnImageButton(1); //click delete
 		solo.clickOnButton("Ok");
 	}
+
+	@SmallTest
+	public void testSwitchActivity() {
+		solo.clickOnView(stopwatchButton);
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+		solo.clickOnView(newButton);
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+		solo.clickOnView(timerButton);
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+		solo.clickOnView(facebookButton);
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+	}
+
 }
