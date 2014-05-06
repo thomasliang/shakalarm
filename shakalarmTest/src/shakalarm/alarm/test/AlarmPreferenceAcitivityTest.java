@@ -84,8 +84,15 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 	}
 
 	@SmallTest
+	public void testSetLabel() {
+		View labelView = listView.getChildAt(1);
+		TouchUtils.clickView(this, labelView);
+		solo.enterText(0, "Label");
+		solo.clickOnButton("Ok");
+	}
+
+	@SmallTest
 	public void testAlarmSetTime() throws InterruptedException {
-		fail("test ringing after 1 min");
 		View timeView = listView.getChildAt(2);
 		TouchUtils.clickView(this, timeView);
 		Calendar calendar = Calendar.getInstance();
@@ -93,5 +100,42 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 		solo.clickOnView(solo.getView(android.R.id.button1)); //click on the positive button
 		getInstrumentation().waitForIdleSync();
 		TouchUtils.clickView(this, okButton);
+		fail("test ringing after 1 min");
 	}
+
+	@SmallTest
+	public void testSetRepeat() {
+		View labelView = listView.getChildAt(3);
+		TouchUtils.clickView(this, labelView);
+		solo.clickInList(0);
+		solo.goBack();
+	}
+
+	@SmallTest
+	public void testSetDifficulty() {
+		View labelView = listView.getChildAt(4);
+		TouchUtils.clickView(this, labelView);
+		solo.clickInList(0);
+	}
+
+	@SmallTest
+	public void testSetRingtone() {
+		View labelView = listView.getChildAt(5);
+		TouchUtils.clickView(this, labelView);
+		solo.clickInList(0);
+	}
+	
+	@SmallTest
+	public void testSetVibrate() {
+		View labelView = listView.getChildAt(6);
+		TouchUtils.clickView(this, labelView);
+	}
+	
+	@SmallTest
+	public void testSetMode() {
+		View labelView = listView.getChildAt(7);
+		TouchUtils.clickView(this, labelView);
+		solo.clickInList(0);
+	}
+	
 }

@@ -1,5 +1,7 @@
 package screamalarm.test;
 
+import com.robotium.solo.Solo;
+
 import screamalarm.ScreamAlarmActivity;
 import accelerometer.ShakalarmActivity;
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.view.KeyEvent;
 public class ScreamAlarmActivityTest extends ActivityInstrumentationTestCase2<ScreamAlarmActivity> {
 
 	private ScreamAlarmActivity mActivity;
+	private Solo solo;
 
 	public ScreamAlarmActivityTest() {
 		super(ScreamAlarmActivity.class);
@@ -24,6 +27,8 @@ public class ScreamAlarmActivityTest extends ActivityInstrumentationTestCase2<Sc
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
+		solo = new Solo(getInstrumentation(), getActivity());
+
 		Intent intent = new Intent(this.getInstrumentation().getTargetContext().getApplicationContext(), ScreamAlarmActivity.class);
 		setActivityIntent(intent);
 		mActivity = (ScreamAlarmActivity) getActivity();
@@ -34,9 +39,9 @@ public class ScreamAlarmActivityTest extends ActivityInstrumentationTestCase2<Sc
 		super.tearDown();
 	}
 	
-//	@SmallTest //To make CI happy commented out this one
-//	public void testBackButtonPressed() {
-//		mActivity.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
-//		assertFalse(this.mActivity.isFinishing());
-//	}
+	@SmallTest 
+	public void testBackButtonPressed() {
+		solo.goBack();
+		assertFalse(this.mActivity.isFinishing());
+	}
 }
