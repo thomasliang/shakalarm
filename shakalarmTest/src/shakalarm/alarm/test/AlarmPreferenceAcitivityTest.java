@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -93,6 +94,7 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 
 	@SmallTest
 	public void testAlarmSetTime() throws InterruptedException {
+		fail("test ringing after 1 min");
 		View timeView = listView.getChildAt(2);
 		TouchUtils.clickView(this, timeView);
 		Calendar calendar = Calendar.getInstance();
@@ -100,7 +102,6 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 		solo.clickOnView(solo.getView(android.R.id.button1)); //click on the positive button
 		getInstrumentation().waitForIdleSync();
 		TouchUtils.clickView(this, okButton);
-		fail("test ringing after 1 min");
 	}
 
 	@SmallTest
@@ -108,7 +109,7 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 		View labelView = listView.getChildAt(3);
 		TouchUtils.clickView(this, labelView);
 		solo.clickInList(0);
-		solo.goBack();
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
 	}
 
 	@SmallTest

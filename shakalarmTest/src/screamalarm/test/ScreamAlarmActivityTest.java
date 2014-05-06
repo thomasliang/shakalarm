@@ -41,7 +41,7 @@ public class ScreamAlarmActivityTest extends ActivityInstrumentationTestCase2<Sc
 	
 	@SmallTest 
 	public void testBackButtonPressed() {
-		solo.goBack();
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
 		assertFalse(this.mActivity.isFinishing());
 	}
 }
