@@ -12,12 +12,11 @@ import alarm.Alarm;
 import alarm.database.Database;
 import alarm.preference.AlarmPreferencesActivity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,8 +25,8 @@ import com.robotium.solo.Solo;
 public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCase2<AlarmPreferencesActivity> {
 
 	private AlarmPreferencesActivity mActivity;
-	TextView cancelButton;
-	TextView okButton;
+	ImageButton cancelButton;
+	ImageButton okButton;
 	private ListView listView;
 
 	private Solo solo;
@@ -52,8 +51,8 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 
 		solo = new Solo(getInstrumentation(), getActivity());
 
-		cancelButton = (TextView) mActivity.findViewById(shakalarm.alarm.R.id.textView_delete);
-		okButton = (TextView) mActivity.findViewById(shakalarm.alarm.R.id.textView_OK);
+		cancelButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.textView_back);
+		okButton = (ImageButton) mActivity.findViewById(shakalarm.alarm.R.id.textView_OK);
 		listView = (ListView) mActivity.findViewById(android.R.id.list);
 	}
 
