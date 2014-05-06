@@ -30,6 +30,7 @@ public class TimerActivityTest extends ActivityInstrumentationTestCase2<TimerAct
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
+		getInstrumentation().waitForIdleSync();
 		solo = new Solo(getInstrumentation(), getActivity());
 
 		mActivity = (TimerActivity) getActivity();
@@ -52,6 +53,19 @@ public class TimerActivityTest extends ActivityInstrumentationTestCase2<TimerAct
 		solo.waitForDialogToOpen();
 		solo.clickOnButton("Dismiss");
 	}
+	
+	@SmallTest
+	public void testCancelTimer() throws InterruptedException {
+		solo.enterText(2, "59");
+		solo.clickOnButton("Start");
+		solo.clickOnButton("Cancel");
+		solo.waitForDialogToOpen();
+		solo.clickOnButton("No");
+		solo.clickOnButton("Cancel");
+		solo.waitForDialogToOpen();
+		solo.clickOnButton("Yes");
+	}
+	
 	
 	@SmallTest
 	public void testSwitchActivity() {

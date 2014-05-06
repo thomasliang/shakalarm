@@ -44,6 +44,7 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
+		getInstrumentation().waitForIdleSync();
 		Intent AlarmPreferencesActivityIntent = new Intent(this.getInstrumentation().getTargetContext().getApplicationContext(), AlarmPreferencesActivity.class);
 		setActivityIntent(AlarmPreferencesActivityIntent);
 
@@ -123,7 +124,7 @@ public class AlarmPreferenceAcitivityTest extends ActivityInstrumentationTestCas
 	public void testSetRingtone() {
 		View labelView = listView.getChildAt(5);
 		TouchUtils.clickView(this, labelView);
-		solo.clickInList(0);
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
 	}
 	
 	@SmallTest

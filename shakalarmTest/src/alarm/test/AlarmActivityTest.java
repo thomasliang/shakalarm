@@ -8,6 +8,7 @@ import alarm.AlarmActivity;
 import alarm.database.Database;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.view.KeyEvent;
 import android.widget.ImageButton;
 
 import com.robotium.solo.Solo;
@@ -31,6 +32,7 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
+		getInstrumentation().waitForIdleSync();
 		solo = new Solo(getInstrumentation(), getActivity());
 
 		mActivity = (AlarmActivity) getActivity();
