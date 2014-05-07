@@ -1,4 +1,6 @@
 package alarm;
+import java.util.Calendar;
+
 import shakalarm.alarm.R;
 import stopwatch.StopWatchActivity;
 import timer.TimerActivity;
@@ -16,6 +18,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -82,11 +85,21 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				case MotionEvent.ACTION_UP:
-					stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
-					v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-					Intent newAlarmIntent = new Intent(AlarmActivity.this, StopWatchActivity.class);
-					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-					startActivity(newAlarmIntent);
+					//stopWatchButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
+					//v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+					//Intent newAlarmIntent = new Intent(AlarmActivity.this, StopWatchActivity.class);
+					//newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+					//startActivity(newAlarmIntent);
+					
+					 Alarm test = new Alarm();
+		                Calendar testTime = Calendar.getInstance();
+		                testTime.add(13,3);
+		                test.setAlarmTonePath(Environment.getExternalStorageDirectory().getPath() + "/Music/Fox.mp3");
+		                test.setAlarmTime(testTime);
+		                test.setMode(Alarm.AlarmMode.SHAKALARM);
+		                test.schedule(getBaseContext());
+		                break;
+
 
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:
@@ -108,10 +121,19 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					timerButton.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
 					break;
 				case MotionEvent.ACTION_UP:
-					timerButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
-					Intent newAlarmIntent = new Intent(AlarmActivity.this, TimerActivity.class);
-					newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-					startActivity(newAlarmIntent);
+					//timerButton.setBackgroundColor(getResources().getColor(android.R.color.background_dark));
+					//Intent newAlarmIntent = new Intent(AlarmActivity.this, TimerActivity.class);
+					//newAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+					//startActivity(newAlarmIntent);
+					
+					Alarm test = new Alarm();
+	                Calendar testTime = Calendar.getInstance();
+	                testTime.add(13,3);
+	                test.setAlarmTonePath(Environment.getExternalStorageDirectory().getPath() + "/Music/Fox.mp3");
+	                test.setAlarmTime(testTime);
+	                test.setMode(Alarm.AlarmMode.SCREAMALARM);
+	                test.schedule(getBaseContext());
+	                break;
 
 				case MotionEvent.ACTION_MOVE:
 				case MotionEvent.ACTION_CANCEL:

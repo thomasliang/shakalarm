@@ -249,7 +249,7 @@ public class ScreamAlarmActivity extends Activity {
 		int height = metrics.heightPixels;
 		int width = metrics.widthPixels;
 		picture_imageView = new ImageView(ScreamAlarmActivity.this);
-		picture_imageView.setImageResource(R.drawable.screamalarm1);
+		picture_imageView.setImageResource(R.drawable.blowalarm1);
 		LayoutParams param = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		picture_imageView.setLayoutParams(param);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.screamalarm_activity_relativeLayout);
