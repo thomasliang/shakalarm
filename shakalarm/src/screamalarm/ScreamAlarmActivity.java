@@ -1,11 +1,16 @@
 package screamalarm;
 
 import shakalarm.alarm.R;
+import alarm.Alarm;
 import android.app.Activity;
 import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
@@ -14,6 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class ScreamAlarmActivity extends Activity {
+	private Alarm alarm;
+	private MediaPlayer mediaPlayer;
+	private Vibrator vibrator;
+
 	private static final int POLL_INTERVAL = 300;
 
 	private boolean mRunning = false;
@@ -76,11 +85,36 @@ public class ScreamAlarmActivity extends Activity {
 		// Used to record voice
 		mSensor = new SoundMeter();
 		//mDisplay = (SoundLevelView) findViewById(R.id.volume);
+		Bundle bundle = this.getIntent().getExtras();
+		alarm = (Alarm) bundle.getSerializable("alarm"); 
+		this.setTitle(alarm.getAlarmName());
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
 
 		init_animation_pic();
+		//startAlarm();
+	}
+
+	private void startAlarm() {
+		if (alarm.getAlarmTonePath() != "") {
+			mediaPlayer = new MediaPlayer();
+			if (alarm.getVibrate()) {
+				vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+				long[] pattern = { 1000, 200, 200, 200 };
+				vibrator.vibrate(pattern, 0);
+			}
+			try {
+				mediaPlayer.setVolume(1.0f, 1.0f);
+				mediaPlayer.setDataSource(this, Uri.parse(alarm.getAlarmTonePath()));
+				mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+				mediaPlayer.setLooping(true);
+				mediaPlayer.prepare();
+				mediaPlayer.start();
+			} catch (Exception e) {
+				mediaPlayer.release();
+			}
+		}
 	}
 
 	@Override
@@ -182,6 +216,17 @@ public class ScreamAlarmActivity extends Activity {
 		--screamCount;
 		if (screamCount <= 0) {
 			screamCount = 0;
+//			if (vibrator != null)
+//				vibrator.cancel();
+//			try {
+//				mediaPlayer.stop();
+//			} catch (IllegalStateException ise) {
+//
+//			}
+//			try {
+//				mediaPlayer.release();
+//			} catch (Exception e) {
+//			}
 			super.finish();
 		}
 	}

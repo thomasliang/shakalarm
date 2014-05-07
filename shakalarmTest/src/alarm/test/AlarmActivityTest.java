@@ -67,21 +67,21 @@ public class AlarmActivityTest extends ActivityInstrumentationTestCase2<AlarmAct
 		solo.clickOnButton("Ok");
 	}
 
-	@SmallTest
-	public void testUpdateAlarm() {
-		solo.clickOnImageButton(0);
-		solo.clickOnImageButton(2);
-		//assertTrue(alarms.size() == 1);
-
-		//getInstrumentation().waitForIdleSync();
-		solo.clickInList(0);
-		solo.clickInList(3);
-		Calendar calendar = Calendar.getInstance();
-		solo.setTimePicker(0, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE) - 1);
-		solo.clickOnView(solo.getView(android.R.id.button1)); //click on the positive button
-
-		solo.clickOnImageButton(2);
-	}
+//	@SmallTest
+//	public void testUpdateAlarm() {
+//		solo.clickOnImageButton(0);
+//		solo.clickOnImageButton(2);
+//		//assertTrue(alarms.size() == 1);
+//
+//		//getInstrumentation().waitForIdleSync();
+//		solo.clickInList(0);
+//		solo.clickInList(3);
+//		Calendar calendar = Calendar.getInstance();
+//		solo.setTimePicker(0, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE) - 1);
+//		solo.clickOnView(solo.getView(android.R.id.button1)); //click on the positive button
+//
+//		solo.clickOnImageButton(2);
+//	}
 
 	//	@SmallTest
 	//	public void testSwitchActivity() {
