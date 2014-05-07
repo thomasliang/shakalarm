@@ -47,8 +47,7 @@ public class ScreamAlarmActivity extends Activity {
 
 	private boolean toast_flag1 = true;
 
-	private int[] animation_picture_series_id = new int[7];
-	private int[] animation_picture_series_id_blow = new int[9];
+	private int[] animation_picture_series_id = new int[9];
 
 
 	private ImageView picture_imageView;
@@ -254,15 +253,17 @@ public class ScreamAlarmActivity extends Activity {
 		picture_imageView.setLayoutParams(param);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.screamalarm_activity_relativeLayout);
 		layout.addView(picture_imageView, Math.max(width, height), Math.max(width, height));
-		animation_picture_series_id_blow[0] = R.drawable.blowalarm1;
-		animation_picture_series_id_blow[1] = R.drawable.blowalarm2;
-		animation_picture_series_id_blow[2] = R.drawable.blowalarm3;
-		animation_picture_series_id_blow[3] = R.drawable.blowalarm4;
-		animation_picture_series_id_blow[4] = R.drawable.blowalarm5;
-		animation_picture_series_id_blow[5] = R.drawable.blowalarm6;
-		animation_picture_series_id_blow[6] = R.drawable.blowalarm7;
-		animation_picture_series_id_blow[7] = R.drawable.blowalarm8;
-		animation_picture_series_id_blow[8] = R.drawable.blowalarm9;
+		animation_picture_series_id[0] = R.drawable.blowalarm1;
+		animation_picture_series_id[1] = R.drawable.blowalarm2;
+		animation_picture_series_id[2] = R.drawable.blowalarm3;
+		animation_picture_series_id[3] = R.drawable.blowalarm4;
+		animation_picture_series_id[4] = R.drawable.blowalarm5;
+		animation_picture_series_id[5] = R.drawable.blowalarm6;
+		animation_picture_series_id[6] = R.drawable.blowalarm7;
+		animation_picture_series_id[7] = R.drawable.blowalarm8;
+		animation_picture_series_id[8] = R.drawable.blowalarm9;
+
+
 
 		picture_imageView.setOnTouchListener(new OnTouchListener() {
 

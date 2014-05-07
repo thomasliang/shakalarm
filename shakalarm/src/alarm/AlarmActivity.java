@@ -93,7 +93,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					
 					 Alarm test = new Alarm();
 		                Calendar testTime = Calendar.getInstance();
-		                testTime.add(13,3);
+		                testTime.add(13,1);
 		                test.setAlarmTonePath(Environment.getExternalStorageDirectory().getPath() + "/Music/Fox.mp3");
 		                test.setAlarmTime(testTime);
 		                test.setMode(Alarm.AlarmMode.SHAKALARM);
@@ -128,7 +128,7 @@ public class AlarmActivity extends ListActivity implements android.view.View.OnC
 					
 					Alarm test = new Alarm();
 	                Calendar testTime = Calendar.getInstance();
-	                testTime.add(13,3);
+	                testTime.add(13,1);
 	                test.setAlarmTonePath(Environment.getExternalStorageDirectory().getPath() + "/Music/Fox.mp3");
 	                test.setAlarmTime(testTime);
 	                test.setMode(Alarm.AlarmMode.SCREAMALARM);
