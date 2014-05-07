@@ -3,7 +3,6 @@ package screamalarm.test;
 import java.util.Calendar;
 
 import screamalarm.ScreamAlarmActivity;
-import accelerometer.ShakalarmActivity;
 import alarm.Alarm;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
@@ -52,8 +51,8 @@ public class ScreamAlarmActivityTest extends ActivityInstrumentationTestCase2<Sc
 	}
 
 	@SmallTest
-	public void testBackButtonPressed() {
+	public void testBackButtonPressed() throws InterruptedException {
 		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
 		assertFalse(this.mActivity.isFinishing());
-	}
+	}	
 }

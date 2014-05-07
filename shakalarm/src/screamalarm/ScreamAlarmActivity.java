@@ -13,6 +13,9 @@ import android.os.PowerManager;
 import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,6 +25,7 @@ public class ScreamAlarmActivity extends Activity {
 	private Alarm alarm;
 	private MediaPlayer mediaPlayer;
 	private Vibrator vibrator;
+	private boolean pressed = false;
 
 	private static final int POLL_INTERVAL = 300;
 
@@ -86,14 +90,15 @@ public class ScreamAlarmActivity extends Activity {
 		mSensor = new SoundMeter();
 		//mDisplay = (SoundLevelView) findViewById(R.id.volume);
 		Bundle bundle = this.getIntent().getExtras();
-		alarm = (Alarm) bundle.getSerializable("alarm"); 
+		alarm = (Alarm) bundle.getSerializable("alarm");
 		this.setTitle(alarm.getAlarmName());
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
 
 		init_animation_pic();
-		//startAlarm();
+		pressed = false;
+		startAlarm();
 	}
 
 	private void startAlarm() {
@@ -198,36 +203,66 @@ public class ScreamAlarmActivity extends Activity {
 		animation_picture_series_id[4] = R.drawable.screamalarm5;
 		animation_picture_series_id[5] = R.drawable.screamalarm6;
 		animation_picture_series_id[6] = R.drawable.screamalarm7;
+
+		picture_imageView.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				//int action = event.getAction();
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					pressed = true;
+					Toast.makeText(getApplicationContext(), "Keep pressing and scream!", Toast.LENGTH_LONG).show();
+					stopAlarm();
+					break;
+
+				case MotionEvent.ACTION_MOVE:
+					//User is moving around on the screen
+					break;
+
+				case MotionEvent.ACTION_UP:
+					pressed = false;
+					startAlarm();
+					break;
+				}
+				return pressed;
+			}
+		});
 	}
 
 	private void callForHelp() {
-		int partitions = (INIT_SCREAM_COUNT) / animation_picture_series_id.length;
-		int image_no = (INIT_SCREAM_COUNT - screamCount) / partitions;
-		if (image_no > animation_picture_series_id.length - 1) {
-			picture_imageView.setImageResource(animation_picture_series_id[animation_picture_series_id.length - 1]);
-		} else {
-			picture_imageView.setImageResource(animation_picture_series_id[image_no]);
+		if (pressed) {
+			int partitions = (INIT_SCREAM_COUNT) / animation_picture_series_id.length;
+			int image_no = (INIT_SCREAM_COUNT - screamCount) / partitions;
+			if (image_no > animation_picture_series_id.length - 1) {
+				picture_imageView.setImageResource(animation_picture_series_id[animation_picture_series_id.length - 1]);
+			} else {
+				picture_imageView.setImageResource(animation_picture_series_id[image_no]);
+			}
+
+			//stop();
+
+			// Show alert when noise threshold crossed
+			Toast.makeText(getApplicationContext(), "Noise Threshold Crossed! Continue!.", Toast.LENGTH_LONG).show();
+			--screamCount;
+			if (screamCount <= 0) {
+				screamCount = 0;
+				super.finish();
+			}
 		}
+	}
 
-		//stop();
+	private void stopAlarm() {
+		if (vibrator != null)
+			vibrator.cancel();
+		try {
+			mediaPlayer.stop();
+		} catch (IllegalStateException ise) {
 
-		// Show alert when noise threshold crossed
-		Toast.makeText(getApplicationContext(), "Noise Threshold Crossed! Continue!.", Toast.LENGTH_LONG).show();
-		--screamCount;
-		if (screamCount <= 0) {
-			screamCount = 0;
-//			if (vibrator != null)
-//				vibrator.cancel();
-//			try {
-//				mediaPlayer.stop();
-//			} catch (IllegalStateException ise) {
-//
-//			}
-//			try {
-//				mediaPlayer.release();
-//			} catch (Exception e) {
-//			}
-			super.finish();
+		}
+		try {
+			mediaPlayer.release();
+		} catch (Exception e) {
 		}
 	}
 
