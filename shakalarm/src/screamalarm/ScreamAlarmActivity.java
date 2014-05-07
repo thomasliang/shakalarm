@@ -48,6 +48,8 @@ public class ScreamAlarmActivity extends Activity {
 	private boolean toast_flag1 = true;
 
 	private int[] animation_picture_series_id = new int[7];
+	private int[] animation_picture_series_id_blow = new int[9];
+
 
 	private ImageView picture_imageView;
 
@@ -92,13 +94,24 @@ public class ScreamAlarmActivity extends Activity {
 		Bundle bundle = this.getIntent().getExtras();
 		alarm = (Alarm) bundle.getSerializable("alarm");
 		this.setTitle(alarm.getAlarmName());
+		if(alarm.getMode() == Alarm.AlarmMode.BLOWALARM)
+		{
+			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+			mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
 
+			init_animation_pic_blow();
+			pressed = false;
+			startAlarm();
+		}
+		else{
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
 
 		init_animation_pic();
 		pressed = false;
 		startAlarm();
+		}
+		
 	}
 
 	private void startAlarm() {
@@ -229,6 +242,53 @@ public class ScreamAlarmActivity extends Activity {
 			}
 		});
 	}
+	
+	private void init_animation_pic_blow() {
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		int height = metrics.heightPixels;
+		int width = metrics.widthPixels;
+		picture_imageView = new ImageView(ScreamAlarmActivity.this);
+		picture_imageView.setImageResource(R.drawable.screamalarm1);
+		LayoutParams param = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		picture_imageView.setLayoutParams(param);
+		RelativeLayout layout = (RelativeLayout) findViewById(R.id.screamalarm_activity_relativeLayout);
+		layout.addView(picture_imageView, Math.max(width, height), Math.max(width, height));
+		animation_picture_series_id_blow[0] = R.drawable.blowalarm1;
+		animation_picture_series_id_blow[1] = R.drawable.blowalarm2;
+		animation_picture_series_id_blow[2] = R.drawable.blowalarm3;
+		animation_picture_series_id_blow[3] = R.drawable.blowalarm4;
+		animation_picture_series_id_blow[4] = R.drawable.blowalarm5;
+		animation_picture_series_id_blow[5] = R.drawable.blowalarm6;
+		animation_picture_series_id_blow[6] = R.drawable.blowalarm7;
+		animation_picture_series_id_blow[7] = R.drawable.blowalarm8;
+		animation_picture_series_id_blow[8] = R.drawable.blowalarm9;
+
+		picture_imageView.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				//int action = event.getAction();
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					pressed = true;
+					Toast.makeText(getApplicationContext(), "Keep pressing and scream!", Toast.LENGTH_LONG).show();
+					stopAlarm();
+					break;
+
+				case MotionEvent.ACTION_MOVE:
+					//User is moving around on the screen
+					break;
+
+				case MotionEvent.ACTION_UP:
+					pressed = false;
+					startAlarm();
+					break;
+				}
+				return pressed;
+			}
+		});
+	}
 
 	private void callForHelp() {
 		if (pressed) {
@@ -247,6 +307,7 @@ public class ScreamAlarmActivity extends Activity {
 			--screamCount;
 			if (screamCount <= 0) {
 				screamCount = 0;
+				stopAlarm();
 				super.finish();
 			}
 		}
